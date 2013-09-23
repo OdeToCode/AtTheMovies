@@ -8,6 +8,7 @@
               );
     };
     Movie.$inject = ["$resource"];
+
     app.factory("Movie", Movie);
 
 }(angular.module("AtTheMovies")));

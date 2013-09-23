@@ -2,6 +2,8 @@
 
     var ListController = function ($scope, Movie) {
 
+        $scope.movies = Movie.query();
+
     };
     ListController.$inject = ["$scope", "Movie"];
 
