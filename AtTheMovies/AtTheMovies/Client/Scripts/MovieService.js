@@ -6,7 +6,7 @@
                    { id: "@id" },
                    {
                        "update": { method: "PUT" },
-                       "query":  { method: 'GET', isArray: false }
+                       "find":  { method: 'GET', isArray: false }
                    }
               );
     };
