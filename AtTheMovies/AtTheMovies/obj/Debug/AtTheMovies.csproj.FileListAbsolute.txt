@@ -132,3 +132,7 @@ C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\bin\zh-Hant\
 C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\obj\Debug\AtTheMovies.csprojResolveAssemblyReference.cache
 C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\obj\Debug\AtTheMovies.dll
 C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\obj\Debug\AtTheMovies.pdb
+C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\bin\EntityFramework.dll
+C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\bin\EntityFramework.SqlServer.dll
+C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\bin\EntityFramework.xml
+C:\Users\Scott\Documents\GitHub\AtTheMovies\AtTheMovies\AtTheMovies\bin\EntityFramework.SqlServer.xml
