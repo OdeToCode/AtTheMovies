@@ -168,8 +168,10 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Client\Scripts\AtTheMovies.js" />
+    <Content Include="Client\Scripts\DetailsController.js" />
     <Content Include="Client\Scripts\ListController.js" />
     <Content Include="Client\Scripts\MovieService.js" />
+    <Content Include="Client\Views\details.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />

@@ -4,7 +4,10 @@
         return $resource(
                    "/api/movies/:id",
                    { id: "@id" },
-                   { "update": { method: "PUT" } }
+                   {
+                       "update": { method: "PUT" },
+                       "query":  { method: 'GET', isArray: false }
+                   }
               );
     };
     Movie.$inject = ["$resource"];
