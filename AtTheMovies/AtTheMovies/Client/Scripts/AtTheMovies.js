@@ -10,4 +10,4 @@
 
     app.config(config);
 
-}(angular.module("AtTheMovies", ["ngRoute"])));
+}(angular.module("AtTheMovies", ["ngRoute", "ngResource"])));
