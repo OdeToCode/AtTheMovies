@@ -1,9 +1,11 @@
 ﻿@section scripts{    
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Client/Scripts/AtTheMovies.js"></script>
 }
 
-<div class="row" ng-app>
-    <div class="span12">
-        {{2+2}}
-    </div>
+<div ng-app="AtTheMovies">
+
+    <ng-view></ng-view>
+
 </div>
