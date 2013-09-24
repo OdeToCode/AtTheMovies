@@ -4,6 +4,10 @@
 
         $scope.movies = Movie.query();
 
+        $scope.create = function () {
+
+        };
+
     };
     ListController.$inject = ["$scope", "Movie"];
 

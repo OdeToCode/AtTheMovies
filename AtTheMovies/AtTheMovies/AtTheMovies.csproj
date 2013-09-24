@@ -172,6 +172,7 @@
     <Content Include="Client\Scripts\ListController.js" />
     <Content Include="Client\Scripts\MovieService.js" />
     <Content Include="Client\Views\details.html" />
+    <Content Include="Client\Views\edit.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
