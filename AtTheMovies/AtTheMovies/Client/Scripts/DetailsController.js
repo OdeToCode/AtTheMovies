@@ -2,7 +2,7 @@
 
     var DetailsController = function ($scope, $routeParams, Movie) {
         
-        $scope.movie = Movie.find({ id: $routeParams.id });
+        $scope.movie = Movie.get({ id: $routeParams.id });
 
         $scope.edit = function () {
             $scope.isEditing = true;

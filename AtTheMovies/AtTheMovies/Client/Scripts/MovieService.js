@@ -5,8 +5,7 @@
                    "/api/movies/:id",
                    { id: "@id" },
                    {
-                       "update": { method: "PUT" },
-                       "find":  { method: 'GET', isArray: false }
+                       "update": { method: "PUT" }                      
                    }
               );
     };

@@ -1,13 +1,16 @@
 ﻿<fieldset>
     <label for="title">
-        <input id="title" type="text" ng-model="movie.title" required />
+        Title
     </label>
+    <input id="title" type="text" ng-model="movie.title" required />
     <label for="release">
-        <input id="release" type="number" ng-model="movie.releaseYear" required min="1900" max="2030" />
+        Release Year
     </label>
+    <input id="release" type="number" ng-model="movie.releaseYear" required min="1900" max="2030" />
     <label for="runtime">
-        <input id="runtime" type="number" ng-model="movie.runtime" required min="0" max="500" />
+        Length
     </label>
+    <input id="runtime" type="number" ng-model="movie.runtime" required min="0" max="500" />
     <button ng-click="save()">Save</button>
     <button ng-click="cancel()">Cancel</button>
 </fieldset>
