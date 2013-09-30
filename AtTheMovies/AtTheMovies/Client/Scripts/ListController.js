@@ -13,6 +13,13 @@
             $scope.isEditing = false;
         };
 
+        $scope.delete = function(movie) {
+            movie.$delete().then(function() {
+                $scope.movies = Movie.query();
+            });
+
+        };
+
         $scope.save = function() {
             $scope.movie.$save();
             $scope.isEditing = false;

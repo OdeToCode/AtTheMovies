@@ -1,8 +1,16 @@
 ﻿<div ng-controller="ListController" class="row">
     <div class="span6">
-        <div ng-repeat="movie in movies">
-            <a href="#/details/{{movie.id}}">{{movie.title}}</a>
-        </div>
+        <table class="table table-striped">
+            <tr ng-repeat="movie in movies">
+                <td>
+                    <a href="#/details/{{movie.id}}">{{movie.title}}</a>                    
+                </td>
+                <td>
+                    <button class="btn" ng-click="delete(movie)">Delete</button>
+                    <a href="#/details/{{movie.id}}" class="btn">Edit</a> 
+                </td>
+            </tr>    
+        </table>        
         <button ng-click="create()">Create</button>
     </div>
     <div class="span6">
