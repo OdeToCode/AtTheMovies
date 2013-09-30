@@ -15,7 +15,8 @@
 
         $scope.save = function() {
             $scope.movie.$save();
-            $scope.movies.push($scope.movie);
+            $scope.isEditing = false;
+            $scope.movies.push($scope.movie);            
         };
     };
     ListController.$inject = ["$scope", "Movie"];
