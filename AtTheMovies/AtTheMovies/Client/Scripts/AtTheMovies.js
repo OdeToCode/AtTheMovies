@@ -9,5 +9,6 @@
     config.$inject = ["$routeProvider"];
 
     app.config(config);
+    app.constant("movieApiUrl", "/api/movies/");
 
 }(angular.module("AtTheMovies", ["ngRoute", "ngResource", "ngAnimate"])));

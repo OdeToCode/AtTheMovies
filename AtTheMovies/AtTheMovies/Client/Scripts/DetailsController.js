@@ -1,24 +1,17 @@
 ﻿(function (app) {
 
-    var DetailsController = function ($scope, $routeParams, Movie) {
-        
-        $scope.movie = Movie.get({ id: $routeParams.id });
+    var DetailsController = function ($scope, $routeParams, movieService) {
+
+        movieService.getById($routeParams.id)
+                    .success(function(movie) {
+                        $scope.movie = movie;
+                    });
 
         $scope.edit = function () {
-            $scope.isEditing = true;
-        };
-
-        $scope.save = function () {
-            $scope.movie.$update();
-            $scope.isEditing = false;
-        };
-
-        $scope.cancel = function () {
-            $scope.isEditing = false;
-        };
-
+            $scope.edit.movie = angular.copy($scope.movie);
+        };        
     };
-    DetailsController.$inject = ["$scope", "$routeParams", "Movie"];
+    DetailsController.$inject = ["$scope", "$routeParams", "movieService"];
 
     app.controller("DetailsController", DetailsController);
 

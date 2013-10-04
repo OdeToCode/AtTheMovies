@@ -1,32 +1,31 @@
 ﻿(function (app) {
 
-    var ListController = function ($scope, Movie) {
+    var ListController = function ($scope, movieService) {
 
-        $scope.movies = Movie.query();
+        var removeMovieById = function(id) {
+            for (var i = 0; i < $scope.movies.length; i++) {
+                if ($scope.movies[i].id == id) {
+                    $scope.movies.splice(i, 1);
+                }
+            }
+        };
+
+        movieService.getAll().success(function(movies) {
+            $scope.movies = movies;
+        });
 
         $scope.create = function () {
-            $scope.movie = new Movie();
-            $scope.isEditing = true;
+            $scope.edit = { movie: { title: "", runtime: 0, releaseYear: 0 } };
         };
-
-        $scope.cancel = function() {
-            $scope.isEditing = false;
-        };
-
-        $scope.delete = function(movie) {
-            movie.$delete().then(function() {
-                $scope.movies = Movie.query();
-            });
-
-        };
-
-        $scope.save = function() {
-            $scope.movie.$save();
-            $scope.isEditing = false;
-            $scope.movies.push($scope.movie);            
+    
+        $scope.delete = function (movie) {
+            movieService.delete(movie)
+                .success(function() {
+                    removeMovieById(movie.id);
+                });
         };
     };
-    ListController.$inject = ["$scope", "Movie"];
+    ListController.$inject = ["$scope", "movieService"];
 
     app.controller("ListController", ListController);
 

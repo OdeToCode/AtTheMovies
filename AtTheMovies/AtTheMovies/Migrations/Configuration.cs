@@ -13,12 +13,12 @@ namespace AtTheMovies.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(AtTheMovies.Models.MovieDb context)
+        protected override void Seed(MovieDb context)
         {
             context.Movies.AddOrUpdate(m => m.Title,
-                    new Movie { Title="Star Wars" },
-                    new Movie { Title="E.T."},
-                    new Movie { Title="Toy Story" }
+                    new Movie { Title="Star Wars", ReleaseYear=1977, Runtime=121 },
+                    new Movie { Title="E.T.", ReleaseYear=1981, Runtime=130},
+                    new Movie { Title="Toy Story", ReleaseYear=1994, Runtime=90 }
                 );
         }        
     }
