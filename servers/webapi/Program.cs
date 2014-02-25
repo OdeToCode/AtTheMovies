@@ -1,4 +1,5 @@
 ﻿using System;
+using AtTheMovies.Configuration;
 using Microsoft.Owin.Hosting;
 
 namespace AtTheMovies

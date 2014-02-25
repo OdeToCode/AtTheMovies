@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace AtTheMovies
+namespace AtTheMovies.Controllers
 {
     [Route("api/movies")]
     public class MovieController : ApiController

@@ -1,19 +1,16 @@
 ﻿using System.Web.Http;
-using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Newtonsoft.Json.Serialization;
 using Owin;
 
-namespace AtTheMovies
+namespace AtTheMovies.Configuration
 {
     public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            UseClient(app, "ng");
-            UseClient(app, "durandal");
-            UseClient(app, "ember");
+            UseStaticFiles(app);
             UseWebApi(app);
         }
 
@@ -27,13 +24,12 @@ namespace AtTheMovies
             app.UseWebApi(apiConfiguration);
         }
 
-        private void UseClient(IAppBuilder app, string client)
+        private void UseStaticFiles(IAppBuilder app)
         {
             app.UseFileServer(new FileServerOptions
             {
-                FileSystem = new PhysicalFileSystem(@"..\..\..\..\clients\" + client),
-                EnableDefaultFiles = true,
-                RequestPath = new PathString("/" + client)
+                FileSystem = new PhysicalFileSystem(@"..\..\..\..\clients"),
+                EnableDefaultFiles = true
             });
         }
     }
