@@ -1,0 +1,15 @@
+{
+  "name": "AtTheMovies",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.4.8"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-express-server": "~0.4.13",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}
