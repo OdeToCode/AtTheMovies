@@ -31,7 +31,7 @@ namespace AtTheMovies
         {
             app.UseFileServer(new FileServerOptions
             {
-                FileSystem = new PhysicalFileSystem(@"..\..\..\..\..\clients\" + client),
+                FileSystem = new PhysicalFileSystem(@"..\..\..\..\clients\" + client),
                 EnableDefaultFiles = true,
                 RequestPath = new PathString("/" + client)
             });
