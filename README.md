@@ -1,3 +1,3 @@
 AtTheMovies
 ===========
-Simple sample application with AngularJS and ASP.NET MVC / WebAPI
+Just foolin around with some JS frameworks
