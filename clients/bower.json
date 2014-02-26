@@ -15,6 +15,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.13"
+    "angular": "~1.2.13",
+    "angular-route": "~1.2.13",
+    "angular-animate": "~1.2.13",
+    "bootstrap": "~3.1.1",
+    "animate.css": "~3.1.0"
   }
 }

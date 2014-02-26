@@ -1,0 +1,22 @@
+<div ng-controller="ListController">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in movies">
+                <td>{{movie.title}}</td>
+                <td>{{movie.rating}}</td>
+                <td>{{movie.year}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

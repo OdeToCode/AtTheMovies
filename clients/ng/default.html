@@ -1,12 +1,29 @@
-<html ng-app>
-<head>
-	
-</head>
-<body>
-	<h1>Hello!</h1>
-	{{ 2 + 2 }}
-	
-	<script src="/bower_components/angular/angular.js"></script>
+<html ng-app="atTheMovies">
 
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+
+<body class="container">
+
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">At The Movies</a>
+            </div>
+        </div>
+    </nav>
+
+	<div ng-view></div>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script> 
+    <script src="/ng/scripts/atTheMovies.js"></script>
+    <script src="/ng/scripts/ListController.js"></script>
+    <script src="/ng/scripts/movieData.js"></script>
 </body>
+
 </html>
