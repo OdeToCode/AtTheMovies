@@ -1,3 +1,5 @@
+var serverFiles = ["*.js", "routes/*.js", "controllers/*.js", "data/*.js", "models/*.js"];
+
 module.exports = function(grunt){
 
   grunt.initConfig({
@@ -11,12 +13,12 @@ module.exports = function(grunt){
     },
     
     jshint: {
-      files: ["*.js"]
+      files: serverFiles
     },
 
     watch:{
       express:{
-        files: [ "app.js" ],
+        files: serverFiles,
         tasks: [ "express:dev"],
         options: {
           spawn:false
@@ -24,7 +26,7 @@ module.exports = function(grunt){
       },
       
       jshint: {
-        files: ["*.js"],
+        files: serverFiles,
         tasks: [ "jshint"]
       }
     } 
