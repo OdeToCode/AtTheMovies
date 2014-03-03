@@ -1,0 +1,16 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Rating</th>
+			<th>Year</th>
+		</thead>
+	</tr>
+	<tbody data-bind="foreach: movies">
+		<tr>
+			<td data-bind="text: title"></td>
+			<td data-bind="text: rating"></td>
+			<td data-bind="text: year"></td>
+		</tr>
+	</tbody>
+</table>

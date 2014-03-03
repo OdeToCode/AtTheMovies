@@ -11,18 +11,21 @@ requirejs.config({
 
 define(function(require) {
     var system = require("durandal/system");
-    var app = require("durandal/app")
+    var app = require("durandal/app");
+    var viewLocator = require("durandal/viewLocator");
 
     system.debug(true);
 
-    app.title = "Durandal Starter Kit";
+    app.title = "At The Movies";
 
     app.configurePlugins({
-        router: true,
-        dialog: true
+        // router: true,
+        dialog: true,
+        observable: true
     });
 
+    viewLocator.useConvention();
     app.start().then(function() {
-        app.setRoot("shell");
+        app.setRoot("viewmodels/movieList", "entrance");
     });
 });

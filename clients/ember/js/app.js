@@ -1,0 +1,1 @@
+window.AtTheMovies = Ember.Application.create();
