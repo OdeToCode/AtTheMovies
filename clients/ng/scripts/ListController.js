@@ -3,7 +3,7 @@
 	var ListController = function($scope, movieData) {
 		
 		var onError = function(reason){
-			$scope.error = reason;
+			$scope.error.current = reason;
 		};
 
 		$scope.movies = [];

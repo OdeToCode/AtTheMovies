@@ -16,6 +16,10 @@
         </div>
     </nav>
 
+    <div class="alert alert-danger" ng-show="error.current">
+        {{ error.current }}
+    </div>
+
 	<div ng-view></div>
 
     <script src="/bower_components/angular/angular.js"></script>

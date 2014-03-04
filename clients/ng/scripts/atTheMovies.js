@@ -14,4 +14,10 @@
 			});
 	});
 
+	module.run(function($rootScope){
+		$rootScope.error = {
+			current: ""
+		};
+	});
+
 }());
