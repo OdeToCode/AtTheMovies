@@ -10,7 +10,7 @@ AtTheMovies.Router.map(function() {
 
 AtTheMovies.MoviesRoute = Ember.Route.extend({
     model: function() {
-        console.log("getting movies");
-        return $.get("/api/movies");
+        console.log("finding");
+        return this.store.find("movie");
     }
 });

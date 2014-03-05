@@ -1,29 +1,33 @@
 {
-  "name": "AtTheMovies",
-  "version": "0.0.1",
-  "homepage": "https://github.com/OdeToCode/AtTheMovies",
-  "authors": [
-    "K. Scott Allen <scott@odetocode.com>"
-  ],
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular": "~1.2.13",
-    "angular-route": "~1.2.13",
-    "angular-animate": "~1.2.13",
-    "bootstrap": "~3.1.1",
-    "animate.css": "~3.1.0",
-    "durandal": "~2.0.1",
-    "requirejs-text": "~2.0.10",
-    "ember": "~1.4.0",
-    "handlebars": "~1.3.0",
-    "ember-data": "~0.0.14"
-  }
+    "name": "AtTheMovies",
+    "version": "0.0.1",
+    "homepage": "https://github.com/OdeToCode/AtTheMovies",
+    "authors": [
+        "K. Scott Allen <scott@odetocode.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "~1.2.13",
+        "angular-route": "~1.2.13",
+        "angular-animate": "~1.2.13",
+        "bootstrap": "~3.1.1",
+        "animate.css": "~3.1.0",
+        "durandal": "~2.0.1",
+        "requirejs-text": "~2.0.10",
+        "ember": "~1.4.0",
+        "handlebars": "~1.3.0",
+        "ember-data": "1.0.0-beta.7"
+    },
+    "resolutions": {
+        "ember": "~1.4.0",
+        "ember-data": "1.0.0-beta.7"
+    }
 }
