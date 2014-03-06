@@ -1,21 +1,20 @@
-(function(){
+(function() {
 
-	var ListController = function($scope, movieData) {
-		
-		var onError = function(reason){
-			$scope.error.current = reason;
-		};
+    var module = angular.module("atTheMovies");
+    module.controller("ListController", function($scope, movieData) {
 
-		$scope.movies = [];
+        var onError = function(reason) {
+            $scope.error.current = reason;
+        };
 
-		movieData
-			.getAll()
-			.then(function(movies){
-				$scope.movies = movies;
-			}).catch(onError);
-	};
+        $scope.movies = [];
 
-	var module = angular.module("atTheMovies");
-	module.controller("ListController", ListController);
+        movieData
+            .getAll()
+            .then(function(movies) {
+                $scope.movies = movies;
+            }).
+        catch (onError);
+    });
 
 }());
