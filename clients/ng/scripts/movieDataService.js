@@ -1,6 +1,7 @@
 (function(){
 
-	var movieData = function($http, movieApiUrl){
+	var module = angular.module("atTheMovies");
+	module.factory("movieDataService", function($http, movieApiUrl){
 
 		var movies = [];
 
@@ -15,9 +16,6 @@
 		return {
 			getAll: getAll
 		};
-	};
-
-	var module = angular.module("atTheMovies");
-	module.factory("movieData", movieData);
+	});
 
 }());

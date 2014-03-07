@@ -2,25 +2,50 @@
 
     var module = angular.module("atTheMovies", ["ngRoute", "ngAnimate"]);
 
-    module.constant("movieApiUrl", "/api/movies");
+    var routes = 
+    [
+        { 
+            path: "/list", 
+            route: { 
+                templateUrl: "views/list.html", 
+                controller: "ListController",
+                resolve: {
+                    movies: function(movieDataService) {
+                        return movieDataService.getAll();
+                    }
+                }
+            } 
+        },
+        {
+            path: "/detail/:id",
+            route: {
+                templateUrl: "views/detail.html",
+                controller: "DetailController"
+            }
+        }
+    ];
 
-    module.config(function($routeProvider) {
-        $routeProvider
-            .when("/list", {
-                templateUrl: "views/list.html"
-            })
-            .when("/detail/:id", {
-                templateUrl: "views/detail.html"
-            })
-            .otherwise({
-                redirectTo: "/list"
-            });
+    
+    module.config(function($routeProvider) {        
+        angular.forEach(routes, function(route){
+            $routeProvider.when(route.path, route.route);
+        });
+
+        $routeProvider.otherwise({
+            redirectTo: "/list"
+        });
     });
+
+    module.constant("movieApiUrl", "/api/movies");
 
     module.run(function($rootScope) {
         $rootScope.error = {
             current: ""
         };
+
+        $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
+            $rootScope.error.current = rejection;
+        });
     });
 
 }());
