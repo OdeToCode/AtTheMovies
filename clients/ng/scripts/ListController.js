@@ -1,9 +1,17 @@
 (function() {
 
     var module = angular.module("atTheMovies");
-    module.controller("ListController", function($scope, movies) {
+    module.controller("ListController", function($scope, movieDataService) {
        
-       $scope.movies = movies; 
+    	var onMovies = function(movies){
+    		$scope.movies = movies;
+    	};
+
+    	var onError = function(reason){
+    		$scope.error.current = reason;
+    	};
+
+       movieDataService.getAll().then(onMovies, onError);
        
     });
 

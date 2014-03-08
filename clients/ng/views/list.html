@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="movie in movies">
-                <td>{{movie.title}}</td>
+                <td><a ng-href="#/detail/{{movie.id}}">{{movie.title}}</a></td>
                 <td>{{movie.rating}}</td>
                 <td>{{movie.year}}</td>
                 <td></td>

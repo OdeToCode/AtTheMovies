@@ -18,3 +18,7 @@ body{
     animation: bounceOut 0.5s;
     display: block !important;
 }
+
+body.ngCloak {
+	display: :none;
+}

@@ -6,7 +6,8 @@ exports.getAllMovies = function(request, response) {
 };
 
 exports.getMovieById = function(request, response) {
-
+	var movie = dataSource.getById(request.params.id);
+	response.send(movie);
 };
 
 exports.updateMovie = function(request, response){

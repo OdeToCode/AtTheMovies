@@ -8,12 +8,7 @@
             path: "/list", 
             route: { 
                 templateUrl: "views/list.html", 
-                controller: "ListController",
-                resolve: {
-                    movies: function(movieDataService) {
-                        return movieDataService.getAll();
-                    }
-                }
+                controller: "ListController"
             } 
         },
         {

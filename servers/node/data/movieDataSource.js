@@ -11,22 +11,24 @@ var getAll = function(){
 	return movies;
 };
 
-var getById = function(id){
-	var result = _.first(movies, {id:id});
+var getById = function(id){	
+	var result = _.find(movies, {id:parseInt(id)});
 	return result;
 };
 
-var update = function(movie){
-	var index = _.findIndex(movies, {id:id});
-	movies[index] = movie;
+var update = function(updatedMovie){
+	var movie = _.find(movies, {id:id});
+	movie.title = updatedMovie.title;
+	movie.rating = updatedMovie.rating;
+	movie.year = updatedMovie.year;
 };
 
 var create = function(movie){
-	movies.push(movie);
+	//movies.push(movie);
 };
 
 var remove = function(movie){
-	_.remove(movies, { id: movie.id});
+	//_.remove(movies, { id: movie.id});
 };
 
 module.exports = {
