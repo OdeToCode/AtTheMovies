@@ -8,7 +8,9 @@
 	</tr>
 	<tbody data-bind="foreach: movies">
 		<tr>
-			<td data-bind="text: title"></td>
+			<td>
+				<a data-bind="text: title, attr:{href: '#/detail/' + id}"></a>
+			</td>
 			<td data-bind="text: rating"></td>
 			<td data-bind="text: year"></td>
 		</tr>

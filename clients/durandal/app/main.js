@@ -19,13 +19,13 @@ define(function(require) {
     app.title = "At The Movies";
 
     app.configurePlugins({
-        // router: true,
+        router: true,
         dialog: true,
         observable: true
     });
 
     viewLocator.useConvention();
     app.start().then(function() {
-        app.setRoot("viewmodels/movieList", "entrance");
+        app.setRoot("viewmodels/shell");
     });
 });

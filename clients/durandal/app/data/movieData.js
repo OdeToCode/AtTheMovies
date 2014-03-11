@@ -1,19 +1,18 @@
 define(function() {
 
-    var movies = [];
     var movieApiUrl = "/api/movies";
 
     var getAll = function() {
-        return $
-            .get(movieApiUrl)
-            .then(function(response) {
-                movies = response;
-                return movies;
-            });
+        return $.get(movieApiUrl);                
+    };
+
+    var getById = function(id){
+        return $.get(movieApiUrl + "/" + id);
     };
 
     return {
-        getAll: getAll
+        getAll: getAll,
+        getById: getById
     };
 
 });
