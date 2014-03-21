@@ -4,14 +4,20 @@
         <th>Title</th>
         <th>Rating</th>
         <th>Year</th>
+        <th></th>
     </tr>
     {{#each movie in controller}}
-        <tr>
-            <td>
-                {{#link-to 'movies.detail' movie}}{{movie.title}}{{/link-to}}
-            </td>
-            <td>{{movie.rating}}</td>
-            <td>{{movie.year}}</td>
-        </tr>
+    <tr>
+        <td>
+            {{#link-to 'movies.detail' movie}}{{movie.title}}{{/link-to}}
+        </td>
+        <td>{{movie.rating}}</td>
+        <td>{{movie.year}}</td>
+        <td>
+            {{#link-to 'movies.edit' movie}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+            <a href=""><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+    </tr>
     {{/each}}
 </table>
+<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add A Movie</a>

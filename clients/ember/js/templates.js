@@ -37,6 +37,35 @@ function program1(depth0,data) {
   
 });
 
+Ember.TEMPLATES["movies/edit"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<h2>Editing ");
+  stack1 = helpers._triageMustache.call(depth0, "title", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</h2>\n\n<form name=\"edit\" class=\"form-horizontal\">\n\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Title</label>\n		<div class=\"col-md-10\">\n			");
+  data.buffer.push(escapeExpression((helper = helpers['text-field'] || (depth0 && depth0['text-field']),options={hash:{
+    'value': ("title"),
+    'name': ("title")
+  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "text-field", options))));
+  data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Release Year</label>\n		<div class=\"col-md-10\">\n			");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("year"),
+    'name': ("year")
+  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Rating</label>\n		<div class=\"col-md-10\">\n			");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("rating"),
+    'name': ("rating")
+  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<div class=\"col-md-10 col-md-offset-2\">\n			<button class=\"btn btn-primary\" data-bind=\"click: save\" ng-disabled=\"edit.$invalid\">Save</button>\n			<button class=\"btn\" data-bind=\"click: cancel\">Cancel</button>			\n		</div>\n	</div>\n\n</form>");
+  return buffer;
+  
+});
+
 Ember.TEMPLATES["movies/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -45,16 +74,19 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', stack1, helper, options;
-  data.buffer.push("\n        <tr>\n            <td>\n                ");
+  data.buffer.push("\n    <tr>\n        <td>\n            ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "movies.detail", "movie", options) : helperMissing.call(depth0, "link-to", "movies.detail", "movie", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            </td>\n            <td>");
+  data.buffer.push("\n        </td>\n        <td>");
   stack1 = helpers._triageMustache.call(depth0, "movie.rating", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</td>\n            <td>");
+  data.buffer.push("</td>\n        <td>");
   stack1 = helpers._triageMustache.call(depth0, "movie.year", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</td>\n        </tr>\n    ");
+  data.buffer.push("</td>\n        <td>\n            ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "movies.edit", "movie", options) : helperMissing.call(depth0, "link-to", "movies.edit", "movie", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n            <a href=\"\"><span class=\"glyphicon glyphicon-remove\"></span></a>\n        </td>\n    </tr>\n    ");
   return buffer;
   }
 function program2(depth0,data) {
@@ -65,10 +97,16 @@ function program2(depth0,data) {
   else { data.buffer.push(''); }
   }
 
-  data.buffer.push("<h2>All Movies</h2>\n<table class=\"table table-hover\">\n    <tr>\n        <th>Title</th>\n        <th>Rating</th>\n        <th>Year</th>\n    </tr>\n    ");
+function program4(depth0,data) {
+  
+  
+  data.buffer.push("<span class=\"glyphicon glyphicon-edit\"></span>");
+  }
+
+  data.buffer.push("<h2>All Movies</h2>\n<table class=\"table table-hover\">\n    <tr>\n        <th>Title</th>\n        <th>Rating</th>\n        <th>Year</th>\n        <th></th>\n    </tr>\n    ");
   stack1 = helpers.each.call(depth0, "movie", "in", "controller", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</table>");
+  data.buffer.push("\n</table>\n<a href=\"\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-plus\"></span>&nbsp;Add A Movie</a>");
   return buffer;
   
 });

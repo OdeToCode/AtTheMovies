@@ -6,3 +6,8 @@ window.AtTheMovies = Ember.Application.create({
 AtTheMovies.ApplicationController = Ember.Controller.extend({
     appName: "At The Movies (Ember)"
 });
+
+AtTheMovies.TextFieldComponent = Ember.TextField.extend({
+    classNames: ["form-control"],
+    type: "text"
+});

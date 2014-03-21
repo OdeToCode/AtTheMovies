@@ -5,7 +5,10 @@ AtTheMovies.Router.reopen({
 AtTheMovies.Router.map(function() {
     this.resource("movies", function() {
         this.route("detail", {
-            path: "/:movie_id"
+            path: "/:id"
+        });
+        this.route("edit", {
+            path: "/edit/:id"
         });
     });
 });
@@ -18,14 +21,18 @@ AtTheMovies.IndexRoute = Ember.Route.extend({
 
 AtTheMovies.MoviesIndexRoute = Ember.Route.extend({
     model: function() {
-        console.log("finding all");
         return this.store.find("movie");
     }
 });
 
 AtTheMovies.MoviesDetailRoute = Ember.Route.extend({
     model: function(params) {
-        console.log("finding " + params.movie_id);
-        return this.store.find("movie", params.movie_id);
+        return this.store.find("movie", params.id);
+    }
+});
+
+AtTheMovies.MoviesEditRoute = Ember.Route.extend({
+    model: function(params) {
+        return this.store.find("movie", params.id);
     }
 });
