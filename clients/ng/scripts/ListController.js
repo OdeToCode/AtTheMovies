@@ -1,18 +1,18 @@
 (function() {
 
     var module = angular.module("atTheMovies");
-    module.controller("ListController", function($scope, movieDataService) {
-       
-    	var onMovies = function(movies){
-    		$scope.movies = movies;
-    	};
+    module.controller("ListController", function($scope, Movies) {
 
-    	var onError = function(reason){
-    		$scope.error.current = reason;
-    	};
+        var onMovies = function(movies) {
+            $scope.movies = movies;
+        };
 
-       movieDataService.getAll().then(onMovies, onError);
-       
+        var onError = function(reason) {
+            $scope.error.current = reason;
+        };
+
+        Movies.query(onMovies, onError);
+
     });
 
 }());

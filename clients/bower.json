@@ -24,6 +24,7 @@
     "requirejs-text": "~2.0.10",
     "ember": "~1.4.0",
     "handlebars": "~1.3.0",
-    "ember-data": "1.0.0-beta.7"
+    "ember-data": "1.0.0-beta.7",
+    "angular-resource": "~1.2.14"
   }
 }

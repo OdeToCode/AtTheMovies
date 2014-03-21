@@ -16,8 +16,8 @@
         </div>
     </nav>
 
-    <div class="alert alert-danger" ng-show="error.current">
-        {{ error.current }}
+    <div class="alert alert-danger" ng-show="error">
+        {{ error }}
     </div>
 
 	<div ng-view></div>
@@ -25,10 +25,12 @@
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script> 
-    <script src="/ng/scripts/atTheMovies.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script> 
+    <script src="/ng/scripts/app.js"></script>
     <script src="/ng/scripts/ListController.js"></script>
     <script src="/ng/scripts/DetailController.js"></script>
-    <script src="/ng/scripts/movieDataService.js"></script>
+    <script src="/ng/scripts/EditController.js"></script>
+    <script src="/ng/scripts/Movies.js"></script>
 </body>
 
 </html>

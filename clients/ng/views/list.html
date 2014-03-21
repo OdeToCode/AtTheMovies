@@ -13,9 +13,12 @@
                 <td><a ng-href="#/detail/{{movie.id}}">{{movie.title}}</a></td>
                 <td>{{movie.rating}}</td>
                 <td>{{movie.year}}</td>
-                <td></td>
+                <td>
+                    <a ng-href="#/edit/{{movie.id}}"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href=""><span class="glyphicon glyphicon-remove"></span></a>       
+                </td>
             </tr>
         </tbody>
-
     </table>
+    <a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add A Movie</a>
 </div>
