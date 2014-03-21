@@ -12,7 +12,6 @@ exports.getMovieById = function(request, response) {
 
 exports.updateMovie = function(request, response) {
     var movie = request.body;
-    console.dir(request.body);
     dataSource.update(movie);
     response.send();
 };

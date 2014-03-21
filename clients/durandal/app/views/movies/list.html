@@ -4,6 +4,7 @@
 			<th>Title</th>
 			<th>Rating</th>
 			<th>Year</th>
+			<th>Action</th>
 		</thead>
 	</tr>
 	<tbody data-bind="foreach: movies">
@@ -13,6 +14,11 @@
 			</td>
 			<td data-bind="text: rating"></td>
 			<td data-bind="text: year"></td>
+			<td>
+				<a data-bind="attr: {href: '#/edit/' + id}"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href=""><span class="glyphicon glyphicon-remove"></span></a>       
+			</td>
 		</tr>
 	</tbody>
 </table>
+<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add A Movie</a>
