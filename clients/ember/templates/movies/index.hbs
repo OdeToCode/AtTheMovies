@@ -1,4 +1,5 @@
-<table class="table table-striped table-hover">
+<h2>All Movies</h2>
+<table class="table table-hover">
     <tr>
         <th>Title</th>
         <th>Rating</th>
@@ -6,7 +7,9 @@
     </tr>
     {{#each movie in controller}}
         <tr>
-            <td>{{movie.title}}</td>
+            <td>
+                {{#link-to 'movies.detail' movie}}{{movie.title}}{{/link-to}}
+            </td>
             <td>{{movie.rating}}</td>
             <td>{{movie.year}}</td>
         </tr>

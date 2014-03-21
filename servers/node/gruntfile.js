@@ -20,7 +20,7 @@ var html = [
 ];
 
 var emberTemplates = [
-    "../../clients/ember/views/**/*.hbs"
+    "../../clients/ember/templates/**/*.hbs"
 ];
 
 module.exports = function(grunt) {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         emberTemplates: {
             compile: {
                 options: {
-                    templateBasePath: "../../clients/ember/views/"
+                    templateBasePath: "../../clients/ember/templates/"
                 },
                 files: {
                     "../../clients/ember/js/templates.js": emberTemplates
