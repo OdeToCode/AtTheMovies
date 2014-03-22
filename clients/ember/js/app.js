@@ -11,3 +11,8 @@ AtTheMovies.TextFieldComponent = Ember.TextField.extend({
     classNames: ["form-control"],
     type: "text"
 });
+
+AtTheMovies.NumberFieldComponent = Ember.TextField.extend({
+    classNames: ["form-control"],
+    type: "number"
+});

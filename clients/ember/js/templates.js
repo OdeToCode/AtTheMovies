@@ -40,28 +40,44 @@ function program1(depth0,data) {
 Ember.TEMPLATES["movies/edit"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
+function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n<div class=\"alert alert-danger\">\n	");
+  stack1 = helpers._triageMustache.call(depth0, "error", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n</div>\n");
+  return buffer;
+  }
 
   data.buffer.push("<h2>Editing ");
   stack1 = helpers._triageMustache.call(depth0, "title", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</h2>\n\n<form name=\"edit\" class=\"form-horizontal\">\n\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Title</label>\n		<div class=\"col-md-10\">\n			");
+  data.buffer.push("</h2>\n\n");
+  stack1 = helpers['if'].call(depth0, "error", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n<form name=\"edit\" class=\"form-horizontal\">\n\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Title</label>\n		<div class=\"col-md-10\">\n			");
   data.buffer.push(escapeExpression((helper = helpers['text-field'] || (depth0 && depth0['text-field']),options={hash:{
     'value': ("title"),
     'name': ("title")
   },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "text-field", options))));
   data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Release Year</label>\n		<div class=\"col-md-10\">\n			");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+  data.buffer.push(escapeExpression((helper = helpers['number-field'] || (depth0 && depth0['number-field']),options={hash:{
     'value': ("year"),
     'name': ("year")
-  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "number-field", options))));
   data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<label for=\"title\" class=\"col-md-2 control-label\">Rating</label>\n		<div class=\"col-md-10\">\n			");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+  data.buffer.push(escapeExpression((helper = helpers['number-field'] || (depth0 && depth0['number-field']),options={hash:{
     'value': ("rating"),
     'name': ("rating")
-  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<div class=\"col-md-10 col-md-offset-2\">\n			<button class=\"btn btn-primary\" data-bind=\"click: save\" ng-disabled=\"edit.$invalid\">Save</button>\n			<button class=\"btn\" data-bind=\"click: cancel\">Cancel</button>			\n		</div>\n	</div>\n\n</form>");
+  },hashTypes:{'value': "ID",'name': "STRING"},hashContexts:{'value': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "number-field", options))));
+  data.buffer.push("\n		</div>\n	</div>\n	<div class=\"form-group\">\n		<div class=\"col-md-10 col-md-offset-2\">\n			<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "save", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"btn btn-primary\">Save</button>\n			<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"btn\">Cancel</button>			\n		</div>\n	</div>\n\n</form>");
   return buffer;
   
 });

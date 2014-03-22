@@ -19,14 +19,17 @@ var getById = function(id) {
 };
 
 var update = function(updatedMovie) {
+
     var movie = _.find(movies, {
-        id: updatedMovie.id
+        id: parseInt(updatedMovie.id)
     });
 
     if (movie) {
         movie.title = updatedMovie.title;
         movie.rating = updatedMovie.rating;
         movie.year = updatedMovie.year;
+    } else {
+        throw "Movie not found";
     }
 };
 

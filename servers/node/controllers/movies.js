@@ -13,7 +13,7 @@ exports.getMovieById = function(request, response) {
 exports.updateMovie = function(request, response) {
     var movie = request.body;
     dataSource.update(movie);
-    response.send();
+    response.send(movie);
 };
 
 exports.createMovie = function(request, response) {
