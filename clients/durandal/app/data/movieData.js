@@ -11,10 +11,18 @@ define(function() {
     };
 
     var update = function(movie) {
+        return ajax(movieApiUrl, "put", JSON.stringify(movie));
+    };
+
+    var create = function(movie) {
+        return ajax(movieApiUrl, "post", JSON.stringify(movie));
+    };
+
+    var ajax = function(url, method, data) {
         return $.ajax({
-            method: "put",
-            url: movieApiUrl,
-            data: JSON.stringify(movie),
+            url: url,
+            method: method,
+            data: data,
             contentType: "application/json"
         });
     };
@@ -22,7 +30,8 @@ define(function() {
     return {
         getAll: getAll,
         getById: getById,
-        update: update
+        update: update,
+        create: create
     };
 
 });

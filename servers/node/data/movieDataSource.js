@@ -37,7 +37,6 @@ var update = function(updatedMovie) {
 var create = function(movie) {
     movie.id = id++;
     movies.push(movie);
-    console.dir(movie);
     return movie;
 };
 

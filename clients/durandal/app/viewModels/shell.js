@@ -14,6 +14,10 @@ define(function(require) {
         route: "edit/:id",
         moduleId: "viewmodels/movies/edit",
         title: "Edit"
+    }, {
+        route: "new",
+        moduleId: "viewmodels/movies/new",
+        title: "New"
     }];
 
     var routeDefinitions = {
