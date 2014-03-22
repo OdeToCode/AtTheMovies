@@ -5,6 +5,9 @@
         return $resource(movieApiUrl + "/:id", {}, {
             "save": {
                 method: "PUT"
+            },
+            "create": {
+                method: "POST"
             }
         });
     });

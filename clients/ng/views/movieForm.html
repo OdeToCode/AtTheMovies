@@ -1,0 +1,28 @@
+<form name="edit" class="form-horizontal">
+
+	<div class="form-group">
+		<label for="title" class="col-md-2 control-label">Title</label>
+		<div class="col-md-10">
+			<input ng-model="movie.title" class="form-control" type="text" placeholder="Title" required/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="title" class="col-md-2 control-label">Release Year</label>
+		<div class="col-md-10">
+			<input ng-model="movie.year" class="form-control" type="number" placeholder="Year" required/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="title" class="col-md-2 control-label">Rating</label>
+		<div class="col-md-10">
+			<input ng-model="movie.rating" class="form-control" type="number" placeholder="Rating" required/>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-10 col-md-offset-2">
+			<button class="btn btn-primary" ng-click="save()" ng-disabled="edit.$invalid">Save</button>
+			<button class="btn" ng-click="cancel()">Cancel</button>			
+		</div>
+	</div>
+
+</form>

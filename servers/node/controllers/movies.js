@@ -17,7 +17,10 @@ exports.updateMovie = function(request, response) {
 };
 
 exports.createMovie = function(request, response) {
-
+    var movie = request.body;
+    dataSource.create(movie);
+    console.dir(movie);
+    response.status(201).send(movie);
 };
 
 exports.deleteMovie = function(request, response) {

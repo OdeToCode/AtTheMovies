@@ -1,6 +1,7 @@
 var _ = require("lodash");
 var Movie = require("../models/Movie");
 
+var id = 4;
 var movies = [];
 
 movies.push(new Movie(1, "Star Wars", 5, 1979));
@@ -34,7 +35,10 @@ var update = function(updatedMovie) {
 };
 
 var create = function(movie) {
-    //movies.push(movie);
+    movie.id = id++;
+    movies.push(movie);
+    console.dir(movie);
+    return movie;
 };
 
 var remove = function(movie) {

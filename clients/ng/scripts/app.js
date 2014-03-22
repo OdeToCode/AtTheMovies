@@ -21,6 +21,12 @@
             templateUrl: "views/edit.html",
             controller: "EditController"
         }
+    }, {
+        path: "/new",
+        route: {
+            templateUrl: "views/new.html",
+            controller: "NewController"
+        }
     }];
 
 
