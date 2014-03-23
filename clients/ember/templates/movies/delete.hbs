@@ -1,0 +1,8 @@
+<h2>Confirm</h2>
+
+<div class="alert alert-danger">
+	You are about to delete {{ title }}
+</div>
+<button {{action "delete"}} class="btn btn-danger">Yes, delete</button>
+<button {{action "cancel"}} class="btn">Cancel</button>
+{{error}}

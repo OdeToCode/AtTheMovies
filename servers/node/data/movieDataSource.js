@@ -40,8 +40,11 @@ var create = function(movie) {
     return movie;
 };
 
-var remove = function(movie) {
-    //_.remove(movies, { id: movie.id});
+var remove = function(id) {
+    var removed = _.remove(movies, {
+        id: parseInt(id)
+    });
+    return removed;
 };
 
 module.exports = {

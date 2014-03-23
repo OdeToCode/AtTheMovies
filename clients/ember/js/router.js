@@ -13,6 +13,9 @@ AtTheMovies.Router.map(function() {
         this.route("new", {
             path: "/new"
         });
+        this.route("delete", {
+            path: "/delete/:id"
+        });
     });
 });
 
@@ -41,6 +44,12 @@ AtTheMovies.MoviesDetailRoute = Ember.Route.extend({
 });
 
 AtTheMovies.MoviesEditRoute = Ember.Route.extend({
+    model: function(params) {
+        return this.store.find("movie", params.id);
+    }
+});
+
+AtTheMovies.MoviesDeleteRoute = Ember.Route.extend({
     model: function(params) {
         return this.store.find("movie", params.id);
     }

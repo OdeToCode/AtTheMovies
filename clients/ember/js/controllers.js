@@ -6,6 +6,25 @@ AtTheMovies.MoviesIndexController = Ember.ArrayController.extend({
     }
 });
 
+AtTheMovies.MoviesDeleteController = Ember.ObjectController.extend({
+    actions: {
+        delete: function() {
+            var self = this;
+            var movie = this.get("model");
+
+            movie.deleteRecord();
+            movie.save().then(function() {
+                self.transitionToRoute("movies.index");
+            }, function(reason) {
+                self.error = reason.statusText;
+            });
+        },
+        cancel: function() {
+            this.transitionToRoute("movies.index");
+        }
+    }
+});
+
 AtTheMovies.MoviesEditController = Ember.ObjectController.extend({
 
     error: null,

@@ -10,6 +10,26 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
+Ember.TEMPLATES["movies/delete"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<h2>Confirm</h2>\n\n<div class=\"alert alert-danger\">\n	You are about to delete ");
+  stack1 = helpers._triageMustache.call(depth0, "title", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n</div>\n<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "delete", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"btn btn-danger\">Yes, delete</button>\n<button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"btn\">Cancel</button>\n");
+  stack1 = helpers._triageMustache.call(depth0, "error", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  return buffer;
+  
+});
+
 Ember.TEMPLATES["movies/detail"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -72,7 +92,10 @@ function program1(depth0,data) {
   data.buffer.push("</td>\n        <td>\n            ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "movies.edit", "movie", options) : helperMissing.call(depth0, "link-to", "movies.edit", "movie", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            <a href=\"\"><span class=\"glyphicon glyphicon-remove\"></span></a>\n        </td>\n    </tr>\n    ");
+  data.buffer.push("\n            ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "movies.delete", "movie", options) : helperMissing.call(depth0, "link-to", "movies.delete", "movie", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </td>\n    </tr>\n    ");
   return buffer;
   }
 function program2(depth0,data) {
@@ -87,6 +110,12 @@ function program4(depth0,data) {
   
   
   data.buffer.push("<span class=\"glyphicon glyphicon-edit\"></span>");
+  }
+
+function program6(depth0,data) {
+  
+  
+  data.buffer.push("<span class=\"glypicon glyphicon-remove\"></span>");
   }
 
   data.buffer.push("<h2>All Movies</h2>\n<table class=\"table table-hover\">\n    <tr>\n        <th>Title</th>\n        <th>Rating</th>\n        <th>Year</th>\n        <th></th>\n    </tr>\n    ");

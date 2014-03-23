@@ -1,5 +1,3 @@
-AtTheMovies.ApplicationAdapter = DS.RESTAdapter;
-
 AtTheMovies.Movie = DS.Model.extend({
     title: DS.attr(),
     rating: DS.attr(),
@@ -47,12 +45,7 @@ DS.RESTAdapter.reopen({
     updateRecord: function(store, type, record) {
 
         var data = this.serializeRecord(store, type, record);
-        var serializer = store.serializerFor(type.typeKey);
         var url = this.buildURL(type.typeKey);
-
-        serializer.serializeIntoHash(data, type, record, {
-            includeId: true
-        });
 
         return this.ajax(url, "PUT", {
             data: data[type.typeKey]

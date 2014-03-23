@@ -23,5 +23,6 @@ exports.createMovie = function(request, response) {
 };
 
 exports.deleteMovie = function(request, response) {
-
+    var removed = dataSource.delete(request.params.id);
+    response.status(200).send(removed);
 };

@@ -15,7 +15,7 @@
         <td>{{movie.year}}</td>
         <td>
             {{#link-to 'movies.edit' movie}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
-            <a href=""><span class="glyphicon glyphicon-remove"></span></a>
+            {{#link-to 'movies.delete' movie}}<span class="glypicon glyphicon-remove"></span>{{/link-to}}
         </td>
     </tr>
     {{/each}}
