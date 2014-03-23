@@ -18,6 +18,10 @@ define(function(require) {
         route: "new",
         moduleId: "viewmodels/movies/new",
         title: "New"
+    }, {
+        route: "delete/:id",
+        moduleId: "viewmodels/movies/delete",
+        title: "Delete"
     }];
 
     var routeDefinitions = {

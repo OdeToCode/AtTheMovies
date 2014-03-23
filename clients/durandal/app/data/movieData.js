@@ -18,6 +18,10 @@ define(function() {
         return ajax(movieApiUrl, "post", JSON.stringify(movie));
     };
 
+    var remove = function(movie) {
+        return ajax(movieApiUrl + "/" + movie.id, "delete");
+    };
+
     var ajax = function(url, method, data) {
         return $.ajax({
             url: url,
@@ -31,7 +35,8 @@ define(function() {
         getAll: getAll,
         getById: getById,
         update: update,
-        create: create
+        create: create,
+        remove: remove
     };
 
 });
