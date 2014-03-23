@@ -10,6 +10,9 @@ AtTheMovies.Router.map(function() {
         this.route("edit", {
             path: "/edit/:id"
         });
+        this.route("new", {
+            path: "/new"
+        });
     });
 });
 
@@ -22,6 +25,12 @@ AtTheMovies.IndexRoute = Ember.Route.extend({
 AtTheMovies.MoviesIndexRoute = Ember.Route.extend({
     model: function() {
         return this.store.find("movie");
+    }
+});
+
+AtTheMovies.MoviesNewRoute = Ember.Route.extend({
+    model: function() {
+        return this.store.createRecord("movie");
     }
 });
 

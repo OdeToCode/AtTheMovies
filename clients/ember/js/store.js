@@ -24,9 +24,29 @@ AtTheMovies.MovieSerializer = DS.RESTSerializer.extend({
 DS.RESTAdapter.reopen({
     namespace: "api",
 
+    serializeRecord: function(store, type, record) {
+        var data = {};
+        var serializer = store.serializerFor(type.typeKey);
+
+        serializer.serializeIntoHash(data, type, record, {
+            includeId: true
+        });
+
+        return data;
+    },
+
+    createRecord: function(store, type, record) {
+        var data = this.serializeRecord(store, type, record);
+        var url = this.buildURL(type.typeKey);
+
+        return this.ajax(url, "POST", {
+            data: data[type.typeKey]
+        });
+    },
+
     updateRecord: function(store, type, record) {
 
-        var data = {};
+        var data = this.serializeRecord(store, type, record);
         var serializer = store.serializerFor(type.typeKey);
         var url = this.buildURL(type.typeKey);
 
