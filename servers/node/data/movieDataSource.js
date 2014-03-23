@@ -44,7 +44,7 @@ var remove = function(id) {
     var removed = _.remove(movies, {
         id: parseInt(id)
     });
-    return removed;
+    return _.first(removed);
 };
 
 module.exports = {

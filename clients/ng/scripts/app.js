@@ -27,6 +27,12 @@
             templateUrl: "views/new.html",
             controller: "NewController"
         }
+    }, {
+        path: "/delete/:id",
+        route: {
+            templateUrl: "views/delete.html",
+            controller: "DeleteController"
+        }
     }];
 
 

@@ -8,6 +8,15 @@
             },
             "create": {
                 method: "POST"
+            },
+            "delete": {
+                method: "DELETE",
+                params: {
+                    id: "@id"
+                },
+                transformResponse: function() {
+                    console.dir(arguments);
+                }
             }
         });
     });
