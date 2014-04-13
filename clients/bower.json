@@ -25,6 +25,8 @@
     "ember": "~1.4.0",
     "handlebars": "~1.3.0",
     "ember-data": "1.0.0-beta.7",
-    "angular-resource": "~1.2.14"
+    "angular-resource": "~1.2.14",
+    "angular-ui-router": "~0.2.10",
+    "angular-bootstrap": "~0.10.0"
   }
 }
