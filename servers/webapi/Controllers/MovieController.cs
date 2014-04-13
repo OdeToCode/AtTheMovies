@@ -4,7 +4,7 @@ using AtTheMovies.Models;
 
 namespace AtTheMovies.Controllers
 {
-    [Route("api/movies")]
+    [RoutePrefix("api/movies")]
     public class MovieController : ApiController
     {
         private IMovieStore _movieStore;
@@ -14,12 +14,14 @@ namespace AtTheMovies.Controllers
             _movieStore = new InMemoryMovieStore();
         }
 
+        [Route("")]
         public IHttpActionResult Get()
         {
             var movies = _movieStore.FindAll();
             return Ok(movies);
         }
 
+        [Route("{id:int}", Name="GetMovieById")]
         public IHttpActionResult Get(int id)
         {
             var movie = _movieStore.FindById(id);
@@ -29,17 +31,19 @@ namespace AtTheMovies.Controllers
             }
             return NotFound();
         }
-
+        
+        [Route("")]
         public IHttpActionResult Post(Movie movie)
         {
             if (ModelState.IsValid)
             {
                 _movieStore.Add(movie);
-                return Created(Url.Link("Get", new { id = movie.Id}), movie);
+                return Created(Url.Link("GetMovieById", new { id = movie.Id}), movie);
             }
             return BadRequest(ModelState);
         }
 
+        [Route("")]
         public IHttpActionResult Put(Movie movie)
         {
             if (ModelState.IsValid)
@@ -54,9 +58,10 @@ namespace AtTheMovies.Controllers
             return BadRequest(ModelState);
         }
 
-        public IHttpActionResult Delete(Movie movie)
+        [Route("{id:int}")]
+        public IHttpActionResult Delete(int id)
         {
-            var result = _movieStore.Delete(movie);
+            var result = _movieStore.Delete(id);
             if (result != null)
             {
                 return Ok(result);

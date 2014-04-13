@@ -50,14 +50,15 @@ namespace AtTheMovies.DataStore
 
         public Movie Add(Movie newMovie)
         {
-            newMovie.Id = _movies.Count;
+            newMovie.Id = _movies.Count + 1;
             _movies.AddOrUpdate(newMovie.Id, newMovie, (i, movie) => newMovie);
             return newMovie;
         }
 
-        public Movie Delete(Movie movie)
+        public Movie Delete(int id)
         {
-            _movies.TryRemove(movie.Id, out movie);
+            Movie movie;
+            _movies.TryRemove(id, out movie);
             return movie;
         }
 

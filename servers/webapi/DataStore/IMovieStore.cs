@@ -9,6 +9,6 @@ namespace AtTheMovies.DataStore
         Movie FindById(int id);
         Movie Update(Movie updatedMovie);
         Movie Add(Movie newMovie);
-        Movie Delete(Movie movie);
+        Movie Delete(int id);
     }
 }
