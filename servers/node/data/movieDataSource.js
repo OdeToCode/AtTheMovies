@@ -4,9 +4,9 @@ var Movie = require("../models/Movie");
 var id = 4;
 var movies = [];
 
-movies.push(new Movie(1, "Star Wars", 5, 1979));
-movies.push(new Movie(2, "Boxen Day", 1, 1998));
-movies.push(new Movie(3, "Ugla Ugla", 3, 2001));
+movies.push(new Movie(1, "Star Wars", 5, 1977));
+movies.push(new Movie(2, "Casablanca", 4, 1942));
+movies.push(new Movie(3, "Jurassic Park", 3, 1993));
 
 var getAll = function() {
     return movies;
