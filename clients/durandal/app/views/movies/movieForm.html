@@ -1,4 +1,8 @@
-<form name="edit" class="form-horizontal">
+<form name="edit" class="form-horizontal" data-bind="submit: save">
+
+	<ul data-bind="foreach: errors">
+		<li data-bind="text: $data"></li>
+	</ul>
 
 	<div class="form-group">
 		<label for="title" class="col-md-2 control-label">Title</label>
@@ -15,12 +19,12 @@
 	<div class="form-group">
 		<label for="title" class="col-md-2 control-label">Rating</label>
 		<div class="col-md-10">
-			<input data-bind="value: movie.rating" class="form-control" type="number" placeholder="Rating" required/>
+			<input data-bind="value: movie.rating" class="form-control" type="number" placeholder="Rating" max="5" required/>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-md-10 col-md-offset-2">
-			<button class="btn btn-primary" data-bind="click: save">Save</button>
+			<button class="btn btn-primary">Save</button>
 			<button class="btn" data-bind="click: cancel">Cancel</button>			
 		</div>
 	</div>
