@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+
+<body ng-app="catchApp" class="container">
+
+    <div ng-controller="mainController">
+
+        <button ng-click="doWork()">Do Work</button>
+        <div>Result: {{result}}</div>
+
+        <h5>Errors</h5>
+        <table class="table table-condensed">
+            <tr ng-repeat="error in errors">
+                <td>{{error.message}}</td>
+                <td>{{error.reason}}</td>
+            </tr>
+        </table>
+
+
+    </div>
+
+<script src="/bower_components/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>
