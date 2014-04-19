@@ -26,27 +26,28 @@
 
     });
 
-    app.controller("mainController", function($scope, $http, cancellations) {
+    app.controller("mainController", function($scope, $http, $q) {
 
-        var cancelToken = null;
+        var canceller = null;
 
         $scope.message = "Not started";
 
         $scope.start = function(){
             $scope.message = "Started";
 
-            cancelToken = cancellations.getToken();
-            $http.get("/api/movies/slow/1", {
-                timeout: cancelToken.promise
-            }).then(function(response){
-                $scope.message = response.data.title;
-            });
+            canceller = $q.defer();
+
+            $http.get("/api/movies/slow/1", { timeout: canceller.promise })
+                 .then(function(response){
+                    $scope.message = response.data.title;
+                 }, function(){
+                    $scope.message = "Request failed";
+                });
         };
 
         $scope.cancel = function(){
-            if(cancelToken){
-                cancelToken.cancel();
-                $scope.message = "Canceled";
+            if(canceller){
+                canceller.resolve("User cancelled")
             }
         };
 
