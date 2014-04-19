@@ -10,6 +10,13 @@ exports.getMovieById = function(request, response) {
     response.send(movie);
 };
 
+exports.getMovieByIdSlowly = function(request, response) {
+    var movie = dataSource.getById(request.params.id);
+    setTimeout(function(){
+        response.send(movie);
+    }, 3000);
+};
+
 exports.updateMovie = function(request, response) {
     var movie = request.body;
     dataSource.update(movie);
@@ -26,3 +33,4 @@ exports.deleteMovie = function(request, response) {
     var removed = dataSource.delete(request.params.id);
     response.status(200).send(removed);
 };
+

@@ -39,13 +39,15 @@
         };
     });
 
-    app.run(function($rootScope){
+    app.run(function($rootScope, $exceptionHandler){
 
         $rootScope.addError = function(error){
           $rootScope.errors.unshift(error);
         };
 
         $rootScope.errors = [];
+
+        $exceptionHandler("foo2", "bar");
 
     });
 
