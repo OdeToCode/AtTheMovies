@@ -62,12 +62,14 @@
        }
 
        var workError = function(reason){
+           alert("blam");
            $scope.addError({message: "error", reason: reason});
        };
 
        $scope.doWork = function(){
            someService
-               .doWork().then(workComplete, workError)
+               .doWork()
+               .then(workComplete)
                .catch(errors.catch("Could not complete work!"));
        };
 
