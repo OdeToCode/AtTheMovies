@@ -1,3 +1,17 @@
-/**
- * Created by Scott on 4/20/2014.
- */
+(function(){
+
+    var app = angular.module("compiler", []);
+
+    app.controller("mainController", function($scope){
+
+    });
+
+    app.directive("otcDynamic", function(){
+
+        return {
+            template:"<div ng-click='doSomething()'>Hello!</div>"
+        };
+
+    });
+
+}());
