@@ -1,56 +1,53 @@
-/**
- * Created by bitmask on 4/19/14.
- */
 (function(){
 
     var app = angular.module("timeoutApp", []);
 
-    app.service("cancellations", function($q){
+    app.factory("movies", function($http, $q){
 
-        var getToken = function(){
-
-            var defer = $q.defer();
-
+        var getById = function(id){
+            var canceller = $q.defer();
+            var promise =
+                $http.get("/api/movies/slow/" + id, { timeout: canceller.promise})
+                    .then(function(response){
+                       return response.data;
+                    });
+            console.log("get");
             return {
-
-                promise: defer.promise,
-                cancel: function(reason){
-                    defer.resolve(reason);
-                }
-            }
+                promise: promise,
+                cancel: canceller
+            };
         };
 
         return {
-            getToken: getToken
+            getById: getById
         };
 
     });
 
-    app.controller("mainController", function($scope, $http, $q) {
+    app.controller("mainController", function($scope, movies) {
 
-        var canceller = null;
+        var clearRequest = function(request){
+            $scope.requests.splice($scope.requests.indexOf(request), 1);
+        };
 
-        $scope.message = "Not started";
+        $scope.movies = [];
+        $scope.requests = [];
+        $scope.id = 1;
 
         $scope.start = function(){
-            $scope.message = "Started";
 
-            canceller = $q.defer();
-
-            $http.get("/api/movies/slow/1", { timeout: canceller.promise })
-                 .then(function(response){
-                    $scope.message = response.data.title;
-                 }, function(){
-                    $scope.message = "Request failed";
-                });
+            var request = movies.getById($scope.id++);
+            $scope.requests.push(request);
+            request.promise.then(function(movie){
+                $scope.movies.push(movie);
+                clearRequest(request);
+            });
         };
 
-        $scope.cancel = function(){
-            if(canceller){
-                canceller.resolve("User cancelled")
-            }
+        $scope.cancel = function(request){
+            request.cancel.resolve("cancelled");
+            clearRequest()
         };
-
     });
 
 }());

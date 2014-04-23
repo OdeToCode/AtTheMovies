@@ -11,11 +11,15 @@
             Start Request
         </button>
 
-        <button ng-click="cancel()">
-            Cancel request
-        </button>
+        <ul>
+            <li ng-repeat="request in requests">
+                <button ng-click="cancel(request)">Cancel</button>
+            </li>
+        </ul>
 
-        {{ message }}
+        <ul>
+            <li ng-repeat="m in movies">{{m.title}}</li>
+        </ul>
 
     </div>
     <script src="/bower_components/angular/angular.js"></script>
