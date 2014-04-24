@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Testing</title>
+</head>
+
+<body>
+    <h1 id="message"></h1>
+
+    <script src="/bower_components/traceur/traceur.js"></script>
+    <script>
+        new traceur.WebPageTranscoder(document.location.href).run();
+        traceur.options.experimental = true;
+    </script>
+    <script type="module">
+          class Greeter {
+            constructor(message) {
+              this.message = message;
+            }
+
+            greet() {
+              let element = document.querySelector('#message');
+              element.innerHTML = this.message;
+            }
+          };
+
+          let greeter = new Greeter('Hello, world!!');
+          greeter.greet();
+
+    </script>
+</body>
+</html>
