@@ -6,6 +6,11 @@
 
         var getById = function(id){
             var canceller = $q.defer();
+
+            var cancel = function(reason){
+                canceller.resolve(reason);
+            };
+
             var promise =
                 $http.get("/api/movies/slow/" + id, { timeout: canceller.promise})
                     .then(function(response){
@@ -14,7 +19,7 @@
             console.log("get");
             return {
                 promise: promise,
-                cancel: canceller
+                cancel: cancel
             };
         };
 
@@ -25,10 +30,6 @@
     });
 
     app.controller("mainController", function($scope, movies) {
-
-        var clearRequest = function(request){
-            $scope.requests.splice($scope.requests.indexOf(request), 1);
-        };
 
         $scope.movies = [];
         $scope.requests = [];
@@ -41,12 +42,18 @@
             request.promise.then(function(movie){
                 $scope.movies.push(movie);
                 clearRequest(request);
+            }, function(reason){
+                console.log(reason);
             });
         };
 
         $scope.cancel = function(request){
-            request.cancel.resolve("cancelled");
+            request.cancel("cancelled");
             clearRequest()
+        };
+
+        var clearRequest = function(request){
+            $scope.requests.splice($scope.requests.indexOf(request), 1);
         };
     });
 
