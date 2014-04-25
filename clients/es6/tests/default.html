@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Testing</title>
+    <link rel="stylesheet" href="/bower_components/jasmine/lib/jasmine-core/jasmine.css">
+    <script src="/bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script src="/bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="/bower_components/jasmine/lib/jasmine-core/boot.js"></script>
+</head>
+
+<body>
+    <script src="/bower_components/traceur/traceur.js"></script>
+    <script>
+        new traceur.WebPageTranscoder(document.location.href).run();
+        traceur.options.experimental = true;
+    </script>
+    <script type="module">
+
+    </script>
+
+    <script type="module">
+        describe("array comprehensions", function(){
+
+           it("should double integers", function(){
+               var numbers = [1,2,3,4];
+               var doubles = [for (i of numbers) i*2];
+               expect(doubles).toEqual([2,4,6,8]);
+           });
+
+           it("should filter numbers", function(){
+                var numbers = [1,2,3,4];
+                var result = [for (i of numbers) if(i % 2 ==0) i * 2];
+                expect(result).toEqual([4,8]);
+           });
+
+        });
+    </script>
+</body>
+</html>
