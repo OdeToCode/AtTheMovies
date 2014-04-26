@@ -110,6 +110,17 @@
                 });
             });
 
+            describe("destructuring", function(){
+                it("can assign multiples in one line", function(){
+
+                    var [x, y, z] = [1, "two", 3];
+                     expect(x).toBe(1);
+                     expect(y).toBe("two");
+                     expect(z).toBe(3);
+
+                });
+            });
+
         });
 
 
