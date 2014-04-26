@@ -92,13 +92,31 @@
 
             });
 
+            describe("default parameters", function(){
+
+                var f = function(foo = 1, bar = "two"){
+
+                    return {
+                        foo:foo,
+                        bar:bar
+                    };
+                };
+
+                it("can specify a value", function(){
+                    var result = f();
+
+                    expect(result.foo).toBe(1);
+                    expect(result.bar).toBe("two");
+                });
+            });
+
         });
 
 
 
     </script>
 
-    Classes
+
     Modules (in progress)
     Iterators and For Of Loops
     Generators
@@ -111,7 +129,7 @@
     Object Initialiser Shorthand
     Property Method Assignment
 
-    Classes
+
     Computed Property Names
     Default Parameters
     Destructuring Assignment
