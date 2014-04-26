@@ -66,10 +66,72 @@
                 }, 0);
             });
 
+            describe("a point class", function() {
+
+                class Point {
+                    constructor(x,y){
+                        this._x = x;
+                        this._y = y;
+                    }
+                    get x() { return this._x; }
+                    set x(value) {
+                        if(value < 0) throw "invalid x value";
+                        this._x = value;
+                    }
+                    get y() { return this._y; }
+                }
+
+
+                it("has getters and setters", function(){
+                    var p = new Point(2,10);
+                    p.x = 20;
+
+                    expect(p.x).toBe(20);
+                    expect(p.y).toBe(10);
+                });
+
+            });
+
         });
 
 
 
     </script>
+
+    Classes
+    Modules (in progress)
+    Iterators and For Of Loops
+    Generators
+    Deferred Functions - Strawman
+    Block Scoped Bindings
+    Destructuring Assignment
+    Default Parameters
+    Rest Parameters
+    Spread Operator
+    Object Initialiser Shorthand
+    Property Method Assignment
+
+    Classes
+    Computed Property Names
+    Default Parameters
+    Destructuring Assignment
+    Iterators and For Of
+    Generator Comprehension
+    Generators
+    Modules
+    Numeric Literals
+    Property Method Assignment
+    Object Initializer Shorthand
+    Rest Parameters
+    Spread
+    Template Literals
+    Promises
+    And these are only experimental and need to be turned on manually:
+
+    Block Scoped Binding
+    Symbols
+    Async Functions
+    Types
+    Annotations
 </body>
 </html>
