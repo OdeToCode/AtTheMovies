@@ -121,6 +121,25 @@
                 });
             });
 
+            describe("rest parameters", function(){
+
+                var sum = function(...args) {
+
+                    var result = 0;
+                    for(var i = 0; i < args.length; i++){
+                        result += args[i];
+                    }
+                  return result;
+
+                };
+
+                it("is like varargs", function(){
+                    var result = sum(1,2,3);
+                    expect(result).toBe(6);
+                });
+
+            });
+
         });
 
 
