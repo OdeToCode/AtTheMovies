@@ -121,6 +121,16 @@
                 });
             });
 
+            describe("templates", function(){
+
+                it("should templatize", function(){
+                    var world = "World";
+                    var result = `Hello ${world}!`;
+                    expect(result).toBe("Hello World!");
+                });
+
+            });
+
             describe("rest parameters", function(){
 
                 var sum = function(...args) {
@@ -169,12 +179,11 @@
     Numeric Literals
     Property Method Assignment
     Object Initializer Shorthand
-    Rest Parameters
     Spread
     Template Literals
     Promises
-    And these are only experimental and need to be turned on manually:
 
+    And these are only experimental and need to be turned on manually:
     Block Scoped Binding
     Symbols
     Async Functions
