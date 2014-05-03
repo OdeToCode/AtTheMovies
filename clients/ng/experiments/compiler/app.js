@@ -4,6 +4,7 @@
 
     app.controller("mainController", function($scope){
 
+        $scope.label = "Click it now!!";
         $scope.doSomething = function(){
           $scope.message = "did something";
         };
@@ -35,6 +36,10 @@
     app.directive("otcDynamic", function($compile){
 
         return {
+            scope:{
+                label: "@",
+                clicked: "&"
+            },
             link: function(scope, element){
 
 //                var html = "<button ng-click='doSomething()'>Click me!</button>";
@@ -43,9 +48,12 @@
 
                 // or
 
-                var html = "<button ng-click='doSomething()'>Click me!</button>";
-                element.html(html);
-                $compile(element.contents())(scope);
+                var html = "<button ng-click='clicked()'>{{label}}</button>";
+                //element.html(html);
+//                element.append(html);
+//                $compile(element.contents())(scope);
+                var compiled = $compile(html)(scope);
+                element.append(compiled);
             }
         };
 

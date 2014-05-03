@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+
+<body ng-app="compiler" class="container">
+
+    <div ng-controller="mainController">
+        <div your-directive></div>
+    </div>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script>
+
+        (function(){
+
+            var app = angular.module("compiler", []);
+
+            app.controller("mainController", function($scope){
+            });
+
+            app.directive('yourDirective', function($compile) {
+                return {
+                    template: '<button>Click me</button>',
+                    link: function(scope, element) {
+                        element.on('click', function() {
+                            scope.$apply(function(){
+                                var child = angular.element('<div my-directive></div>')
+                                var compiled = $compile(child)(scope);
+                                element.append(compiled);
+                            });
+                        })
+                    }
+                }
+            })
+
+            app.directive('myDirective', function() {
+                return {
+                    template: '<div>WHOAH {{ name }}</div>',
+                    link: function(scope) {
+                        scope.name = 'Scott';
+                    }
+                };
+            });
+
+        }());
+
+    </script>
+</body>
+
+</html>
