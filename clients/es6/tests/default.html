@@ -143,6 +143,16 @@
 
                     expect(result).toBe(6);
                 });
+
+                it("should spread into an array", function(){
+
+                    var data = [1,2,3];
+                    var result = [0, ...data, 4];
+
+                    expect(result).toEqual([0,1,2,3,4]);
+
+                });
+
             });
 
             describe("rest parameters", function(){
