@@ -1,0 +1,3 @@
+describe("rest parameters", function() {
+
+});
