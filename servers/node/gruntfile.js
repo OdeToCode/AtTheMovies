@@ -62,7 +62,8 @@ module.exports = function(grunt) {
             },
             custom: {
                 files: {
-                    "../../clients/es6/tests/es5js/default_parameters.js": "../../clients/es6/tests/es6js/default_parameters.js"
+                    "../../clients/es6/tests/es5js/default_parameters.js": "../../clients/es6/tests/es6js/default_parameters.js",
+                    "../../clients/es6/tests/es5js/spread_parameters.js": "../../clients/es6/tests/es6js/spread_parameters.js"
                 }
             }
         },

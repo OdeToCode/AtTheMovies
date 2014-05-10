@@ -13,7 +13,9 @@
         new traceur.WebPageTranscoder(document.location.href).run();
         traceur.options.experimental = true;
     </script>
-    <script src="es5js\default_parameters.js"></script>
+    
+     <!-- <script src="es5js\default_parameters.js"></script> -->
+    <script src="es5js\spread_parameters.js"></script>
 <!--
     <script type="module">
         describe("array comprehensions", function(){
@@ -90,24 +92,6 @@
 
             });
 
-            describe("default parameters", function(){
-
-                var f = function(foo = 1, bar = "two"){
-
-                    return {
-                        foo:foo,
-                        bar:bar
-                    };
-                };
-
-                it("can specify a value", function(){
-                    var result = f();
-
-                    expect(result.foo).toBe(1);
-                    expect(result.bar).toBe("two");
-                });
-            });
-
             describe("destructuring", function(){
                 it("can assign multiples in one line", function(){
 
@@ -129,29 +113,6 @@
 
             });
 
-            describe("spread parameters", function() {
-
-                it("should spread when calling a function", function(){
-
-                    var f = function(x, y, z){
-                        return x+y+z;
-                    }
-                    var data = [1,2,3];
-                    var result = f(...data);
-
-                    expect(result).toBe(6);
-                });
-
-                it("should spread into an array", function(){
-
-                    var data = [1,2,3];
-                    var result = [0, ...data, 4];
-
-                    expect(result).toEqual([0,1,2,3,4]);
-
-                });
-
-            });
 
             describe("rest parameters", function(){
 
