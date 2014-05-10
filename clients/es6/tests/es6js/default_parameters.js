@@ -1,25 +1,29 @@
 describe("default parameters", function() {
 
-    var getXValue = function() {
-        return 2;
+    var getDefaultName = function() {
+        return "Scott";
     };
 
-    var doWork = function(x = getXValue(), y = 3) {
+    var getGreeting = function(name = getDefaultName()) {
 
-        return x + y;
+        return "Hello, " + name;
     };
 
     it("will provide defaults for missing params", function() {
 
-        var result = doWork();
+        var result = getGreeting();
 
-        expect(result).toBe(5);
+        expect(result).toBe("Hello, Scott");
+
     });
 
-    it("will not provide defaults when params exist", function() {
+    it("will not provide defaults for params", function() {
 
-        var result = doWork(3, 4);
+        var result = getGreeting("Alex");
 
-        expect(result).toBe(7);
+        expect(result).toBe("Hello, Alex");
+
     });
+
+
 })

@@ -1,21 +1,20 @@
 "use strict";
 var __moduleName = "../../clients/es6/tests/es5js/default_parameters";
 describe("default parameters", function() {
-  var getXValue = function() {
-    return 2;
+  var getDefaultName = function() {
+    return "Scott";
   };
-  var doWork = function() {
-    var x = arguments[0] !== (void 0) ? arguments[0] : getXValue();
-    var y = arguments[1] !== (void 0) ? arguments[1] : 3;
-    return x + y;
+  var getGreeting = function() {
+    var name = arguments[0] !== (void 0) ? arguments[0] : getDefaultName();
+    return "Hello, " + name;
   };
   it("will provide defaults for missing params", function() {
-    var result = doWork();
-    expect(result).toBe(5);
+    var result = getGreeting();
+    expect(result).toBe("Hello, Scott");
   });
-  it("will not provide defaults when params exist", function() {
-    var result = doWork(3, 4);
-    expect(result).toBe(7);
+  it("will not provide defaults for params", function() {
+    var result = getGreeting("Alex");
+    expect(result).toBe("Hello, Alex");
   });
 });
 
