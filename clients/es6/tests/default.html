@@ -15,7 +15,9 @@
     </script>
     
      <!-- <script src="es5js\default_parameters.js"></script> -->
-    <script src="es5js\spread_parameters.js"></script>
+     <!-- <script src="es5js\spread_parameters.js"></script> -->
+     <!-- <script src="es5js\rest_parameters.js"></script> -->
+     <script src="es5js\template_strings.js"></script>
 <!--
     <script type="module">
         describe("array comprehensions", function(){
@@ -102,39 +104,6 @@
 
                 });
             });
-
-            describe("templates", function(){
-
-                it("should templatize", function(){
-                    var world = "World";
-                    var result = `Hello ${world}!`;
-                    expect(result).toBe("Hello World!");
-                });
-
-            });
-
-
-            describe("rest parameters", function(){
-
-                var sum = function(...args) {
-
-                    var result = 0;
-                    for(var i = 0; i < args.length; i++){
-                        result += args[i];
-                    }
-                  return result;
-
-                };
-
-                it("is like varargs", function(){
-                    var result = sum(1,2,3);
-                    expect(result).toBe(6);
-                });
-
-            });
-
-
-
         });
 
 
