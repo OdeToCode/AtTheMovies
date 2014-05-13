@@ -65,7 +65,8 @@ module.exports = function(grunt) {
                     "../../clients/es6/tests/es5js/default_parameters.js": "../../clients/es6/tests/es6js/default_parameters.js",
                     "../../clients/es6/tests/es5js/spread_parameters.js": "../../clients/es6/tests/es6js/spread_parameters.js",
                     "../../clients/es6/tests/es5js/rest_parameters.js": "../../clients/es6/tests/es6js/rest_parameters.js",
-                    "../../clients/es6/tests/es5js/template_strings.js": "../../clients/es6/tests/es6js/template_strings.js"
+                    "../../clients/es6/tests/es5js/template_strings.js": "../../clients/es6/tests/es6js/template_strings.js",
+                    "../../clients/es6/tests/es5js/arrow_functions.js": "../../clients/es6/tests/es6js/arrow_functions.js"
                 }
             }
         },
