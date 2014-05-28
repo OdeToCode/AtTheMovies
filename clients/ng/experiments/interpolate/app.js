@@ -2,6 +2,12 @@
 
     var app = angular.module("compiler", []);
 
+    app.run(function($interpolate){
+        var fn = $interpolate("{{massage.length}}");
+        var result = fn({message:"Hello!"});
+        console.log(result);
+    });
+
     app.controller("mainController", function($scope){
         $scope.message = "Hello!";
 
@@ -24,7 +30,8 @@
                 return function(){
                     var result = interpolationFn.apply(this, arguments);
                     var log = result ? console.log : console.warn;
-                    log.call(console, "interpolation of  " + interpolationArgs[0].trim(), result.trim());
+                    log.call(console, "interpolation of  " + interpolationArgs[0].trim(),
+                                      ":", result.trim());
                     return result;
                 };
             };

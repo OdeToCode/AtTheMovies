@@ -11,9 +11,14 @@
     <div ng-controller="mainController">
 
        <span>{{ message }}</span>
-       <span>{{1+2}}</span>
+       <span>{{1 + 2}}</span>
        <span>{{getMessage() | uppercase}}</span>
-        <span>{{foobar}}</span>
+       <span>{{foobar}}</span>
+
+       <div ng-repeat="i in [0,1,2,3]">
+           {{i * 2}}
+       </div>
+
     </div>
 
     <script src="/bower_components/angular/angular.js"></script>
