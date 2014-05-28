@@ -29,6 +29,7 @@
     "angular-ui-router": "~0.2.10",
     "angular-bootstrap": "~0.10.0",
     "traceur": "~0.0.33",
-    "jasmine": "2.0.0"
+    "jasmine": "2.0.0",
+    "lodash": "~2.4.1"
   }
 }

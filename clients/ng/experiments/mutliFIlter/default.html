@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+
+<body ng-app="app" class="container">
+
+    <div ng-controller="mainController">
+
+        <select ng-model="selectedGenre" ng-options="genre for genre in genres" class="form-control"></select>
+        <select ng-model="selectedYear" ng-options="year for year in years" class="form-control"></select>
+        <button class="btn btn-default" ng-click="clearFilters()">Clear</button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Released</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="movie in movies | filter:selectedGenre | filter:selectedYear">
+                <td>{{movie.title}}</td>
+                <td>{{movie.genre}}</td>
+                <td>{{movie.released}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
