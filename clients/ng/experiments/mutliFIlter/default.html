@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="movie in movies | filter:selectedGenre | filter:selectedYear">
+            <tr ng-repeat="movie in movies | filter:{ genre: selectedGenre, released:selectedYear}">
                 <td>{{movie.title}}</td>
                 <td>{{movie.genre}}</td>
                 <td>{{movie.released}}</td>

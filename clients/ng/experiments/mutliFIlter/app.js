@@ -2,14 +2,16 @@
 
     var app = angular.module("app", []);
 
-    app.controller("mainController", function($scope, movieData){
+    app.controller("mainController", function($scope, movieData) {
 
         $scope.movies = movieData.getAll();
+
         $scope.genres = _.chain($scope.movies).pluck("genre").uniq().sortBy().value();
         $scope.years = _.chain($scope.movies).pluck("released").uniq().sortBy().value();
+
         $scope.clearFilters = function(){
-            $scope.selectedGenre =  null;
-            $scope.selectedYear = null;
+            $scope.selectedGenre =  undefined;
+            $scope.selectedYear = undefined;
         };
 
     });
