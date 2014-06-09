@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+
+<style>
+    .ng-dirty {
+        border: red 5px solid;
+    }
+</style>
+
+<body ng-app="pristine" class="container">
+
+	<div ng-controller="mainController">
+
+        <form name="editUserForm">
+
+            <input type="text" ng-model="user.firstName" ng-model-options="{debounce:1000}"/>
+            <input type="text" ng-model="user.lastName"/>
+            <input type="submit" value="Submit"/>
+            <input type="button" value="Reset" ng-click="reset()"/>
+        </form>
+
+        <div>$dirty: {{ editUserForm.$dirty}}</div>
+        <div>$pristine: {{ editUserForm.$pristine }}</div>
+	</div>
+	   
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
