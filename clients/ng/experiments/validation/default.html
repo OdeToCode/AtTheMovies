@@ -2,17 +2,23 @@
 <html>
 <head>
     <title></title>
+    <style>
+
+    </style>
 </head>
 <body ng-app="validationApp">
 
     <div ng-controller="mainController">
 
-        <form name="movie" ng-submit="submit()">
+        <form name="movieForm" ng-submit="submit()" novalidate>
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" required />
-
-            <input type="submit" value="Submit"/>
+            <input type="text" id="title" name="title" required starts-with-capital ng-model="title" />
+            <input type="submit" value="Submit" ng-disabled="movieForm.$invalid" />
         </form>
+
+        <pre>
+            {{movieForm | json}}
+        </pre>
 
     </div>
     <script src="/bower_components/angular/angular.js"></script>
