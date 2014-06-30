@@ -5,8 +5,9 @@
     a class with a method
     a class with state
     a class with ctor
-    a class with get and set
+    a class with get and set (accessor functions)
     a class with a superclass
+      (ctor, methods, properties inherited)
     conclusion
 
  */
@@ -76,8 +77,8 @@ describe("classes", function(){
         e.name = "";
         expect(e.name).toBe("SCOTT");
 
-        e.name = "Priya";
-        expect(e.name).toBe("PRIYA");
+        e.name = "Alex";
+        expect(e.name).toBe("ALEX");
 
     });
 
@@ -167,5 +168,19 @@ describe("classes", function(){
         expect(new A()).toBeDefined();
 
     })
+
+    it("still uses prototype", function(){
+
+        class A {
+            doWork() {
+                return "complete!";
+            }
+        }
+
+        var a = new A();
+        var result = A.prototype.doWork.call(a);
+        expect(result).toBe("complete!");
+
+    });
 
 });

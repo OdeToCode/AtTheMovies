@@ -46,8 +46,8 @@ describe("classes", function() {
     expect(e.name).toBe("SCOTT");
     e.name = "";
     expect(e.name).toBe("SCOTT");
-    e.name = "Priya";
-    expect(e.name).toBe("PRIYA");
+    e.name = "Alex";
+    expect(e.name).toBe("ALEX");
   });
   it("can have a base class", function() {
     var Person = function Person(name) {
@@ -113,6 +113,15 @@ describe("classes", function() {
     };
     ($traceurRuntime.createClass)(A, {}, {});
     expect(new A()).toBeDefined();
+  });
+  it("still uses prototype", function() {
+    var A = function A() {};
+    ($traceurRuntime.createClass)(A, {doWork: function() {
+        return "complete!";
+      }}, {});
+    var a = new A();
+    var result = A.prototype.doWork.call(a);
+    expect(result).toBe("complete!");
   });
 });
 
