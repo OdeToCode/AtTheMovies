@@ -114,6 +114,18 @@ describe("classes", function() {
     ($traceurRuntime.createClass)(A, {}, {});
     expect(new A()).toBeDefined();
   });
+  it("does not manage 'this' like arrow functions", function(done) {
+    var Employee = function Employee(name) {
+      this._name = name;
+    };
+    ($traceurRuntime.createClass)(Employee, {getName: function() {
+        return this._name;
+      }}, {});
+    var e = new Employee("Scott");
+    var f = e.getName;
+    expect(f()).toBe("Scott");
+    done();
+  });
   it("still uses prototype", function() {
     var A = function A() {};
     ($traceurRuntime.createClass)(A, {doWork: function() {

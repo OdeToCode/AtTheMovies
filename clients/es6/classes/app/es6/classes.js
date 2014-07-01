@@ -3,9 +3,12 @@
     what are classes
     a simple class
     a class with a method
+
     a class with state
     a class with ctor
+
     a class with get and set (accessor functions)
+
     a class with a superclass
       (ctor, methods, properties inherited)
     conclusion
@@ -168,6 +171,26 @@ describe("classes", function(){
         expect(new A()).toBeDefined();
 
     })
+
+    it("does not manage 'this' like arrow functions", function(done){
+
+        class Employee{
+            constructor(name) {
+                this._name = name;
+            }
+
+            getName() {
+                return this._name;
+            }
+        }
+
+        var e = new Employee("Scott");
+        var f = e.getName;
+        expect(f()).toBe("Scott");
+        done();
+
+
+    });
 
     it("still uses prototype", function(){
 
