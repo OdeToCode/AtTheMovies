@@ -172,7 +172,8 @@ describe("classes", function(){
 
     })
 
-    it("does not manage 'this' like arrow functions", function(done){
+    it("does not manage 'this' like arrow functions", function(){
+
 
         class Employee{
             constructor(name) {
@@ -180,17 +181,21 @@ describe("classes", function(){
             }
 
             getName() {
-                return this._name;
+                //if(this._name) {
+                //    return this._name;
+                }
             }
         }
 
         var e = new Employee("Scott");
         var f = e.getName;
-        expect(f()).toBe("Scott");
+        expect(f()).toBeUndefined();
         done();
 
 
-    });
+   });
+
+
 
     it("still uses prototype", function(){
 
@@ -205,5 +210,26 @@ describe("classes", function(){
         expect(result).toBe("complete!");
 
     });
+
+    it("can have private properties with Symbols", function(){
+
+        var _name = Symbol();
+
+        class A {
+            constructor(name){
+                this[_name] = name;
+                console.log(name);
+                console.log(this.name);
+            }
+
+            get name(){
+                return this[_name];
+            }
+        }
+
+        var a = new A("Scott");
+        expect(a.name).toBe("Scott");
+
+    })
 
 });
