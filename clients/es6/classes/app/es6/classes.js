@@ -11,6 +11,9 @@
 
     a class with a superclass
       (ctor, methods, properties inherited)
+
+    class with private member
+
     conclusion
 
  */
@@ -174,27 +177,29 @@ describe("classes", function(){
 
     it("does not manage 'this' like arrow functions", function(){
 
-
         class Employee{
             constructor(name) {
                 this._name = name;
             }
 
             getName() {
-                //if(this._name) {
-                //    return this._name;
+                if(this._name) {
+                    return this._name;
                 }
             }
         }
 
         var e = new Employee("Scott");
         var f = e.getName;
-        expect(f()).toBeUndefined();
-        done();
-
-
+        var failed = false;
+        try {
+            f();
+        }
+        catch(ex){
+            failed = true;
+        }
+        expect(failed).toBe(true);
    });
-
 
 
     it("still uses prototype", function(){
@@ -208,6 +213,65 @@ describe("classes", function(){
         var a = new A();
         var result = A.prototype.doWork.call(a);
         expect(result).toBe("complete!");
+
+    });
+
+    it("instanceof works", function(){
+
+        class A {
+            constructor(){
+                this.aisa = this instanceof A;
+                this.aisb = this instanceof B;
+                this.aiso = this instanceof Object;
+            }
+        }
+
+        class B extends A {
+            constructor() {
+                this.bisa = this instanceof A;
+                this.bisb = this instanceof B;
+                this.biso = this instanceof Object;
+                super();
+            }
+        }
+
+        let a = new A();
+        let b = new B();
+
+        expect(a.aisa).toBe(true);
+        expect(a.aisb).toBe(false);
+        expect(b.aisa).toBe(true);
+        expect(b.aisb).toBe(true);
+        expect(b.bisa).toBe(true);
+        expect(b.bisb).toBe(true);
+        expect(a.aiso).toBe(true);
+        expect(b.biso).toBe(true);
+
+    });
+
+    it("constructs objects in a specific fashion", function(){
+
+        class A{
+
+            constructor(name){
+                this.name = name;
+            }
+
+            upper(name) {
+                return (this.name || name).toUpperCase();
+            }
+        }
+
+        class B extends A {
+            constructor(name) {
+                super(name);
+               this.superName = this.upper(name);
+            }
+        }
+
+        var b = new B("Scott");
+        expect(b.superName).toBe("SCOTT");
+        expect(b.name).toBe("Scott");
 
     });
 

@@ -115,7 +115,23 @@ describe("classes", function() {
     expect(new A()).toBeDefined();
   });
   it("does not manage 'this' like arrow functions", function() {
-    expect(true).toBe(true);
+    var Employee = function Employee(name) {
+      this._name = name;
+    };
+    ($traceurRuntime.createClass)(Employee, {getName: function() {
+        if (this._name) {
+          return this._name;
+        }
+      }}, {});
+    var e = new Employee("Scott");
+    var f = e.getName;
+    var failed = false;
+    try {
+      f();
+    } catch (ex) {
+      failed = true;
+    }
+    expect(failed).toBe(true);
   });
   it("still uses prototype", function() {
     var A = function A() {};
@@ -125,6 +141,50 @@ describe("classes", function() {
     var a = new A();
     var result = A.prototype.doWork.call(a);
     expect(result).toBe("complete!");
+  });
+  it("instanceof works", function() {
+    var A = function A() {
+      this.aisa = this instanceof $A;
+      this.aisb = this instanceof B;
+      this.aiso = this instanceof Object;
+    };
+    var $A = A;
+    ($traceurRuntime.createClass)(A, {}, {});
+    var B = function B() {
+      this.bisa = this instanceof A;
+      this.bisb = this instanceof $B;
+      this.biso = this instanceof Object;
+      $traceurRuntime.superCall(this, $B.prototype, "constructor", []);
+    };
+    var $B = B;
+    ($traceurRuntime.createClass)(B, {}, {}, A);
+    var a = new A();
+    var b = new B();
+    expect(a.aisa).toBe(true);
+    expect(a.aisb).toBe(false);
+    expect(b.aisa).toBe(true);
+    expect(b.aisb).toBe(true);
+    expect(b.bisa).toBe(true);
+    expect(b.bisb).toBe(true);
+    expect(a.aiso).toBe(true);
+    expect(b.biso).toBe(true);
+  });
+  it("constructs objects in a specific fashion", function() {
+    var A = function A(name) {
+      this.name = name;
+    };
+    ($traceurRuntime.createClass)(A, {upper: function(name) {
+        return (this.name || name).toUpperCase();
+      }}, {});
+    var B = function B(name) {
+      $traceurRuntime.superCall(this, $B.prototype, "constructor", [name]);
+      this.superName = this.upper(name);
+    };
+    var $B = B;
+    ($traceurRuntime.createClass)(B, {}, {}, A);
+    var b = new B("Scott");
+    expect(b.superName).toBe("SCOTT");
+    expect(b.name).toBe("Scott");
   });
   it("can have private properties with Symbols", function() {
     var _name = Symbol();
