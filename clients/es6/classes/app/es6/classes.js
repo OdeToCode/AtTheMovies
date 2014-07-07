@@ -216,6 +216,37 @@ describe("classes", function(){
 
     });
 
+    it("overrides", function(){
+
+        class A {
+            doWork() {
+                return "work a";
+            }
+        }
+
+        class B extends A {
+            doWork(){
+                return "work b";
+            }
+            doMoreWork() {
+                return this.doWork() + super.doWork();
+            }
+        }
+
+        class C extends B {
+            constructor() {
+                this.work = this.doWork();
+            }
+        }
+
+        expect(new A().doWork()).toBe("work a");
+        expect(new B().doWork()).toBe("work b");
+        expect(new B().doMoreWork()).toBe("work bwork a");
+        expect(new C().work).toBe("work b");
+
+    });
+
+
     it("instanceof works", function(){
 
         class A {

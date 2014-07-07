@@ -142,6 +142,32 @@ describe("classes", function() {
     var result = A.prototype.doWork.call(a);
     expect(result).toBe("complete!");
   });
+  it("overrides", function() {
+    var A = function A() {};
+    ($traceurRuntime.createClass)(A, {doWork: function() {
+        return "work a";
+      }}, {});
+    var B = function B() {
+      $traceurRuntime.defaultSuperCall(this, $B.prototype, arguments);
+    };
+    var $B = B;
+    ($traceurRuntime.createClass)(B, {
+      doWork: function() {
+        return "work b";
+      },
+      doMoreWork: function() {
+        return this.doWork() + $traceurRuntime.superCall(this, $B.prototype, "doWork", []);
+      }
+    }, {}, A);
+    var C = function C() {
+      this.work = this.doWork();
+    };
+    ($traceurRuntime.createClass)(C, {}, {}, B);
+    expect(new A().doWork()).toBe("work a");
+    expect(new B().doWork()).toBe("work b");
+    expect(new B().doMoreWork()).toBe("work bwork a");
+    expect(new C().work).toBe("work b");
+  });
   it("instanceof works", function() {
     var A = function A() {
       this.aisa = this instanceof $A;
