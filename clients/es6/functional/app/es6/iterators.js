@@ -78,4 +78,42 @@ describe("iterators", function(){
         expect(result).toEqual(["Tim", "Joy", "Sue"]);
 
     });
+
+    it("can build your own with a class", function(){
+
+        class Classroom {
+
+            constructor() {
+                this.students = ["Tim", "Joy", "Sue"];
+            }
+
+            [Symbol.iterator]() {
+                return new ArrayIterator(this.students);
+            }
+        }
+
+        class ArrayIterator {
+            constructor(array) {
+                this.array = array;
+                this.index = 0;
+            }
+            next() {
+                var result = { value: undefined, done: true};
+                if(this.index < this.array.length) {
+                    resut.value = this.array[this.index];
+                    result.done = false;
+                    this.index += 1;
+                }
+                return result;
+            }
+        }
+
+        let scienceClass = new Classroom();
+        let result = [];
+        for(let name of scienceClass){
+            result.push(name);
+        }
+        expect(result).toEqual(["Tim", "Joy", "Sue"]);
+
+    });
 });
