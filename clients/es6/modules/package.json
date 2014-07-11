@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
-      "gulp": "~3.2.4",
-      "gulp-livereload": "~0.1.1",
-      "connect-livereload": "~0.3.2",
-	  "gulp-traceur":"^0.7.0",
-      "tiny-lr": "0.0.5",
-      "connect": "~2.12.0"
+    "connect": "~2.12.0",
+    "connect-livereload": "~0.3.2",
+    "gulp": "~3.2.4",
+    "gulp-es6-module-transpiler": "^0.1.2",
+    "gulp-livereload": "~0.1.1",
+    "gulp-traceur": "^0.7.0",
+    "tiny-lr": "0.0.5"
   }
 }

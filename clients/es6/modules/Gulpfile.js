@@ -24,14 +24,15 @@ gulp.task('http-server', function() {
 
 gulp.task('traceur', function(){
     return gulp.src('app/es6/**/*.js')
-               .pipe(traceur({sourceMap:true, experimental:true, blockBinding: true}))
+               .pipe(traceur({sourceMap:true, experimental:true, blockBinding: true, modules:"amd"}))
                .pipe(gulp.dest('app/es5'));
 });
 
 gulp.task('server', function() {
     gulp.run('lr-server');
     gulp.run('traceur');
-    var traceurFiles = ['app/es6/**/*.js']
+
+    var traceurFiles = ['app/es6/**/*.js'];
     gulp.watch(traceurFiles, function(){
         gulp.run('traceur');
     });
