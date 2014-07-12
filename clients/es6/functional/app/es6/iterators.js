@@ -116,4 +116,45 @@ describe("iterators", function(){
         expect(result).toEqual(["Tim", "Joy", "Sue"]);
 
     });
+    
+    it("can take a parameter from next(param)", function() {
+
+		let range = function*(start, end) {
+			let current = start;
+			while(current <= end) {
+				let delta = yield current;
+				current += 1;
+				if(delta) {
+					current += delta;
+				}				
+			}
+		}
+
+		let range2 = function(start, end) {
+			let current = start;
+			return {
+				next(delta = 0) {
+					let result = { value: undefined, done: true };
+					current += delta;
+					if(current <= end) {
+						result.value = current;
+						result.done = false;
+						current += 1;
+					}
+					return result;
+				}
+			}
+		}
+
+		let result = [];
+		let iterator = range2(1,10);
+		let next = iterator.next();
+		while(!next.done) {
+			result.push(next.value);
+			next = iterator.next(next.value);
+		}
+
+		expect(result).toEqual([1, 3, 7]);
+	});
+    
 });
