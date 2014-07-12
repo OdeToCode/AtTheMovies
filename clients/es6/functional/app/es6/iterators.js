@@ -143,6 +143,19 @@ describe("iterators", function(){
 			}
 		}
 
+		it("can take a parameter from next(param)", function() {
+
+		let range = function*(start, end) {
+			let current = start;
+			while(current <= end) {
+				let delta = yield current;
+				current += 1;
+				if(delta) {
+					current += delta;
+				}				
+			}
+		}
+
 		let range2 = function(start, end) {
 			let current = start;
 			return {
@@ -158,6 +171,17 @@ describe("iterators", function(){
 				}
 			}
 		}
+
+		let result = [];
+		let iterator = range2(1,10);
+		let next = iterator.next();
+		while(!next.done) {
+			result.push(next.value);
+			next = iterator.next(next.value);
+		}
+
+		expect(result).toEqual([1, 3, 7]);
+	});
 
 		let result = [];
 		let iterator = range2(1,10);
