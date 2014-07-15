@@ -1,3 +1,4 @@
+
 let s_name = Symbol();
 
 export class Employee {

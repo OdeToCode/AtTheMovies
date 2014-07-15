@@ -1,29 +1,17 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" 
-			  href="jasmine/lib/jasmine-core/jasmine.css">
-		<script src="traceur/traceur.js"></script>
-		<script src="jasmine/lib/jasmine-core/jasmine.js"></script>
-		<script src="jasmine/lib/jasmine-core/jasmine-html.js"></script>
-		<script src="jasmine/lib/jasmine-core/boot/boot.js"></script>
-        <script src="es6-module-loader/dist/es6-module-loader.js"></script>
+    	<script src="traceur/traceur.js"></script>
+        <script>
+            traceur.options.experimental = true;
+            traceur.options.sourceMap = true;
+        </script>
+
+        <script type="module">
+            import './es6/main'
+        </script>
 
         <script>
-            System.import('es5/employeeTests').catch(function(e){ alert(e); })
-//            System.import('es5/employee').then(function(module) {
-//
-//                describe("module in a page", function() {
-//                   it("should be able to reach the Employee class", function() {
-//
-//                        var e = new module.Employee("Scott");
-//                        expect(e.doWork()).toBe("Scott is working");
-//                    });
-//
-//                   it("should not be able to reach the symbol", function(){
-//                        expect(module.s_name).toBeUndefined();
-//                   });
-//                });
-//            });
+            new traceur.WebPageTranscoder(window.location.href).run();
         </script>
 
 	</head>

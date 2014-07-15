@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
-    "connect": "~2.12.0",
-    "connect-livereload": "~0.3.2",
-    "gulp": "~3.2.4",
-    "gulp-es6-module-transpiler": "^0.1.2",
-    "gulp-livereload": "~0.1.1",
-    "gulp-traceur": "^0.7.0",
-    "tiny-lr": "0.0.5"
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express": "^1.4.0",
+    "grunt-open": "^0.2.3"
   }
 }

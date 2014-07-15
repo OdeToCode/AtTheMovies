@@ -13,7 +13,6 @@
   "devDependencies": {},
   "dependencies": {
     "traceur": "~0.0.45",
-    "jasmine": "~2.0.0",
-    "system.js": "~0.6.7"
+    "jasmine": "~2.0.0"
   }
 }
