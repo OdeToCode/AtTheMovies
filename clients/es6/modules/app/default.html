@@ -10,6 +10,17 @@
             import './es6/main'
         </script>
 
+        <script type="module">
+            import party from "./es6/Workplace";
+
+        </script>
+
+        <script type="module">
+            module m from "./es6/Employee";
+
+            console.log(new m.Employee("Scott"));
+        </script>
+
         <script>
             new traceur.WebPageTranscoder(window.location.href).run();
         </script>
