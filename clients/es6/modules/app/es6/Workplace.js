@@ -1,1 +1,5 @@
-export default let Bar = {};
+let party = function() {
+    return "hooray;"
+};
+
+export default party;
