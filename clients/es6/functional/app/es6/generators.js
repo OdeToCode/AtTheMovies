@@ -9,6 +9,8 @@ describe("generators", function(){
         };
 
         var sum = 0;
+
+
         for(let n of numbers()){
             sum += n;
         }

@@ -1,5 +1,29 @@
 "use strict";
 describe("how let works", function() {
+  it("will not have block scope with var", function() {
+    var doWork = function() {
+      {
+        try {
+          throw undefined;
+        } catch ($x) {
+          $x = 0;
+          for (; $x < 3; $x++) {
+            try {
+              throw undefined;
+            } catch (x) {
+              x = $x;
+              try {} finally {
+                $x = x;
+              }
+            }
+          }
+        }
+      }
+      return x;
+    };
+    var result = doWork(true);
+    expect(result).toBe(3);
+  });
   it("will provide block scoping, unlike var", function() {
     var doWork = function(flag) {
       if (flag) {
