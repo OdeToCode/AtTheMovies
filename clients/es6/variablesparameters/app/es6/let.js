@@ -3,7 +3,7 @@ describe("how let works", function(){
     it("will not have block scope with var", function(){
 
         var doWork = function(){
-            for(let x = 0; x < 3; x++) {
+            for(var x = 0; x < 3; x++) {
                 // ...
             }
             return x; // ReferenceError: x is not defined

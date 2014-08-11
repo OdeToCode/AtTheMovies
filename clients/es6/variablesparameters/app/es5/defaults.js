@@ -8,6 +8,13 @@ describe("default parameters", function() {
     var result = doWork();
     expect(result).toBe("Scott");
   });
+  it("old way", function() {
+    var doWork = function() {
+      var name = arguments[0] !== (void 0) ? arguments[0] : "Scott";
+      return name;
+    };
+    expect(doWork()).toBe("Scott");
+  });
   it("will provide a value for undefined", function() {
     var doWork = function() {
       var a = arguments[0] !== (void 0) ? arguments[0] : 1;

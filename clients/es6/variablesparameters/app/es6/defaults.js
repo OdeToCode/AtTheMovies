@@ -12,7 +12,16 @@ describe("default parameters", function(){
 
 	});
 
-	it("will provide a value for undefined", function(){
+	it("old way", function(){
+
+        let doWork = function(name = "Scott") {
+            return name;
+        };
+
+        expect(doWork()).toBe("Scott");
+    });
+
+    it("will provide a value for undefined", function(){
 
 		let doWork = function(a = 1, b = 2, c = 3){
 			return [a,b,c];
