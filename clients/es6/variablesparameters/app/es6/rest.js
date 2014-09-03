@@ -14,5 +14,16 @@ describe("rest parameters", function(){
 		expect(result).toBe(6);
 
 	});
+
+    it("will be empty if nothing passed", function(){
+
+        let doWork = function(...numbers){
+            return numbers;
+        };
+
+        let result = doWork();
+        expect(result.length).toBe(0);
+
+    });
 	
 });

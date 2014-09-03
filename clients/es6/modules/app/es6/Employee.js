@@ -1,5 +1,5 @@
 
-let s_name = Symbol();
+var s_name = Symbol();
 
 export class Employee {
     constructor(name) {
