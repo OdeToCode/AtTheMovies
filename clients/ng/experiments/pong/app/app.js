@@ -1,8 +1,12 @@
 (function(){
 
-    var app = angular.module("app", []);
+    var pong = angular.module("pong", []);
 
-});
+    pong.config = {
+      size: [1024,768]
+    };
+
+}());
 
 
 // RAF service

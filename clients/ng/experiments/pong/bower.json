@@ -1,0 +1,15 @@
+{
+  "name": "pong",
+  "version": "0.0.0",
+  "homepage": "https://github.com/OdeToCode/AtTheMovies",
+  "authors": [
+    "K. Scott Allen <scott@OdeToCode.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angularjs": "~1.2.23",
+    "traceur-runtime": "~0.0.60",
+    "bootstrap": "~3.2.0"
+  }
+}

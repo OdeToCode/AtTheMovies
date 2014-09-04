@@ -1,0 +1,29 @@
+<html ng-app="pong">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pong!</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-brand">Pong!</div>
+    </nav>
+
+    <section class="container ng-cloak"  ng-controller="GameController as game">
+
+        <gameboard>
+            
+        </gameboard>
+
+    </section>
+
+    <script src="/traceur-runtime/traceur-runtime.js"></script>
+    <script src="/angularjs/angular.js"></script>
+    <script src="/app.js"></script>
+    <script src="/es5/GameController.js"></script>
+    <script src="/es5/Paddle.js"></script>
+    <script src="/es6/gameBoard.js"></script>
+</body>
+</html>
