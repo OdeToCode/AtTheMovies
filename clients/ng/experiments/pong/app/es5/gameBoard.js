@@ -5,10 +5,11 @@
   var gameBoardDirective = function() {
     return {
       restrict: "E",
-      templateURL: "templates/gameboard.html"
+      templateUrl: "templates/gameBoard.html"
     };
   };
-  app.directive("gameBoard", gameBoardDirective);
+  app.directive("gameboard", gameBoardDirective);
+  app.controller("GameBoardController", GameBoardController);
 }(angular.module("pong")));
 
-//# sourceMappingURL=gameBoard.js.map
+//# sourceMappingURL=GameBoard.js.map
