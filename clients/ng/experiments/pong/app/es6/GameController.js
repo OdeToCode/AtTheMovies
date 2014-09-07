@@ -2,7 +2,7 @@
 
     class GameController {
 
-        constructor(Paddle){
+        constructor(Paddle, raf){
             this.leftPaddle = new Paddle();
             this.rightPaddle = new Paddle();
         }

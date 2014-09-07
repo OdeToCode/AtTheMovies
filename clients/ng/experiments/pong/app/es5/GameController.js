@@ -1,6 +1,6 @@
 "use strict";
 (function(app) {
-  var GameController = function GameController(Paddle) {
+  var GameController = function GameController(Paddle, raf) {
     this.leftPaddle = new Paddle();
     this.rightPaddle = new Paddle();
   };
