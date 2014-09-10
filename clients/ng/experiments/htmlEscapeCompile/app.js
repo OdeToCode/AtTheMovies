@@ -2,60 +2,55 @@
 
     var app = angular.module("app", ["ngSanitize"]);
 
-    app.controller("mainController", function($window){
+    app.config(function($provide){
+        $provide.decorator("$sanitize", function($delegate, $log){
+            return function(text, target){
+
+                var result = $delegate(text, target);
+                $log.info("$sanitize input: " + text);
+                $log.info("$sanitize output: " + result);
+
+                return result;
+            };
+        });
+    });
+
+    app.controller("mainController", function($sce, $log) {
 
         var main = this;
         main.links = [
-            "<a href='http://google.com'>Google</a>",
-            "<a href='http://odetocode.com'>OdeToCode</a>",
-            "<a href='http://twitter.com'>Twitter</a>",
+            "<a ng-click='main.go(\"google\")' href=''>Google</a>",
+            "<a ng-click='main.go(\"otc\")' href=''>OdeToCode</a>",
+            "<a ng-click='main.go(\"twitter\")' href=''>Twitter</a>"
         ];
 
+        for (var i = 0; i < main.links.length; i++) {
+            main.links[i] = $sce.trustAsHtml(main.links[i]);
+        }
 
-        main.links = [
-            "<a ng-click='main.goTo(\"http://google.com\")'>Google</a>",
-            "<a ng-click='main.goTo(\"http://odetocode.com\")'>OdeToCode</a>",
-            "<a ng-click='main.goTo(\"http://twitter.com\")'>Twitter</a>"
-        ];
-
-        main.goTo = function(link){
-            console.log(link);
-            $window.location = link;
+        main.go = function(name){
+           $log.info("Goto: " + name);
+            return false;
         };
-
     });
 
-    app.directive("compileHtml", function($parse, $sce, $compile){
-       return {
+    app.directive("compileHtml", function($parse, $sce, $compile) {
+        return {
             restrict: "A",
-            link: function(scope, element, attributes){
+            link: function (scope, element, attributes) {
 
-            var expression = $parse(attributes.compileHtml);
+                var expression = $sce.parseAsHtml(attributes.compileHtml);
 
-            var getResult = function(){
-              return expression(scope);
-            };
+                var getResult = function () {
+                    return expression(scope);
+                };
 
-            $scope.watch(getResult, function(newValue){
-                 
-            });
-
-//               var parsed = $parse($sce.trustAsHtml(attributes.compileHtml));
-//                console.log(parsed(scope));
-
-//               var getValue = function() {
-//                   return (parsed(scope) || '');
-//               };
-//
-//               scope.$watch(getValue, function (newValue) {
-//                   //var html = $sce.getTrustedHtml(newValue);
-//                   var html = newValue;
-//                   console.log(html);
-//                   var linkFn = $compile(html);
-//                   element.append(linkFn(scope));
-//               });
-           }
-       }
+                scope.$watch(getResult, function (newValue) {
+                    var linker = $compile(newValue);
+                    element.append(linker(scope));
+                });
+            }
+        }
     });
 
 }());

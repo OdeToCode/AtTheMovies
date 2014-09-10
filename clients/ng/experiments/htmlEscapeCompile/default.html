@@ -8,23 +8,25 @@
 
 <body ng-app="app" class="container">
 
-    <div ng-controller="mainController as main">
+    <section ng-controller="mainController as main">
 
-        <div ng-bind="main.message"></div>
-        <div ng-bind-html="main.message"></div>
-        <input type="text" ng-model="main.message"/>
+        <nav>
+                <ul>
+                    <li ng-repeat="link in main.links"
+                        compile-html="link">
+                    </li>
+                </ul>
+        </nav>
 
-        <section>
-            <div ng-repeat="link in main.links">
-                <div compile-html="link"></div>
-            </div>
-        </section>
+    </section>
 
-    </div>
+
+    <!--<div compile-html="link"></div>-->
 
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="app.js"></script>
 </body>
+
 
 </html>
