@@ -1,6 +1,5 @@
 "use strict";
 (function(app) {
-  var lastTime = 0;
   var vendors = ['ms', 'moz', 'webkit', 'o'];
   for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
     window.requestAnimationFrame = window[$traceurRuntime.toProperty(vendors[$traceurRuntime.toProperty(x)] + 'RequestAnimationFrame')];

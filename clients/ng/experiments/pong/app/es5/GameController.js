@@ -1,8 +1,7 @@
 "use strict";
 (function(app) {
-  var GameController = function GameController(Paddle, raf) {
-    this.leftPaddle = new Paddle();
-    this.rightPaddle = new Paddle();
+  var GameController = function GameController() {
+    this.config = app.config;
   };
   ($traceurRuntime.createClass)(GameController, {}, {});
   app.controller("GameController", GameController);

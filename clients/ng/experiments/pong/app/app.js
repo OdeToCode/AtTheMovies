@@ -3,7 +3,8 @@
     var pong = angular.module("pong", []);
 
     pong.config = {
-      size: [1024,768]
+        width: 1024,
+        height: 768
     };
 
 }());

@@ -1,7 +1,6 @@
 (function(app){
 
-    class Ball
-    {
+    class Ball {
 
     }
 

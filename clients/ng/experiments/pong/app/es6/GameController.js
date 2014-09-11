@@ -2,11 +2,10 @@
 
     class GameController {
 
-        constructor(Paddle, raf){
-            this.leftPaddle = new Paddle();
-            this.rightPaddle = new Paddle();
-        }
+        constructor(){
 
+            this.config = app.config;
+        }
     }
 
     app.controller("GameController", GameController);

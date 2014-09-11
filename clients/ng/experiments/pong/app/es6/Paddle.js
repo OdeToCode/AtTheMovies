@@ -1,8 +1,7 @@
-(function(app){
+(function(app) {
 
-    class Paddle
-    {
-        constructor(){
+    class Paddle {
+        constructor() {
 
         }
     }
