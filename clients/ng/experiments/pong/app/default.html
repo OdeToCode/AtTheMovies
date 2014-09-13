@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-
+    <div keyboard></div>
     <nav class="navbar navbar-inverse">
         <div class="navbar-brand">Pong!</div>
     </nav>
@@ -15,9 +15,13 @@
 
         <svg width="{{game.config.width}}" height="{{game.config.height}}">
             <rect width="100%" height="100%" fill="black"></rect>
-            <rect fill="white" width="25" height="150" x="100" y="10"></rect>
-            <rect fill="white" width="25" height="150" x="900" y="10"></rect>
-            <circle fill="red" cx="400" cy="400" r="20"></circle>
+            <rect fill="white" width="25" height="150" 
+                  x="{{game.leftPaddle.x}}" y="{{game.leftPaddle.y}}">
+            </rect>
+            <rect fill="white" width="25" height="150" 
+                  x="{{game.rightPaddle.x}}" y="{{game.rightPaddle.y}}">
+            </rect>
+            <circle fill="white" cx="{{game.ball.x}}" cy="{{game.ball.y}}" r="20"></circle>
         </svg>
 
     </section>
@@ -28,6 +32,7 @@
     <script src="/es5/GameController.js"></script>
     <script src="/es5/Paddle.js"></script>
     <script src="/es5/Ball.js"></script>
-    <script src="/es5/GameBoard.js"></script>
+    <script src="/es5/keyboardDirective.js"></script>
+    <script src="/es5/rafService.js"></script>
 </body>
 </html>

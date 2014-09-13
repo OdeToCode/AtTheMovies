@@ -4,7 +4,7 @@
 
     pong.config = {
         width: 1024,
-        height: 768
+        height: 640
     };
 
 }());

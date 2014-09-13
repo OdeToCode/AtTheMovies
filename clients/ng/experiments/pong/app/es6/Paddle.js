@@ -1,11 +1,13 @@
 (function(app) {
 
     class Paddle {
-        constructor() {
-
+        constructor(x,y) {
+            this.x = x;
+            this.y = y;
         }
     }
 
-    app.value("Paddle", Paddle);
+    app.value("leftPaddle", new Paddle(100,100));
+    app.value("rightPaddle", new Paddle(900,300));
 
 }(angular.module("pong")));

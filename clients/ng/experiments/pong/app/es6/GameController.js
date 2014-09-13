@@ -2,9 +2,11 @@
 
     class GameController {
 
-        constructor(){
-
+        constructor(ball, leftPaddle, rightPaddle){
             this.config = app.config;
+            this.ball = ball;
+            this.leftPaddle = leftPaddle;
+            this.rightPaddle = rightPaddle;
         }
     }
 
