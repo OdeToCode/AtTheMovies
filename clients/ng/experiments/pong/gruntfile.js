@@ -25,6 +25,12 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        concat: {
+            dist: {
+                src: ["app/app.js", "app/es5/*.js"],
+                dest: "app/dist/pong.js"
+            }
+        },
         watch: {
             all: {
                 files: ["app/default.html", "app/*.js", "app/es5/**/*.js"],
@@ -35,6 +41,11 @@ module.exports = function (grunt) {
             js: {
                 files: "app/es6/**/*.js",
                 tasks: ["traceur"]                
+            },
+            concat: {
+                files: ["app.js", "app/es5/**/*.js"],
+                tasks: ["concat"]
+
             }
         },
         open: {
@@ -45,8 +56,9 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-express");
     grunt.loadNpmTasks("grunt-open");
     grunt.loadNpmTasks("grunt-traceur");
-    grunt.registerTask("default", ["traceur", "express", "open", "watch"]);
+    grunt.registerTask("default", ["traceur", "concat", "express", "open", "watch"]);
 };

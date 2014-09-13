@@ -4,7 +4,8 @@
 
     pong.config = {
         width: 1024,
-        height: 640
+        height: 640,
+        showKeys: true 
     };
 
 }());

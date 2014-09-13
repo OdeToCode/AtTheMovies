@@ -1,14 +1,16 @@
 "use strict";
 (function(app) {
-  app.directive("keyboard", function($document) {
+  app.directive("keyboard", function($document, keyboardHandler) {
     return {
       restrict: "A",
-      template: "<pre>{{key|json}}</pre>",
+      template: "<pre ng-show='showKeys'>{{key}}</pre>",
       link: function(scope) {
+        scope.showKeys = app.config.showKeys;
         $document.on("keypress keydown keyup", function(e) {
-          scope.key = e;
-          console.log(e);
-          console.log(scope);
+          scope.$apply(function() {
+            scope.key = e.which;
+            return keyboardHandler.processKey(e);
+          });
         });
       }
     };

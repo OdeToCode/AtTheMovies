@@ -7,7 +7,7 @@
     this.rightPaddle = rightPaddle;
   };
   ($traceurRuntime.createClass)(GameController, {}, {});
-  app.controller("GameController", GameController);
+  app.controller("Game", GameController);
 }(angular.module("pong")));
 
 //# sourceMappingURL=GameController.js.map

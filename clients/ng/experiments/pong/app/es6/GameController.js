@@ -10,6 +10,6 @@
         }
     }
 
-    app.controller("GameController", GameController);
+    app.controller("Game", GameController);
 
 }(angular.module("pong")));
