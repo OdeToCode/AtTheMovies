@@ -10,6 +10,7 @@
   "dependencies": {
     "angularjs": "~1.2.23",
     "traceur-runtime": "~0.0.60",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "angular-mocks": "~1.2.24"
   }
 }

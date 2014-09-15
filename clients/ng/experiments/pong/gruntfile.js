@@ -25,6 +25,12 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        karma: {
+            unit: {
+                configFile: 'specs/karma.conf.js',
+                background: true 
+            }
+        },
         concat: {
             dist: {
                 src: ["app/app.js", "app/es5/*.js"],
@@ -46,6 +52,10 @@ module.exports = function (grunt) {
                 files: ["app.js", "app/es5/**/*.js"],
                 tasks: ["concat"]
 
+            },
+            karma: {
+                files: ['app/dist/*.js', 'specs/*.js'],
+                tasks: ['karma:unit:run'] 
             }
         },
         open: {
@@ -56,9 +66,10 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-karma");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-express");
     grunt.loadNpmTasks("grunt-open");
     grunt.loadNpmTasks("grunt-traceur");
-    grunt.registerTask("default", ["traceur", "concat", "express", "open", "watch"]);
+    grunt.registerTask("default", ["traceur", "concat", "express", "open", "karma", "watch"]);
 };
