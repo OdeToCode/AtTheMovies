@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
+    <link rel="stylesheet" href="/ng/styles.css">
+</head>
+<body ng-app="app" class="container" ng-controller="mainController as main">
+
+
+    <physics-canvas width="500" height="500">
+
+        <physics-body type="rectangle" body="main.box1"
+                      options="{x:450, y:10, vy:-0.3, width:5, height:5}">
+        </physics-body>
+
+        <physics-body type="rectangle" body="main.box2"
+                      options="{x:250, y:210, vy:-0.3, width:5, height:5}">
+        </physics-body>
+
+        <physics-edge-detection min-x="0" min-y="0" max-x="500" max-y="500" restitution="0.3">
+        </physics-edge-detection>
+
+        <physics-behavior name="constant-acceleration"></physics-behavior>
+        <physics-behavior name="body-impulse-response"></physics-behavior>
+        <physics-behavior name="body-collision-detection"></physics-behavior>
+        <physics-behavior name="sweep-prune"></physics-behavior>
+
+    </physics-canvas>
+
+    <button ng-click="main.kick()">Kick</button>
+    <button ng-click="main.grow()">Grow</button>
+
+    <script src="/bower_components/physicsjs/dist/physicsjs-full-0.6.0.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
