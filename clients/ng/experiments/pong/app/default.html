@@ -14,21 +14,12 @@
 
     <section class="container ng-cloak"  ng-controller="Game as game">
 
-        <svg width="{{game.config.width}}" height="{{game.config.height}}">
-            <rect width="100%" height="100%" fill="black"></rect>
-            <rect fill="white" width="25" height="150" 
-                  x="{{game.leftPaddle.x}}" y="{{game.leftPaddle.y}}">
-            </rect>
-            <rect fill="white" width="25" height="150" 
-                  x="{{game.rightPaddle.x}}" y="{{game.rightPaddle.y}}">
-            </rect>
-            <circle fill="white" cx="{{game.ball.x}}" cy="{{game.ball.y}}" r="20"></circle>
-        </svg>
 
     </section>
 
     <script src="/traceur-runtime/traceur-runtime.js"></script>
     <script src="/angularjs/angular.js"></script>
+    <script src="/physicsjs/dist/physicsjs-full-0.6.0.js"></script>
     <script src="/dist/pong.js"></script>
 </body>
 </html>

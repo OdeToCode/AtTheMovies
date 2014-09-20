@@ -4,7 +4,8 @@ describe("destructuring", function() {
   it("has simple examples", function() {
     var $__0,
         $__1,
-        $__2;
+        $__2,
+        $__3;
     var values = [22, 44];
     var $__0 = $traceurRuntime.assertObject(values),
         x = $__0[0],
@@ -31,7 +32,12 @@ describe("destructuring", function() {
           role = ($__1 = $__0.role) === void 0 ? "developer" : $__1;
       return role + " " + firstName + " " + lastName;
     };
-    var httpPost = function() {};
+    var httpPost = function(url, $__1) {
+      var cache = ($__2 = $__1.cache) === void 0 ? true : $__2,
+          contentType = ($__2 = $__1.contentType) === void 0 ? "application/x-www-form-urlencoded; charset=UTF-8" : $__2,
+          timeout = ($__2 = $__1.timeout) === void 0 ? 2500 : $__2,
+          headers = ($__2 = $__1.headers) === void 0 ? {} : $__2;
+    };
     var person = {
       firstName: "Scott",
       lastName: "Allen"
@@ -39,16 +45,16 @@ describe("destructuring", function() {
     var result = doWork(person);
     expect(result).toBe("developer Scott Allen");
     var address = {state: "Maryland"};
-    var $__1 = $traceurRuntime.assertObject(address),
-        state = ($__2 = $__1.state) === void 0 ? "New York" : $__2,
-        country = ($__2 = $__1.country) === void 0 ? "USA" : $__2;
+    var $__2 = $traceurRuntime.assertObject(address),
+        state = ($__3 = $__2.state) === void 0 ? "New York" : $__3,
+        country = ($__3 = $__2.country) === void 0 ? "USA" : $__3;
     expect(state).toBe("Maryland");
     expect(country).toBe("USA");
     var odds = [1, 3, 5, 7, 9];
-    var $__1 = $traceurRuntime.assertObject(odds),
-        first = $__1[0],
-        second = $__1[1],
-        rest = Array.prototype.slice.call($__1, 2);
+    var $__2 = $traceurRuntime.assertObject(odds),
+        first = $__2[0],
+        second = $__2[1],
+        rest = Array.prototype.slice.call($__2, 2);
     expect(first).toBe(1);
     expect(second).toBe(3);
     expect(rest).toEqual([5, 7, 9]);
@@ -60,10 +66,10 @@ describe("destructuring", function() {
       },
       favoriteNumbers: [45, 55, 32, 13]
     };
-    var $__1 = $traceurRuntime.assertObject(employee),
-        firstName = $__1.firstName,
-        state = $traceurRuntime.assertObject($__1.address).state,
-        second = $traceurRuntime.assertObject($__1.favoriteNumbers)[1];
+    var $__2 = $traceurRuntime.assertObject(employee),
+        firstName = $__2.firstName,
+        state = $traceurRuntime.assertObject($__2.address).state,
+        second = $traceurRuntime.assertObject($__2.favoriteNumbers)[1];
     expect(firstName).toBe("Scott");
     expect(state).toBe("Maryland");
     expect(second).toBe(55);

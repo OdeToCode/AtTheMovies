@@ -2,15 +2,21 @@ describe("template literals", function(){
 
 	it("can easily combine literals and data", function(){
 
-		let doWork = function(name){
-			return `Hello, ${name}`;
+		let showTheMath = function(x,y ){
+			return `${x} + ${y} is ${x + y}`;
 		};
 
-		let result = doWork("Scott");
-		expect(result).toBe("Hello, Scott");
-
+		let result = showTheMath(3,4);
+		expect(result).toBe("3 + 4 is 7");
 	});
 
+    it("can be multi-line", function(){
+        let message = `This is
+                       a short, but multi-line message`;
+
+        console.log(message);
+        expect(message.length).toBe(63);
+    });
 
 	it("can help build URLs", function(){
 

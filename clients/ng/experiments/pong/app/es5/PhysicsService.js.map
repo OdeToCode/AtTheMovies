@@ -1,0 +1,1 @@
+{"version":3,"file":"app/es5/PhysicsService.js","sources":["app/es5/PhysicsService.js"],"names":[],"mappings":"AAAA;AAAA,CAAA,AAAC,SAAS,GAAG,CAAC;AAEV,CAAA,IAAG,MAAM,CAAC,SAAS,CAAE,QAAO,CAAC,CAAC;CAEjC,CAAC,OAAO,OAAO,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC;CAAA","sourcesContent":["(function(app){\r\n\r\n    app.value(\"Physics\", Physics);\t\t\r\n\r\n}(angular.module(\"pong\")));"]}
