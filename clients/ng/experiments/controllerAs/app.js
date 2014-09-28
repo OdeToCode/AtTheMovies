@@ -3,7 +3,10 @@
     var app = angular.module("app", []);
 
     app.controller("MainController", function(){
-        this.title = angular.version;
+        this.message = "Hello";
+        this.showMessage = function() {
+            this.message = "Bonjour!";
+        };
     });
 
 }());

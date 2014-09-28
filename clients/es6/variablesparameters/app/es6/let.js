@@ -34,7 +34,7 @@ describe("how let works", function(){
 
 	it("will provide block scoping with for", function(){
 
-		var doWork = function(){
+		let doWork = function(){
 
 			for(let i = 0; i< 10; i++){
 			}
@@ -43,7 +43,7 @@ describe("how let works", function(){
 			return 0;		
 		};
 
-		var result = doWork();
+		let result = doWork();
 		expect(result).toBe(0);
 
 	});	

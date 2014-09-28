@@ -12,8 +12,8 @@ describe("destructuring", function() {
         expect(x).toBe(22);
         expect(y).toBe(44);
 
-        var person = { firstName: "Scott", lastName: "Allen" };
-        var {firstName, lastName} = person;
+        let me = { firstName: "Scott", lastName: "Allen" };
+        let {firstName, lastName} = me;
 
         expect(firstName).toBe("Scott");
         expect(lastName).toBe("Allen");
@@ -76,7 +76,7 @@ describe("destructuring", function() {
 
 	it("can destructure arrays", function() {
 
-		var doWork = function(){
+		let doWork = function(){
 			return [1, 3, 2];
 		};
 

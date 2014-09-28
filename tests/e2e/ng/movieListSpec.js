@@ -14,3 +14,13 @@ describe("The home page movie list", function() {
     });
 
 });
+
+it('saves to the tracking url', inject(function(eventTracker, $http) {
+      postSpy = spyOn($http, 'post');
+
+      model.save();
+
+    expect(postSpy).toHaveBeenCalled();
+    expect(postSpy.mostRecentCall.args[0]).not.toEqual('/track');
+    expect(postSpy.mostRecentCall.args[1]).toEqual({ 'name': 'Scott' });
+}));
