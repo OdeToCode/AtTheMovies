@@ -9,20 +9,20 @@ var serverJs = [
 var clientJs = [
     "../../clients/ng/**/*.js",
     "../../clients/es6/**/*.js",
-    "../../clients/ember/**/*.js",
-    "../../clients/durandal/**/*.js"
+    //"../../clients/ember/**/*.js",
+    //"../../clients/durandal/**/*.js"
 ];
 
 var html = [
     "../../clients/index.html",
     "../../clients/ng/**/*.html",
-    "../../clients/ember/**/*.html",
+    //"../../clients/ember/**/*.html",
     "../../clients/es6/**/*.html",
-    "../../clients/durandal/**/*.html"
+    //"../../clients/durandal/**/*.html"
 ];
 
 var emberTemplates = [
-    "../../clients/ember/templates/**/*.hbs"
+    //"../../clients/ember/templates/**/*.hbs"
 ];
 
 var es6js = [
@@ -77,10 +77,10 @@ module.exports = function(grunt) {
                 livereload: true
             },
 
-            jshint: {
-                files: serverJs.concat(clientJs),
-                tasks: ["jshint"]
-            },
+//            jshint: {
+//                files: serverJs.concat(clientJs),
+//                tasks: ["jshint"]
+//            },
 
             traceur: {
                 files: es6js,
@@ -95,10 +95,10 @@ module.exports = function(grunt) {
                 }
             },
 
-            emberTemplates: {
-                files: emberTemplates,
-                tasks: ["emberTemplates"]
-            },
+//            emberTemplates: {
+//                files: emberTemplates,
+//                tasks: ["emberTemplates"]
+//            },
 
             html: {
                 files: html
@@ -109,7 +109,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("default", ["express:dev", "watch"]);
-
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-express-server");
