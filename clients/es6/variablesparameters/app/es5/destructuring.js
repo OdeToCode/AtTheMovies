@@ -12,11 +12,11 @@ describe("destructuring", function() {
         y = $__0[1];
     expect(x).toBe(22);
     expect(y).toBe(44);
-    var person = {
+    var me = {
       firstName: "Scott",
       lastName: "Allen"
     };
-    var $__0 = $traceurRuntime.assertObject(person),
+    var $__0 = $traceurRuntime.assertObject(me),
         firstName = $__0.firstName,
         lastName = $__0.lastName;
     expect(firstName).toBe("Scott");
@@ -32,6 +32,7 @@ describe("destructuring", function() {
           role = ($__1 = $__0.role) === void 0 ? "developer" : $__1;
       return role + " " + firstName + " " + lastName;
     };
+    doWork({firstName: "Scott"});
     var httpPost = function(url, $__1) {
       var cache = ($__2 = $__1.cache) === void 0 ? true : $__2,
           contentType = ($__2 = $__1.contentType) === void 0 ? "application/x-www-form-urlencoded; charset=UTF-8" : $__2,

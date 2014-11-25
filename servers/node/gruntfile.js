@@ -18,7 +18,7 @@ var html = [
     "../../clients/ng/**/*.html",
     //"../../clients/ember/**/*.html",
     "../../clients/es6/**/*.html",
-    //"../../clients/durandal/**/*.html"
+    "../../clients/durandal/**/*.html"
 ];
 
 var emberTemplates = [
@@ -77,10 +77,10 @@ module.exports = function(grunt) {
                 livereload: true
             },
 
-//            jshint: {
-//                files: serverJs.concat(clientJs),
-//                tasks: ["jshint"]
-//            },
+           jshint: {
+                files: serverJs.concat(clientJs),
+                tasks: ["jshint"]
+            },
 
             traceur: {
                 files: es6js,

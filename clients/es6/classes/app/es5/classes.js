@@ -12,10 +12,10 @@ describe("classes", function() {
         }
       }
     }, {});
-    var e = new Employee();
-    e.hire();
-    expect(e.hired).toBe(true);
-    expect(e.getStatus()).toBe("hired");
+    var developer = new Employee();
+    developer.hire();
+    expect(developer.hired).toBe(true);
+    expect(developer.getStatus()).toBe("hired");
   });
   it("can have a constructor and properties", function() {
     var Employee = function Employee(name) {
@@ -24,15 +24,18 @@ describe("classes", function() {
     ($traceurRuntime.createClass)(Employee, {getName: function() {
         return this.name.toUpperCase();
       }}, {});
-    var e = new Employee("Scott");
-    expect(e.name).toBe("Scott");
-    expect(e.getName()).toBe("SCOTT");
+    var developer = new Employee("Scott");
+    expect(developer.name).toBe("Scott");
+    expect(developer.getName()).toBe("SCOTT");
   });
   it("can have getters and setters", function() {
     var Employee = function Employee(name) {
       this._name = name;
     };
     ($traceurRuntime.createClass)(Employee, {
+      doWork: function() {
+        return (this._name + " is working");
+      },
       get name() {
         return this._name.toUpperCase();
       },
@@ -42,12 +45,100 @@ describe("classes", function() {
         }
       }
     }, {});
-    var e = new Employee("Scott");
-    expect(e.name).toBe("SCOTT");
-    e.name = "";
-    expect(e.name).toBe("SCOTT");
-    e.name = "Alex";
-    expect(e.name).toBe("ALEX");
+    var developer = new Employee("Scott");
+    expect(developer.name).toBe("SCOTT");
+    developer.name = "Alex";
+    expect(developer.doWork()).toBe("Alex is working");
+  });
+  it("mimic a class", function() {
+    var Employee = function(name) {
+      this._name = name;
+    };
+    Employee.prototype = {
+      doWork: function() {
+        return (this._name + " is working");
+      },
+      get name() {
+        return this._name.toUpperCase();
+      },
+      set name(newName) {
+        if (newName) {
+          this._name = newName;
+        }
+      }
+    };
+    var developer = new Employee("Scott");
+    expect(developer.name).toBe("SCOTT");
+    developer.name = "Alex";
+    expect(developer.doWork()).toBe("Alex is working");
+  });
+  it("super constructor", function() {
+    var Person = function Person(name) {
+      this._name = name;
+    };
+    ($traceurRuntime.createClass)(Person, {get name() {
+        return this._name;
+      }}, {});
+    var Employee = function Employee(name, title) {
+      this._title = title;
+      $traceurRuntime.superCall(this, $Employee.prototype, "constructor", [name]);
+    };
+    var $Employee = Employee;
+    ($traceurRuntime.createClass)(Employee, {get title() {
+        return this._title;
+      }}, {}, Person);
+    var p1 = new Person("Scott");
+    var e1 = new Employee("Alex", "Developer");
+    expect(p1.name).toBe("Scott");
+    expect(e1.name).toBe("Alex");
+    expect(e1.title).toBe("Developer");
+  });
+  it("simpler class example", function() {
+    var Person = function Person(name) {
+      this._name = name;
+    };
+    ($traceurRuntime.createClass)(Person, {
+      get name() {
+        return this._name;
+      },
+      set name(newName) {
+        if (newName) {
+          this._name = newName;
+        }
+      },
+      doWork: function() {
+        return this.name + " works for free";
+      }
+    }, {});
+    var p1 = new Person();
+    p1.name = "Scott";
+    expect(p1.doWork()).toBe("Scott works for free");
+    var Employee = function Employee() {
+      $traceurRuntime.defaultSuperCall(this, $Employee.prototype, arguments);
+    };
+    var $Employee = Employee;
+    ($traceurRuntime.createClass)(Employee, {
+      get title() {
+        return this._title;
+      },
+      set title(newTitle) {
+        this._title = newTitle;
+      },
+      doWork: function() {
+        return $traceurRuntime.superCall(this, $Employee.prototype, "doWork", []) + "!";
+      }
+    }, {}, Person);
+    var p1 = new Person();
+    p1.name = "Scott";
+    expect(p1.doWork()).toBe("Scott works for free");
+    var e1 = new Employee();
+    e1.name = "Scott";
+    e1.title = "Developer";
+    expect(e1.doWork()).toBe("Scott works for free!");
+    expect(e1.name).toBe("Scott");
+    expect(e1.title).toBe("Developer");
+    expect(e1 instanceof Employee).toBe(true);
+    expect(e1 instanceof Person).toBe(true);
   });
   it("can have a base class", function() {
     var Person = function Person(name) {
@@ -138,9 +229,15 @@ describe("classes", function() {
     ($traceurRuntime.createClass)(A, {doWork: function() {
         return "complete!";
       }}, {});
-    var a = new A();
-    var result = A.prototype.doWork.call(a);
+    A.prototype.newMethod = function() {
+      return "new!";
+    };
+    var result = A.prototype.doWork.call();
     expect(result).toBe("complete!");
+    var a = new A();
+    expect(a.newMethod()).toBe("new!");
+    expect(a instanceof A).toBe(true);
+    expect(a instanceof Object).toBe(true);
   });
   it("overrides", function() {
     var A = function A() {};

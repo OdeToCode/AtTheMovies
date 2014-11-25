@@ -1,23 +1,3 @@
-/*
-    intro
-    what are classes
-    a simple class
-    a class with a method
-
-    a class with state
-    a class with ctor
-
-    a class with get and set (accessor functions)
-
-    a class with a superclass
-      (ctor, methods, properties inherited)
-
-    class with private member
-
-    conclusion
-
- */
-
 describe("classes", function(){
 
     it("can have methods", function(){
@@ -34,10 +14,10 @@ describe("classes", function(){
            }
         }
 
-        var e = new Employee();
-        e.hire();
-        expect(e.hired).toBe(true);
-        expect(e.getStatus()).toBe("hired");
+        var developer = new Employee();
+        developer.hire();
+        expect(developer.hired).toBe(true);
+        expect(developer.getStatus()).toBe("hired");
 
     });
 
@@ -53,9 +33,9 @@ describe("classes", function(){
             }
         }
 
-        var e = new Employee("Scott");
-        expect(e.name).toBe("Scott");
-        expect(e.getName()).toBe("SCOTT");
+        var developer = new Employee("Scott");
+        expect(developer.name).toBe("Scott");
+        expect(developer.getName()).toBe("SCOTT");
 
     });
 
@@ -67,9 +47,9 @@ describe("classes", function(){
                 this._name = name;
             }
 
-                doWork() {
-                    return `${this._name} is working`;
-                }
+            doWork() {
+                return `${this._name} is working`;
+            }
 
             get name() {
                 return this._name.toUpperCase();
@@ -82,15 +62,129 @@ describe("classes", function(){
             }
         }
 
-        var e = new Employee("Scott");
-        expect(e.name).toBe("SCOTT");
+        var developer = new Employee("Scott");
 
-        e.name = "";
-        expect(e.name).toBe("SCOTT");
+        expect(developer.name).toBe("SCOTT");
 
-        e.name = "Alex";
-        expect(e.name).toBe("ALEX");
+        developer.name = "Alex";
+        expect(developer.doWork()).toBe("Alex is working");
 
+    });
+
+    it("mimic a class", function() {
+
+        let Employee = function(name) {
+            this._name = name;
+        };
+
+        Employee.prototype = {
+            doWork: function() {
+                return `${this._name} is working`; 
+            },
+            get name() {
+                return this._name.toUpperCase();
+            },
+            set name(newName) {
+                if(newName) {
+                    this._name = newName;
+                }
+            }
+        };
+
+        let developer = new Employee("Scott");
+        expect(developer.name).toBe("SCOTT");
+        developer.name = "Alex";
+        expect(developer.doWork()).toBe("Alex is working");
+    });
+
+    it("super constructor", function() {
+        class Person {
+    
+            constructor(name) {
+                this._name = name;
+            }
+            get name() {
+                return this._name;
+            } 
+        }
+
+
+        class Employee extends Person {
+            constructor(name, title) {
+                this._title = title;
+                super(name);
+            }
+
+            get title() {
+                return this._title;
+            }
+        }
+
+        var p1 = new Person("Scott");
+        var e1 = new Employee("Alex", "Developer");
+        expect(p1.name).toBe("Scott");
+        expect(e1.name).toBe("Alex");
+        expect(e1.title).toBe("Developer");
+
+    });
+
+    it("simpler class example", function(){
+
+        class Person {
+            
+            constructor(name) {
+                this._name = name;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(newName){
+                if(newName){
+                    this._name = newName;
+                }
+            }
+
+            doWork() {
+                return this.name + " works for free";
+            } 
+
+        }
+
+        var p1 = new Person();
+        p1.name = "Scott";
+        expect(p1.doWork()).toBe("Scott works for free");
+
+        class Employee extends Person {
+
+            get title() {
+                return this._title;
+            }
+
+            set title(newTitle) {
+                this._title = newTitle;
+            }
+
+            doWork() {
+                return super.doWork() + "!";
+            }
+
+        }
+
+        var p1 = new Person();
+        p1.name = "Scott";
+        expect(p1.doWork()).toBe("Scott works for free");
+
+        var e1 = new Employee();
+        e1.name = "Scott";
+        e1.title = "Developer";
+        expect(e1.doWork()).toBe("Scott works for free!");
+
+        expect(e1.name).toBe("Scott");
+        expect(e1.title).toBe("Developer");
+        expect(e1 instanceof Employee).toBe(true);
+        expect(e1 instanceof Person).toBe(true);
     });
 
     it("can have a base class", function(){
@@ -215,9 +309,17 @@ describe("classes", function(){
             }
         }
 
-        var a = new A();
-        var result = A.prototype.doWork.call(a);
+        A.prototype.newMethod = function() {
+            return "new!";
+        };
+
+        var result = A.prototype.doWork.call();
         expect(result).toBe("complete!");
+
+        var a = new A();
+        expect(a.newMethod()).toBe("new!");
+        expect(a instanceof A).toBe(true);
+        expect(a instanceof Object).toBe(true);
 
     });
 

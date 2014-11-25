@@ -8,9 +8,16 @@
 
 <body ng-app="app" class="container">
 
-   <div class="row">
+   <div class="row" ng-controller="main as main">
        <div class="col-md-12">
-           {{ 2 + 2 }}
+           <form name="main.form">
+               <input type="email" ng-model="main.email" name="email" required maxlength="100"/>
+               <div ng-messages="main.form.email.$error">
+                   <div ng-message="required">You must enter an email</div>
+                   <div ng-message="email">The email is not valid</div>
+               </div>
+           </form>
+           {{ main.email }}
        </div>
    </div>
 

@@ -28,8 +28,8 @@
     		Paddle.call(this);
     		this.x = 25;
     		this.y = 100;
-    		keyboardHandler.registerUpDown(38, () => this.startMoveUp(), this.stopMoveUp());
-    		keyboardHandler.registerUpDown(40, () => this.startMoveDown(), this.stopMoveDown());
+    		keyboardHandler.onArrowUp(38, () => this.startMoveUp(), this.stopMoveUp());
+    		keyboardHandler.onArrowDown(40, () => this.startMoveDown(), this.stopMoveDown());
     	}
     }
 

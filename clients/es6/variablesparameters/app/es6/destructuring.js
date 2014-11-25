@@ -26,9 +26,12 @@ describe("destructuring", function() {
         expect(x).toBe(20);
         expect(y).toBe(10);
 
-        var doWork = function({firstName, lastName, role="developer"}) {
+        var doWork = function(
+            {firstName, lastName, role="developer"}) {
             return role + " " + firstName + " " + lastName;
         };
+
+        doWork({firstName:"Scott"})
 
         let httpPost = function(url, {
                 cache = true,

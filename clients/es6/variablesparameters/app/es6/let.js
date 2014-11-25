@@ -24,7 +24,6 @@ describe("how let works", function(){
 				let x = 3;
 				return x;
 			}
-
 		};
 
 		var result = doWork(true);

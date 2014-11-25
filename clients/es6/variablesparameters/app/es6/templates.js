@@ -23,10 +23,30 @@ describe("template literals", function(){
 		let category = "music";
 		let id = 2112;
 
-		let url = `http://apiserver/${category}/${id}`;
+		let url =  `http://apiserver/${category}/${id}`;
 
 		expect(url).toBe("http://apiserver/music/2112");
 	});
+
+    it("breaking down tags", function(){
+
+        let test = function(literals, ...values) {
+            expect(literals.length).toBe(3);
+            expect(literals[0]).toBe("Hello, ");
+            expect(literals[1]).toBe(" ");
+            expect(literals[2]).toBe("!!");
+
+            expect(values.length).toBe(2);
+            expect(values[0]).toBe("Allen");
+            expect(values[1]).toBe("Scott");
+            return "test";
+        };
+
+        let firstName = "Scott";
+        let lastName = "Allen";
+        let result = test `Hello, ${lastName} ${firstName}!!`;
+        expect(result).toBe("test");
+    });
 
 	it("can use tags", function(){
 

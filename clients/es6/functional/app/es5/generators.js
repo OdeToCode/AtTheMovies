@@ -294,35 +294,20 @@ describe("generators", function() {
       }, $__5, this);
     });
     var outer = $traceurRuntime.initGeneratorFunction(function $__6() {
-      var $__8,
-          $__9;
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
         while (true)
           switch ($ctx.state) {
             case 0:
-              $__8 = inner()[$traceurRuntime.toProperty(Symbol.iterator)]();
-              $ctx.sent = void 0;
-              $ctx.action = 'next';
-              $ctx.state = 12;
-              break;
-            case 12:
-              $__9 = $__8[$traceurRuntime.toProperty($ctx.action)]($ctx.sentIgnoreThrow);
-              $ctx.state = 9;
-              break;
-            case 9:
-              $ctx.state = ($__9.done) ? 3 : 2;
-              break;
-            case 3:
-              $ctx.sent = $__9.value;
-              $ctx.state = 10;
-              break;
+              $ctx.state = 2;
+              return inner();
             case 2:
-              $ctx.state = 12;
-              return $__9.value;
-            case 10:
-              $ctx.state = 14;
+              $ctx.maybeThrow();
+              $ctx.state = 4;
+              break;
+            case 4:
+              $ctx.state = 6;
               return "World";
-            case 14:
+            case 6:
               $ctx.maybeThrow();
               $ctx.state = -2;
               break;
