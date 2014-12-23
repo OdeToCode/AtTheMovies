@@ -3,13 +3,10 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
-    "connect": "~3.3.3",
-    "connect-livereload": "~0.5.2",
     "gulp": "~3.8.10",
-    "gulp-livereload": "~3.0.2",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^0.3.1",
     "gulp-plumber": "^0.6.6",
-    "gulp-traceur": "^0.14.1",
-    "serve-static": "^1.7.1",
-    "tiny-lr": "0.1.4"
+    "gulp-traceur": "^0.14.1"
   }
 }

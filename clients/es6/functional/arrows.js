@@ -3,7 +3,7 @@ describe("arrow functions", function(){
     it("provide a short syntax for defining functions", function(){
 
         let add = (x,y) => x + y;
-        let square = x => x * x;
+        let square = x => x * x; 
         let log = () => console.log("hello!");
 
         log();
@@ -23,25 +23,33 @@ describe("arrow functions", function(){
 
     });
 
-    it("lexically binds to this", function(done){
+    it("lexically binds to this with a class", function(done){
 
-        this.userName = "Scott";
-        console.log(this);
-        setTimeout(() => {
-            console.log(this);
-            expect(this.userName).toBe("Scott");
+        class Person {
+            constructor(name) {
+                this.name = name;
+            }
+
+            doWork(callback) {
+                setTimeout(function() {
+                    callback(this.name);
+                }, 15); 
+            }
+        }
+
+        var person = new Person("Scott");
+        person.doWork(function(result) {
+            expect(result).toBe("Scott");
             done();
-        }, 0);
-
+        }); 
 
     });
 
-    it("lexically binds to this (with class)", function(done){
+    it("lexically binds to this", function(done){
 
         this.userName = "Scott";
         console.log(this);  
         setTimeout(() => {
-            console.log(this);
             expect(this.userName).toBe("Scott");
             done();
         }, 0);

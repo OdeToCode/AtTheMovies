@@ -25,22 +25,27 @@ describe("arrow functions", function() {
     }));
     expect(sum).toBe(10);
   });
+  it("lexically binds to this with a class", function(done) {
+    var Person = function Person(name) {
+      this.name = name;
+    };
+    ($traceurRuntime.createClass)(Person, {doWork: function(callback) {
+        var $__0 = this;
+        setTimeout((function() {
+          callback($__0.name);
+        }), 15);
+      }}, {});
+    var person = new Person("Scott");
+    person.doWork(function(result) {
+      expect(result).toBe("Scott");
+      done();
+    });
+  });
   it("lexically binds to this", function(done) {
     var $__0 = this;
     this.userName = "Scott";
     console.log(this);
     setTimeout((function() {
-      console.log($__0);
-      expect($__0.userName).toBe("Scott");
-      done();
-    }), 0);
-  });
-  it("lexically binds to this (with class)", function(done) {
-    var $__0 = this;
-    this.userName = "Scott";
-    console.log(this);
-    setTimeout((function() {
-      console.log($__0);
       expect($__0.userName).toBe("Scott");
       done();
     }), 0);
