@@ -32,7 +32,7 @@ describe("arrow functions", function() {
     ($traceurRuntime.createClass)(Person, {doWork: function(callback) {
         var $__0 = this;
         setTimeout((function() {
-          callback($__0.name);
+          return callback($__0.name);
         }), 15);
       }}, {});
     var person = new Person("Scott");
@@ -49,5 +49,31 @@ describe("arrow functions", function() {
       expect($__0.userName).toBe("Scott");
       done();
     }), 0);
+  });
+  it("can be used in jasmine", (function() {
+    var numbers = [1, 3, 4];
+    expect(numbers.length).toBe(3);
+  }));
+  it("also works with lodash", function() {
+    var characters = [{
+      name: "barney",
+      age: 36,
+      blocked: false
+    }, {
+      name: "fred",
+      age: 40,
+      blocked: true
+    }, {
+      name: "pebbles",
+      age: 1,
+      blocked: false
+    }];
+    var result1 = _.find(characters, function(character) {
+      return character.age < 40;
+    });
+    var result2 = _.find(characters, (function(character) {
+      return character.age < 40;
+    }));
+    expect(result2.name).toBe("barney");
   });
 });

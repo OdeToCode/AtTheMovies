@@ -11,7 +11,7 @@
     "tests"
   ],
   "devDependencies": {
-    
+    "lodash": "~2.4.1"
   },
   "dependencies": {
     "traceur": "~0.0.45",

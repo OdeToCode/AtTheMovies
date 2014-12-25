@@ -31,9 +31,7 @@ describe("arrow functions", function(){
             }
 
             doWork(callback) {
-                setTimeout(function() {
-                    callback(this.name);
-                }, 15); 
+                setTimeout(() => callback(this.name), 15); 
             }
         }
 
@@ -55,6 +53,27 @@ describe("arrow functions", function(){
         }, 0);
 
 
+    });
+
+    it("can be used in jasmine", () => {
+        var numbers = [1,3,4];
+        expect(numbers.length).toBe(3);
+    });
+
+    it("also works with lodash", function() {
+        let characters = [
+            { name: "barney",  age: 36, blocked: false },
+            { name: "fred",    age: 40, blocked: true },
+            { name: "pebbles", age: 1,  blocked: false }
+        ];
+
+        let result1 = _.find(characters, function(character) {
+            return character.age < 40;
+        });
+        
+        let result2 = _.find(characters, character => character.age < 40);
+
+        expect(result2.name).toBe("barney");
     });
 
 });
