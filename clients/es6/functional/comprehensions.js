@@ -8,8 +8,8 @@ describe("array comprehensions", function(){
             }
         };
 
-        //let n1 = [for (x of range(0,3)) x];
-        // expect(n1).toEqual([0,1,2,3]);
+        let n1 = [for (x of range(0,3)) x];
+        expect(n1).toEqual([0,1,2,3]);
 
         // let n2 = [for (x of range(0,3)) if(x<2) x];
         // expect(n2).toEqual([0,1]);
