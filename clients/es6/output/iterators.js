@@ -11,6 +11,23 @@ describe("iterators", function() {
     }
     expect(sum).toBe(10);
   });
+  it("might have problems when the sequence changes?", (function() {
+    var count = 0;
+    var sum = 0;
+    var numbers = [1, 2, 3, 4];
+    var iterator = numbers.values();
+    var next = iterator.next();
+    while (!next.done) {
+      if (++count == 2) {
+        numbers.push(5);
+        numbers.unshift(1);
+      }
+      sum += next.value;
+      console.log(next.value);
+      next = iterator.next();
+    }
+    expect(sum).toBe(17);
+  }));
   it("cannot 'for in' over iterable", function() {
     var sum = 0;
     var numbers = [1, 2, 3, 4];

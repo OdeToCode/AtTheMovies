@@ -6,7 +6,7 @@ var open = require('gulp-open');
 
 var WEB_PORT = 9000;
 var output = ['output/*.*']
-var sources = ['classes/*.js', 'functional/*.js', 'variablesparameters/*.js'];
+var sources = ['classes/*.js', 'functional/*.js', 'variablesparameters/*.js', 'apis/*.js'];
 
 gulp.task('connect', function() {
     connect.server({

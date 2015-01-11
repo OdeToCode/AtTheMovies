@@ -13,6 +13,26 @@ describe("iterators", function(){
         expect(sum).toBe(10);
     });
 
+    it("might have problems when the sequence changes?", () => {
+      let count = 0;
+      let sum = 0;
+      let numbers = [1,2,3,4];
+
+
+      let iterator = numbers.values();
+      let next = iterator.next();
+      while(!next.done) {
+        if(++count == 2) {
+          numbers.push(5);
+          numbers.unshift(1);
+        }
+        sum += next.value;
+        console.log(next.value);
+        next = iterator.next();
+      }
+      expect(sum).toBe(17);
+    });
+
     it("cannot 'for in' over iterable", function(){
         let sum = 0;
         let numbers = [1,2,3,4];
@@ -116,7 +136,7 @@ describe("iterators", function(){
         expect(result).toEqual(["Tim", "Joy", "Sue"]);
 
     });
-    
+
     it("can take a parameter from next(param)", function() {
 
 		let range = function*(start, end) {
@@ -141,7 +161,7 @@ describe("iterators", function(){
 		    	}
 		    }
 		}
-		
+
 
 		let result = [];
 		let iterator = range2(1,10);
@@ -153,5 +173,5 @@ describe("iterators", function(){
 
 		expect(result).toEqual([1, 2, 4, 8]);
 	});
-    
+
 });
