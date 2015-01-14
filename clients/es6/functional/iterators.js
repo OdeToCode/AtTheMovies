@@ -13,7 +13,7 @@ describe("iterators", function(){
         expect(sum).toBe(10);
     });
 
-    it("might have problems when the sequence changes?", () => {
+    it("doesn't have problems when the sequence changes", () => {
       let count = 0;
       let sum = 0;
       let numbers = [1,2,3,4];
