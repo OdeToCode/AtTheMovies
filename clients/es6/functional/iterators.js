@@ -37,10 +37,32 @@ describe("iterators", function(){
         let sum = 0;
         let numbers = [1,2,3,4];
 
-        for(let i in numbers.values()) {
+        for(let i in numbers) {
             sum += i;
         }
         expect(sum === 10).toBe(false);
+        expect(typeof sum).toBe("string");
+    });
+
+    it("for of will work with a string", function(){
+
+        let result = "";
+        let message = "Hello";
+        for(let c of message) {
+            result += c;
+        }
+        expect(result).toBe("Hello");
+
+    });
+
+    it("for in only gets available index", function(){
+        let sum = 0;
+        let numbers = [1,2,3,4];
+
+        for(let i in numbers) {
+            sum += numbers[i]; // notice the indexer
+        }
+        expect(sum).toBe(10);
     });
 
     it("can 'for of' over iterable", function(){

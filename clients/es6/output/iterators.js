@@ -11,7 +11,7 @@ describe("iterators", function() {
     }
     expect(sum).toBe(10);
   });
-  it("might have problems when the sequence changes?", (function() {
+  it("doesn't have problems when the sequence changes", (function() {
     var count = 0;
     var sum = 0;
     var numbers = [1, 2, 3, 4];
@@ -31,10 +31,31 @@ describe("iterators", function() {
   it("cannot 'for in' over iterable", function() {
     var sum = 0;
     var numbers = [1, 2, 3, 4];
-    for (var i in numbers.values()) {
+    for (var i in numbers) {
       sum += i;
     }
     expect(sum === 10).toBe(false);
+    expect(typeof sum).toBe("string");
+  });
+  it("for of will work with a string", function() {
+    var result = "";
+    var message = "Hello";
+    for (var $__3 = message[$traceurRuntime.toProperty(Symbol.iterator)](),
+        $__4; !($__4 = $__3.next()).done; ) {
+      var c = $__4.value;
+      {
+        result += c;
+      }
+    }
+    expect(result).toBe("Hello");
+  });
+  it("for in only gets available index", function() {
+    var sum = 0;
+    var numbers = [1, 2, 3, 4];
+    for (var i in numbers) {
+      sum += numbers[i];
+    }
+    expect(sum).toBe(10);
   });
   it("can 'for of' over iterable", function() {
     var sum = 0;
