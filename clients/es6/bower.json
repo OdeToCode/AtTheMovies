@@ -14,7 +14,7 @@
     "lodash": "~2.4.1"
   },
   "dependencies": {
-    "traceur": "~0.0.45",
+    "traceur": "~0.0.81",
     "jasmine": "~2.0.0"
   }
 }

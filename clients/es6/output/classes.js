@@ -140,7 +140,41 @@ describe("classes", function() {
     expect(e1 instanceof Employee).toBe(true);
     expect(e1 instanceof Person).toBe(true);
   });
-  it("can have a base class", function() {});
+  it("can have a base class", function() {
+    var Person = function Person(name) {
+      this.name = name;
+    };
+    ($traceurRuntime.createClass)(Person, {
+      get name() {
+        return this._name.toUpperCase();
+      },
+      set name(newName) {
+        if (newName) {
+          this._name = newName;
+        }
+      },
+      toString: function() {
+        return this.name;
+      }
+    }, {});
+    var Employee = function Employee(name, title) {
+      $traceurRuntime.superConstructor($Employee).call(this, name);
+      this._title = title;
+    };
+    var $Employee = Employee;
+    ($traceurRuntime.createClass)(Employee, {
+      get title() {
+        return this._title;
+      },
+      toString: function() {
+        return this.title + " " + $traceurRuntime.superGet(this, $Employee.prototype, "name");
+      }
+    }, {}, Person);
+    var e = new Employee("Scott", "Developer");
+    expect(e.name).toBe("SCOTT");
+    expect(e.title).toBe("Developer");
+    expect(e.toString()).toBe("Developer SCOTT");
+  });
   it("must call super for base class ctor when derived has ctor", function() {
     var A = function A(name) {
       this._name = "A";
@@ -275,12 +309,28 @@ describe("classes", function() {
     expect(b.superName).toBe("SCOTT");
     expect(b.name).toBe("Scott");
   });
+  it("can have static members", (function() {
+    var Employee = function Employee(name) {
+      this._name = name;
+    };
+    var $Employee = Employee;
+    ($traceurRuntime.createClass)(Employee, {get name() {
+        return this._name;
+      }}, {convert: function(thing) {
+        if (thing.name) {
+          return new $Employee(thing.name);
+        }
+      }});
+    expect(Employee.convert).toBeDefined();
+    expect(new Employee().convert).toBeUndefined();
+    var person = {name: "Scott"};
+    var newHire = Employee.convert(person);
+    expect(newHire.name).toBe("Scott");
+  }));
   it("can have private properties with Symbols", function() {
     var _name = Symbol();
     var A = function A(name) {
       this[_name] = name;
-      console.log(name);
-      console.log(this.name);
     };
     ($traceurRuntime.createClass)(A, {get name() {
         return this[_name];

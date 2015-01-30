@@ -11,7 +11,6 @@ describe("template literals", function() {
   });
   it("can be multi-line", function() {
     var message = "This is\n                       a short, but multi-line message";
-    console.log(message);
     expect(message.length).toBe(62);
   });
   it("can help build URLs", function() {

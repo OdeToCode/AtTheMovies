@@ -57,7 +57,18 @@ describe("destructuring", function() {
     expect(state).toBe("Maryland");
     expect(country).toBe("USA");
   });
-  it("can destructure arrays", function() {});
+  it("can destructure arrays", function() {
+    var doWork = function() {
+      return [1, 3, 2];
+    };
+    var $__0 = doWork(),
+        x = $__0[1],
+        y = $__0[2],
+        z = $__0[3];
+    expect(x).toBe(3);
+    expect(y).toBe(2);
+    expect(z).toBeUndefined();
+  });
   it("can destructure objects", function() {
     var doWork = function() {
       return {

@@ -12,7 +12,7 @@ describe("destructuring", function() {
         expect(x).toBe(22);
         expect(y).toBe(44);
 
-        
+
         let doWork = function(
             {firstName, lastName, role="developer"}) {
             return role + " " + firstName + " " + lastName;
@@ -56,18 +56,18 @@ describe("destructuring", function() {
         expect(state).toBe("Maryland");
         expect(country).toBe("USA");
   });
-  
+
 	it("can destructure arrays", function() {
 
-		// let doWork = function(){
-		// 	return [1, 3, 2];
-		// };
+		let doWork = function(){
+			return [1, 3, 2];
+		};
 
-		// let [, x, y, z] = doWork();
+		let [, x, y, z] = doWork();
 
-		// expect(x).toBe(3);
-		// expect(y).toBe(2);
-		// expect(z).toBeUndefined();
+		expect(x).toBe(3);
+		expect(y).toBe(2);
+		expect(z).toBeUndefined();
 
 	});
 
@@ -78,13 +78,13 @@ describe("destructuring", function() {
 			    firstName: "Scott",
 		        lastName: "Allen",
 		        handles: {
-		        	twitter: "OdeToCode"    
+		        	twitter: "OdeToCode"
 		    	}
-		    };		   
+		    };
 		};
 
-		let { 
-				firstName, 
+		let {
+				firstName,
 			  	handles:{twitter}
 			} = doWork();
 
@@ -100,14 +100,14 @@ describe("destructuring", function() {
 			return data;
 		};
 
-		
+
 		let result = doWork(
 				"api/test", {
-					data: "test", 
+					data: "test",
 					cache: false
 				}
 			);
-		
+
 		expect(result).toBe("test");
 
 	});

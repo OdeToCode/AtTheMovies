@@ -10,7 +10,6 @@ describe("arrow functions", function() {
     var log = (function() {
       return console.log("hello!");
     });
-    log();
     var result = square(add(3, 5));
     expect(result).toBe(64);
   });
@@ -44,7 +43,6 @@ describe("arrow functions", function() {
   it("lexically binds to this", function(done) {
     var $__0 = this;
     this.userName = "Scott";
-    console.log(this);
     setTimeout((function() {
       expect($__0.userName).toBe("Scott");
       done();

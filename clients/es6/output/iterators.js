@@ -23,7 +23,6 @@ describe("iterators", function() {
         numbers.unshift(1);
       }
       sum += next.value;
-      console.log(next.value);
       next = iterator.next();
     }
     expect(sum).toBe(17);

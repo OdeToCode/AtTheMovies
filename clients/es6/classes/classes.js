@@ -79,7 +79,7 @@ describe("classes", function(){
 
         Employee.prototype = {
             doWork: function() {
-                return `${this._name} is working`; 
+                return `${this._name} is working`;
             },
             get name() {
                 return this._name.toUpperCase();
@@ -99,13 +99,13 @@ describe("classes", function(){
 
     it("super constructor", function() {
         class Person {
-    
+
             constructor(name) {
                 this._name = name;
             }
             get name() {
                 return this._name;
-            } 
+            }
         }
 
 
@@ -131,7 +131,7 @@ describe("classes", function(){
     it("simpler class example", function(){
 
         class Person {
-            
+
             constructor(name) {
                 this._name = name;
             }
@@ -148,7 +148,7 @@ describe("classes", function(){
 
             doWork() {
                 return this.name + " works for free";
-            } 
+            }
 
         }
 
@@ -189,46 +189,46 @@ describe("classes", function(){
 
     it("can have a base class", function(){
 
-        // class Person{
-        //     constructor(name) {
-        //         this.name = name;
-        //     }
+        class Person{
+            constructor(name) {
+                this.name = name;
+            }
 
-        //     get name() {
-        //         return this._name.toUpperCase();
-        //     }
+            get name() {
+                return this._name.toUpperCase();
+            }
 
-        //     set name(newName){
-        //         if(newName){
-        //             this._name = newName;
-        //         }
-        //     }
+            set name(newName){
+                if(newName){
+                    this._name = newName;
+                }
+            }
 
-        //     toString() {
-        //         return this.name;
-        //     }
-        // }
+            toString() {
+                return this.name;
+            }
+        }
 
-        // class Employee extends Person {
-        //     constructor(name, title){
-        //         super(name);
-        //         this._title = title;
-        //     }
+        class Employee extends Person {
+            constructor(name, title){
+                super(name);
+                this._title = title;
+            }
 
-        //     get title(){
-        //         return this._title;
-        //     }
+            get title(){
+                return this._title;
+            }
 
-        //     toString() {
-        //         // super is available from methods or constructor
-        //         return this.title + " " + super();
-        //     }
-        // }
+            toString() {
+                // super is available from methods or constructor
+                return this.title + " " + super.name;
+            }
+        }
 
-        // var e = new Employee("Scott", "Developer");
-        // expect(e.name).toBe("SCOTT");
-        // expect(e.title).toBe("Developer");
-        // expect(e.toString()).toBe("Developer SCOTT");
+        var e = new Employee("Scott", "Developer");
+        expect(e.name).toBe("SCOTT");
+        expect(e.title).toBe("Developer");
+        expect(e.toString()).toBe("Developer SCOTT");
     });
 
     it("must call super for base class ctor when derived has ctor", function(){
@@ -413,6 +413,34 @@ describe("classes", function(){
 
     });
 
+    it("can have static members", () => {
+
+        class Employee {
+            constructor(name) {
+                this._name = name;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            static convert(thing) {
+                if(thing.name) {
+                    return new Employee(thing.name);
+                }
+            }
+
+        }
+
+        expect(Employee.convert).toBeDefined();
+        expect(new Employee().convert).toBeUndefined();
+
+        let person = { name: "Scott" };
+        let newHire = Employee.convert(person);
+        expect(newHire.name).toBe("Scott");
+
+    });
+
     it("can have private properties with Symbols", function(){
 
         var _name = Symbol();
@@ -420,8 +448,6 @@ describe("classes", function(){
         class A {
             constructor(name){
                 this[_name] = name;
-                console.log(name);
-                console.log(this.name);
             }
 
             get name(){

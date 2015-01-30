@@ -3,10 +3,9 @@ describe("arrow functions", function(){
     it("provide a short syntax for defining functions", function(){
 
         let add = (x,y) => x + y;
-        let square = x => x * x; 
+        let square = x => x * x;
         let log = () => console.log("hello!");
 
-        log();
         let result = square(add(3,5));
         expect(result).toBe(64);
 
@@ -31,7 +30,7 @@ describe("arrow functions", function(){
             }
 
             doWork(callback) {
-                setTimeout(() => callback(this.name), 15); 
+                setTimeout(() => callback(this.name), 15);
             }
         }
 
@@ -39,14 +38,13 @@ describe("arrow functions", function(){
         person.doWork(function(result) {
             expect(result).toBe("Scott");
             done();
-        }); 
+        });
 
     });
 
     it("lexically binds to this", function(done){
 
         this.userName = "Scott";
-        console.log(this);  
         setTimeout(() => {
             expect(this.userName).toBe("Scott");
             done();
@@ -70,7 +68,7 @@ describe("arrow functions", function(){
         let result1 = _.find(characters, function(character) {
             return character.age < 40;
         });
-        
+
         let result2 = _.find(characters, character => character.age < 40);
 
         expect(result2.name).toBe("barney");
