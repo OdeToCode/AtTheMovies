@@ -158,6 +158,20 @@ describe("iterators", function(){
 
     });
 
+    it("can process exceptions", function() {
+
+        let stockTicker = function*() {
+            yield 10;
+            yield 11;
+            throw new Error("oops!");
+        };
+
+        var iterator = stockTicker();
+        expect(iterator.next().value).toBe(10);
+        expect(iterator.next().value).toBe(11);
+        expect(() => iterator.next()).toThrow();
+    });
+
     it("can take a parameter from next(param)", function() {
 
 		let range = function*(start, end) {

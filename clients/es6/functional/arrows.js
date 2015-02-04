@@ -1,3 +1,40 @@
+class MovieController {
+
+    constructor($http) {
+
+    }
+
+    refreshMovies() {
+        // ...
+    }
+
+}
+
+angular.module("moduleName").controller("MovieController",
+         ["$http", MovieController])
+
+class MovieData {
+
+    constructor($http){
+        this.$http = $http;
+    }
+
+    getAll() {
+        this.$http.get("/api/movies")
+    }
+}
+
+angular.module("module").factory("MovieData", MovieData);
+//  var serivce = MovieData();
+
+// use this one
+angular.module("module").service("MovieData", MovieData);
+// var service = new MovieData();
+
+
+// break till 10:30
+
+
 describe("arrow functions", function(){
 
     it("provide a short syntax for defining functions", function(){
@@ -69,7 +106,8 @@ describe("arrow functions", function(){
             return character.age < 40;
         });
 
-        let result2 = _.find(characters, character => character.age < 40);
+        let result2 = _.find(characters,
+            character => character.age < 40);
 
         expect(result2.name).toBe("barney");
     });

@@ -3,6 +3,7 @@ describe("classes", function(){
     it("can have methods", function(){
 
         class Employee {
+
            hire(){
                this.hired = true;
            }
@@ -336,6 +337,7 @@ describe("classes", function(){
                 return "work b";
             }
             doMoreWork() {
+
                 return this.doWork() + super.doWork();
             }
         }

@@ -57,6 +57,8 @@ describe("template literals", function(){
 					result += values[i];
 				}
 			}
+		
+
 			return result.toUpperCase();
 		};
 

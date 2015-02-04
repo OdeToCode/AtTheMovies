@@ -26,26 +26,11 @@ describe("destructuring", function() {
     var odds = [1, 3, 5, 7, 9];
     var $__1 = odds,
         first = $__1[0],
-        secon = $__1[1],
+        second = $__1[1],
         rest = Array.prototype.slice.call($__1, 2);
     expect(first).toBe(1);
-    expect(secon).toBe(3);
+    expect(second).toBe(3);
     expect(rest).toEqual([5, 7, 9]);
-    var employee = {
-      firstName: "Scott",
-      address: {
-        state: "Maryland",
-        country: "USA"
-      },
-      favoriteNumbers: [45, 55, 32, 13]
-    };
-    var $__2 = employee,
-        firstName = $__2.firstName,
-        state = $__2.address.state,
-        second = $__2.favoriteNumbers[1];
-    expect(firstName).toBe("Scott");
-    expect(state).toBe("Maryland");
-    expect(second).toBe(55);
   });
   it("can have defaults", function() {
     var $__1,

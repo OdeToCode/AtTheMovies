@@ -27,26 +27,26 @@ describe("destructuring", function() {
         expect(result).toBe("developer Scott Allen");
 
         let odds = [1,3,5,7,9];
-        let [first, secon, ...rest] = odds;
+        let [first, second, ...rest] = odds;
 
         expect(first).toBe(1);
-        expect(secon).toBe(3);
+        expect(second).toBe(3);
         expect(rest).toEqual([5,7,9]);
 
-        var employee = {
-          firstName: "Scott",
-          address: {
-            state: "Maryland",
-            country: "USA"
-          },
-          favoriteNumbers: [45,55,32,13]
-        };
-
-        var { firstName, address: {state}, favoriteNumbers: [,second]} = employee;
-
-        expect(firstName).toBe("Scott");
-        expect(state).toBe("Maryland");
-        expect(second).toBe(55);
+        // var employee = {
+        //   firstName: "Scott",
+        //   address: {
+        //     state: "Maryland",
+        //     country: "USA"
+        //   },
+        //   favoriteNumbers: [45,55,32,13]
+        // };
+		//
+        // var { firstName, address: {state}, favoriteNumbers: [,second]} = employee;
+		//
+        // expect(firstName).toBe("Scott");
+        // expect(state).toBe("Maryland");
+        // expect(second).toBe(55);
     });
 
   it("can have defaults", function(){

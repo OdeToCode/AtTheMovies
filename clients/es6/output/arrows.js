@@ -1,4 +1,15 @@
 "use strict";
+var MovieController = function MovieController($http) {};
+($traceurRuntime.createClass)(MovieController, {refreshMovies: function() {}}, {});
+angular.module("moduleName").controller("MovieController", ["$http", MovieController]);
+var MovieData = function MovieData($http) {
+  this.$http = $http;
+};
+($traceurRuntime.createClass)(MovieData, {getAll: function() {
+    this.$http.get("/api/movies");
+  }}, {});
+angular.module("module").factory("MovieData", MovieData);
+angular.module("module").service("MovieData", MovieData);
 describe("arrow functions", function() {
   it("provide a short syntax for defining functions", function() {
     var add = (function(x, y) {

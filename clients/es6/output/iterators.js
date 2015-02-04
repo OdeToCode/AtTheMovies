@@ -157,6 +157,41 @@ describe("iterators", function() {
     }
     expect(result).toEqual(["Tim", "Joy", "Sue"]);
   });
+  it("can process exceptions", function() {
+    var stockTicker = $traceurRuntime.initGeneratorFunction(function $__5() {
+      return $traceurRuntime.createGeneratorInstance(function($ctx) {
+        while (true)
+          switch ($ctx.state) {
+            case 0:
+              $ctx.state = 2;
+              return 10;
+            case 2:
+              $ctx.maybeThrow();
+              $ctx.state = 4;
+              break;
+            case 4:
+              $ctx.state = 6;
+              return 11;
+            case 6:
+              $ctx.maybeThrow();
+              $ctx.state = 8;
+              break;
+            case 8:
+              throw new Error("oops!");
+              $ctx.state = -2;
+              break;
+            default:
+              return $ctx.end();
+          }
+      }, $__5, this);
+    });
+    var iterator = stockTicker();
+    expect(iterator.next().value).toBe(10);
+    expect(iterator.next().value).toBe(11);
+    expect((function() {
+      return iterator.next();
+    })).toThrow();
+  });
   it("can take a parameter from next(param)", function() {
     var range = $traceurRuntime.initGeneratorFunction(function $__5(start, end) {
       var current,
