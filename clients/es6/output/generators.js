@@ -312,4 +312,7 @@ describe("generators", function() {
     results.push(iterator.next().value);
     expect(results).toEqual([0, 2, undefined]);
   });
+  it("generator iterators can throw", function() {
+    expect(true).toBe(false);
+  });
 });

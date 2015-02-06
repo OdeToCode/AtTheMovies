@@ -112,4 +112,8 @@ describe("generators", function(){
 
     });
 
+    it("generator iterators can throw", function() {
+            expect(true).toBe(false);
+    });
+
 });
