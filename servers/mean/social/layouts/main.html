@@ -1,0 +1,59 @@
+<html ng-app="social">
+    <head>
+        <title>Social</title>
+    </head>
+    <body ng-controller="MainController as main">
+
+        <div>
+            {{ main.error }}
+            <table>
+                <tr ng-repeat="post in main.posts">
+                    <td>{{post.body}}</td>
+                    <td>{{post.username}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <form ng-submit="main.savePost()">
+                <input type="text" ng-model="main.newPost.body" placeholder="Body" />
+                <input type="text" ng-model="main.newPost.username" placeholder="Username" />
+                <input type="submit" value="Save"/>
+            </form>
+        </div>
+
+    </body>
+    <script src="angular.js"></script>
+    <script>
+        var app = angular.module("social", []);
+        app.controller("MainController", function($http){
+
+            var model = this;
+
+            var onPosts = function(response) {
+                console.log(response.data);
+                model.posts = response.data;
+            };
+
+            var onError = function(response) {
+                model.error = "Could not fetch posts";
+            };
+
+            var refreshPosts = function() {
+                $http.get("/api/posts").then(onPosts, onError);
+            };
+
+            var initialize = function() {
+                model.newPost = {};
+                refreshPosts();
+            };
+
+            model.savePost = function() {
+                $http.post("/api/posts", model.newPost).then(initialize);
+            };
+
+            initialize();
+
+        });
+    </script>
+</html>

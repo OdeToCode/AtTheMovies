@@ -5,10 +5,18 @@ var Post = require("./models/post");
 var app = express();
 app.use(bodyParser.json());
 
+app.get("/", function(request, response) {
+    response.sendFile(__dirname + "/layouts/main.html");
+});
+
+app.get("/angular.js", function(request, response) {
+    response.sendFile(__dirname + "/bower_components/angular/angular.js");
+});
+
 app.get("/api/posts", function(request, response){
-    response.json({
-        username: "sallen",
-        body: "Trying out node"
+    Post.find().exec(function(error, posts){
+        if(error) next(error);
+        response.status(200).json(posts);
     });
 });
 
@@ -20,8 +28,8 @@ app.post("/api/posts", function(request, response) {
     })
 
     post.save(function(error, post){
-        if(err) return next(err);
-        response.json(201, post);
+        if(error) return next(error);
+        response.status(201).json(post);
     });
 });
 
