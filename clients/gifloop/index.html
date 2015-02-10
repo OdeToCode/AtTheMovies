@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>giflook</title>
+        <style>
+            body { margin: 0; }
+            #gifs > img {
+                display:block;
+                float: left;
+                width: 50vw;
+                height: 50vm;
+                object-fit:cover;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+            <div id="gifs">
+                <h1>GIFS go here</h1>
+            </div>
+        </div>
+        <script src="jspm_packages/system.js"></script>
+        <script>
+            System.import("config");
+            System.import("lib/main");
+        </script>
+    </body>
+</html>
