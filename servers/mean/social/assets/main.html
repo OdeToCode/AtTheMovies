@@ -1,12 +1,13 @@
 <html ng-app="social">
     <head>
         <title>Social</title>
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
     </head>
     <body ng-controller="MainController as main">
 
-        <div>
+        <div class="container">
             {{ main.error }}
-            <table>
+            <table class="table">
                 <tr ng-repeat="post in main.posts">
                     <td>{{post.body}}</td>
                     <td>{{post.username}}</td>
@@ -14,16 +15,16 @@
             </table>
         </div>
 
-        <div>
+        <div class="container">
             <form ng-submit="main.savePost()">
-                <input type="text" ng-model="main.newPost.body" placeholder="Body" />
-                <input type="text" ng-model="main.newPost.username" placeholder="Username" />
-                <input type="submit" value="Save"/>
+                <input class="form-control" type="text" ng-model="main.newPost.body" placeholder="Body" />
+                <input class="form-control" type="text" ng-model="main.newPost.username" placeholder="Username" />
+                <input class="btn btn-primary" type="submit" value="Save"/>
             </form>
         </div>
 
     </body>
-    <script src="angular.js"></script>
+    <script src="angular/angular.js"></script>
     <script>
         var app = angular.module("social", []);
         app.controller("MainController", function($http){
