@@ -40,3 +40,4 @@ log.txt
 .sdf
 packages/
 TestResults/
+node_modules

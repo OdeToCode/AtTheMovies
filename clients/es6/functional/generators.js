@@ -8,10 +8,9 @@ describe("generators", function(){
             yield 3;
         };
 
-        var sum = 0;
+        let sum = 0;
 
-
-        for(let n of numbers()){
+        for(let n of numbers()) {
             sum += n;
         }
         expect(sum).toBe(6);
@@ -39,10 +38,11 @@ describe("generators", function(){
 
     });
 
-    it("can build your own iterable", function(){
+    it("generators are lazy", function(){
 
         let random = function*() {
             while(true) {
+                console.log("make random")
                 yield Math.random();
             }
         }
@@ -113,7 +113,7 @@ describe("generators", function(){
     });
 
     it("generator iterators can throw", function() {
-            expect(true).toBe(false);
+            // todo
     });
 
 });

@@ -1,7 +1,7 @@
 <html ng-app="social">
     <head>
         <title>Social</title>
-        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
     </head>
     <body ng-controller="MainController as main">
 
@@ -24,37 +24,6 @@
         </div>
 
     </body>
-    <script src="angular/angular.js"></script>
-    <script>
-        var app = angular.module("social", []);
-        app.controller("MainController", function($http){
-
-            var model = this;
-
-            var onPosts = function(response) {
-                console.log(response.data);
-                model.posts = response.data;
-            };
-
-            var onError = function(response) {
-                model.error = "Could not fetch posts";
-            };
-
-            var refreshPosts = function() {
-                $http.get("/api/posts").then(onPosts, onError);
-            };
-
-            var initialize = function() {
-                model.newPost = {};
-                refreshPosts();
-            };
-
-            model.savePost = function() {
-                $http.post("/api/posts", model.newPost).then(initialize);
-            };
-
-            initialize();
-
-        });
-    </script>
+    <script src="/angular/angular.js"></script>
+    <script src="app.js"></script>
 </html>

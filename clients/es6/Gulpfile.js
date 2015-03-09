@@ -48,4 +48,4 @@ gulp.task('watch', function(){
     gulp.watch(output, ['reload']);
 });
 
-gulp.task('default', ['connect', 'traceur', 'open', 'watch']);
+gulp.task('default', ['connect', 'sixtofive', 'open', 'watch']);

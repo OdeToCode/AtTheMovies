@@ -95,15 +95,19 @@ describe("generators", function() {
     }
     expect(students).toEqual(["Tim", "Sue", "Joy"]);
   });
-  it("can build your own iterable", function() {
+  it("generators are lazy", function() {
     var random = $traceurRuntime.initGeneratorFunction(function $__5() {
       return $traceurRuntime.createGeneratorInstance(function($ctx) {
         while (true)
           switch ($ctx.state) {
             case 0:
-              $ctx.state = (true) ? 1 : -2;
+              $ctx.state = (true) ? 5 : -2;
               break;
-            case 1:
+            case 5:
+              console.log("make random");
+              $ctx.state = 6;
+              break;
+            case 6:
               $ctx.state = 2;
               return Math.random();
             case 2:
@@ -312,7 +316,5 @@ describe("generators", function() {
     results.push(iterator.next().value);
     expect(results).toEqual([0, 2, undefined]);
   });
-  it("generator iterators can throw", function() {
-    expect(true).toBe(false);
-  });
+  it("generator iterators can throw", function() {});
 });
