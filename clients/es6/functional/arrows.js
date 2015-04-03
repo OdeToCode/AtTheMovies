@@ -2,6 +2,8 @@ describe("arrow functions", function(){
 
     it("provide a short syntax for defining functions", function(){
 
+
+
         let add = (x,y) => x + y;
         let square = x => x * x;
         let log = () => console.log("hello!");
@@ -30,6 +32,7 @@ describe("arrow functions", function(){
             }
 
             doWork(callback) {
+
                 setTimeout(() => callback(this.name), 15);
             }
         }
@@ -69,8 +72,7 @@ describe("arrow functions", function(){
             return character.age < 40;
         });
 
-        let result2 = _.find(characters,
-            character => character.age < 40);
+        let result2 = _.find(characters, c => c.age < 40);
 
         expect(result2.name).toBe("barney");
     });

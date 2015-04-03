@@ -36,6 +36,8 @@ describe("iterators", function(){
         let sum = 0;
         let numbers = [1,2,3,4];
 
+        // 0, 1, 2, 3
+        // numbers[i]
         for(let i in numbers) {
             sum += i;
         }

@@ -27,6 +27,7 @@ describe("template literals", function(){
 		expect(url).toBe("http://apiserver/music/2112");
 	});
 
+
     it("breaking down tags", function(){
 
         let test = function(literals, ...values) {
@@ -57,7 +58,7 @@ describe("template literals", function(){
 					result += values[i];
 				}
 			}
-		
+
 
 			return result.toUpperCase();
 		};
