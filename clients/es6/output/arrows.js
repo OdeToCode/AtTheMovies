@@ -69,8 +69,8 @@ describe("arrow functions", function() {
     var result1 = _.find(characters, function(character) {
       return character.age < 40;
     });
-    var result2 = _.find(characters, (function(character) {
-      return character.age < 40;
+    var result2 = _.find(characters, (function(c) {
+      return c.age < 40;
     }));
     expect(result2.name).toBe("barney");
   });
