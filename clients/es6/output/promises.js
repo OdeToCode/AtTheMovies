@@ -60,4 +60,22 @@ describe("promises", function() {
       done();
     }));
   });
+  it("can create a rejected promise", function(done) {
+    var doAsyncWork = function() {
+      return Promise.reject("error!");
+    };
+    doAsyncWork().then((function() {}), (function(message) {
+      expect(message).toBe("error!");
+      done();
+    }));
+  });
+  it("provides catch API", function(done) {
+    var doAsyncWork = function() {
+      return Promise.reject("error!");
+    };
+    doAsyncWork().then((function() {})).catch((function(message) {
+      expect(message).toBe("error!");
+      done();
+    }));
+  });
 });

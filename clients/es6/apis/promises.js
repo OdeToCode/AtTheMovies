@@ -84,5 +84,28 @@ describe("promises", function() {
 
     });
 
+    it("can create a rejected promise", function(done) {
+        let doAsyncWork = function() {
+            return Promise.reject("error!");  
+        };
+       
+        doAsyncWork().then(() => {}, message => {
+            expect(message).toBe("error!");
+            done(); 
+       });
+    });
+
+    it("provides catch API", function(done) {
+        let doAsyncWork = function() {
+            return Promise.reject("error!");
+        }
+         
+        doAsyncWork().then(() => {})
+                     .catch(message => {
+                        expect(message).toBe("error!");
+                        done(); 
+                     });
+         
+    });
 
 });
