@@ -112,8 +112,8 @@ describe("classes", function(){
 
         class Employee extends Person {
             constructor(name, title) {
-                this._title = title;
                 super(name);
+                this._title = title;
             }
 
             get title() {
@@ -247,7 +247,9 @@ describe("classes", function(){
 
         class B extends A {
             constructor(){
-                this._test = super.test();
+                super();
+                let result = super.test();
+                this._test = result;
             }
         }
 
@@ -256,7 +258,7 @@ describe("classes", function(){
         }
 
         expect(new A()._name).toBe("A");
-        expect(new B()._name).toBeUndefined();
+        //expect(new B()._name).toBeUndefined();
         expect(new B()._test).toBe("test");
         expect(new C()._name).toBe("A");
 
@@ -344,6 +346,7 @@ describe("classes", function(){
 
         class C extends B {
             constructor() {
+                super();
                 this.work = this.doWork();
             }
         }
@@ -368,10 +371,10 @@ describe("classes", function(){
 
         class B extends A {
             constructor() {
+                super();
                 this.bisa = this instanceof A;
                 this.bisb = this instanceof B;
                 this.biso = this instanceof Object;
-                super();
             }
         }
 

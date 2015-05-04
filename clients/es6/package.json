@@ -4,7 +4,6 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "~3.8.10",
-    "gulp-6to5": "^2.0.2",
     "gulp-connect": "^2.2.0",
     "gulp-open": "^0.3.1",
     "gulp-plumber": "^0.6.6",

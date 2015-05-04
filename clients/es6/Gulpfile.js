@@ -3,7 +3,7 @@ var connect = require('gulp-connect');
 var traceur = require('gulp-traceur');
 var plumber = require('gulp-plumber');
 var open = require('gulp-open');
-var to5 = require('gulp-6to5');
+var babel = require('gulp-babel');
 
 var WEB_PORT = 9000;
 var output = ['output/*.*']
@@ -25,10 +25,10 @@ gulp.task('traceur', function(){
         .pipe(gulp.dest("output"));
 });
 
-gulp.task('sixtofive', function () {
+gulp.task('babel', function () {
     return gulp.src(sources)
         .pipe(plumber())
-        .pipe(to5())
+        .pipe(babel())
         .pipe(gulp.dest("output"));
 });
 
@@ -44,8 +44,8 @@ gulp.task('reload', function(){
 })
 
 gulp.task('watch', function(){
-    gulp.watch(sources, ['traceur']);
+    gulp.watch(sources, ['babel']);
     gulp.watch(output, ['reload']);
 });
 
-gulp.task('default', ['connect', 'sixtofive', 'open', 'watch']);
+gulp.task('default', ['connect', 'babel', 'open', 'watch']);

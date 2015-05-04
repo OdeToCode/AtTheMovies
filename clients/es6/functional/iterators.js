@@ -1,4 +1,4 @@
-describe("iterators", function(){
+describe("iterators", function() {
 
     it("works with iterator method at low level", function(){
         let sum = 0;
@@ -176,7 +176,7 @@ describe("iterators", function(){
 
     it("can take a parameter from next(param)", function() {
 
-		let range = function*(start, end) {
+		let range1 = function*(start, end) {
 			let current = start;
 			while(current <= end) {
 				let delta = yield current;
@@ -185,30 +185,53 @@ describe("iterators", function(){
 		}
 
 		let range2 = function(start, end) {
-		    let current = start;
+		    let firstCall = true;
+            let current = start;
 		    return {
-		    	next(delta = 0) {
-		    		let result = { value: undefined, done: true };
-                    current += delta;
-		    		if(current <= end) {
+		    	next(delta = 1) {                    		                  		    		
+		    		let result = { value: current, done: true};
+                    
+                    if(firstCall){
+                        firstCall = false;
+                    }
+                    else {
+                        current += delta;
+                    }
+                    
+                    if(current <= end) {
                         result.value = current;
-		    		    result.done = false;
-		    		}
-		    		return result;
+                        result.done = false;
+                    }
+                    return result;
 		    	}
 		    }
 		}
 
+        let iterate1 = function(iterator) {
+          let result = [];
+          let next = iterator.next();
+          while(!next.done) {
+              result.push(next.value);
+              next = iterator.next(next.value);
+          }
+          return result;
+        };
 
-		let result = [];
-		let iterator = range2(1,10);
-		let next = iterator.next();
-		while(!next.done) {
-			result.push(next.value);
-			next = iterator.next(next.value);
-		}
+        let iterate2 = function(iterator) {
+          let result = [];
+          let next = iterator.next();
+          while(!next.done) {
+              result.push(next.value);
+              next = iterator.next();
+          }
+          return result;
+        };
 
-		expect(result).toEqual([1, 2, 4, 8]);
+		expect(iterate1(range1(1,10))).toEqual([1,2,4,8]);
+        expect(iterate2(range1(1,10))).toEqual([1,2,3,4,5,6,7,8,9,10]);
+        
+        expect(iterate1(range2(1,10))).toEqual([1,2,4,8]);
+        expect(iterate2(range2(1,10))).toEqual([1,2,3,4,5,6,7,8,9,10]);
 	});
 
 });
