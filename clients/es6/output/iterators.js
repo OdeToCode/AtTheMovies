@@ -302,6 +302,36 @@ describe("iterators", function () {
 
     it("can take a parameter from next(param)", function () {
 
+        var range0 = regeneratorRuntime.mark(function range0(start, end) {
+            var current, delta;
+            return regeneratorRuntime.wrap(function range0$(context$3$0) {
+                while (1) switch (context$3$0.prev = context$3$0.next) {
+                    case 0:
+                        current = start;
+
+                    case 1:
+                        if (!(current <= end)) {
+                            context$3$0.next = 8;
+                            break;
+                        }
+
+                        context$3$0.next = 4;
+                        return current;
+
+                    case 4:
+                        delta = context$3$0.sent;
+
+                        current += delta || 1;
+                        context$3$0.next = 1;
+                        break;
+
+                    case 8:
+                    case "end":
+                        return context$3$0.stop();
+                }
+            }, range0, this);
+        });
+
         var range1 = regeneratorRuntime.mark(function range1(start, end) {
             var current, delta;
             return regeneratorRuntime.wrap(function range1$(context$3$0) {
@@ -339,7 +369,7 @@ describe("iterators", function () {
                 next: function next() {
                     var delta = arguments[0] === undefined ? 1 : arguments[0];
 
-                    var result = { value: current, done: true };
+                    var result = { value: undefined, done: true };
 
                     if (firstCall) {
                         firstCall = false;
@@ -375,6 +405,17 @@ describe("iterators", function () {
             }
             return result;
         };
+
+        var result = [];
+        var iterator = range0(1, 10);
+        var next = iterator.next();
+
+        while (!next.done) {
+            result.push(next.value);
+            next = iterator.next(next.value);
+        }
+
+        expect(result).toEqual([1, 2, 4, 8]);
 
         expect(iterate1(range1(1, 10))).toEqual([1, 2, 4, 8]);
         expect(iterate2(range1(1, 10))).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
