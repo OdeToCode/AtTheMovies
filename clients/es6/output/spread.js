@@ -28,11 +28,7 @@ describe("the spread", function () {
         };
 
         var doSomething = function doSomething() {
-            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                args[_key] = arguments[_key];
-            }
-
-            return doWork.apply(undefined, args);
+            return doWork.apply(undefined, arguments);
         };
 
         var result = doSomething.apply(undefined, [1, 2, 3, 4, 5]);

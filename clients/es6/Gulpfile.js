@@ -12,7 +12,7 @@ var sources = ['classes/*.js', 'functional/*.js',
 
 gulp.task('connect', function() {
     return connect.server({
-        root: ["output", "bower_components"],
+        root: ["output", "bower_components", "node_modules"],
         port: WEB_PORT,
         livereload: true
     });

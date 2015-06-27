@@ -42,7 +42,8 @@ describe("a symbol", function () {
         var firstName = Symbol();
 
         var person = _defineProperty({
-            lastName: "Allen" }, firstName, "Scott");
+            lastName: "Allen"
+        }, firstName, "Scott");
 
         expect(person.lastName).toBe("Allen");
         expect(person[firstName]).toBe("Scott");

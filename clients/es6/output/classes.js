@@ -1,8 +1,6 @@
 "use strict";
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
-    property = _x2,
-    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -75,14 +73,14 @@ describe("classes", function () {
             _createClass(Employee, [{
                 key: "doWork",
                 value: function doWork() {
-                    return "" + this._name + " is working";
+                    return this._name + " is working";
                 }
             }, {
                 key: "name",
-                get: function () {
+                get: function get() {
                     return this._name.toUpperCase();
                 },
-                set: function (newName) {
+                set: function set(newName) {
                     if (newName) {
                         this._name = newName;
                     }
@@ -108,13 +106,14 @@ describe("classes", function () {
 
         Employee.prototype = Object.defineProperties({
             doWork: function doWork() {
-                return "" + this._name + " is working";
-            } }, {
+                return this._name + " is working";
+            }
+        }, {
             name: {
-                get: function () {
+                get: function get() {
                     return this._name.toUpperCase();
                 },
-                set: function (newName) {
+                set: function set(newName) {
                     if (newName) {
                         this._name = newName;
                     }
@@ -140,7 +139,7 @@ describe("classes", function () {
 
             _createClass(Person, [{
                 key: "name",
-                get: function () {
+                get: function get() {
                     return this._name;
                 }
             }]);
@@ -160,7 +159,7 @@ describe("classes", function () {
 
             _createClass(Employee, [{
                 key: "title",
-                get: function () {
+                get: function get() {
                     return this._title;
                 }
             }]);
@@ -184,19 +183,19 @@ describe("classes", function () {
             }
 
             _createClass(Person, [{
-                key: "name",
-                get: function () {
-                    return this._name;
-                },
-                set: function (newName) {
-                    if (newName) {
-                        this._name = newName;
-                    }
-                }
-            }, {
                 key: "doWork",
                 value: function doWork() {
                     return this.name + " works for free";
+                }
+            }, {
+                key: "name",
+                get: function get() {
+                    return this._name;
+                },
+                set: function set(newName) {
+                    if (newName) {
+                        this._name = newName;
+                    }
                 }
             }]);
 
@@ -211,25 +210,23 @@ describe("classes", function () {
             function Employee() {
                 _classCallCheck(this, Employee);
 
-                if (_Person2 != null) {
-                    _Person2.apply(this, arguments);
-                }
+                _get(Object.getPrototypeOf(Employee.prototype), "constructor", this).apply(this, arguments);
             }
 
             _inherits(Employee, _Person2);
 
             _createClass(Employee, [{
-                key: "title",
-                get: function () {
-                    return this._title;
-                },
-                set: function (newTitle) {
-                    this._title = newTitle;
-                }
-            }, {
                 key: "doWork",
                 value: function doWork() {
                     return _get(Object.getPrototypeOf(Employee.prototype), "doWork", this).call(this) + "!";
+                }
+            }, {
+                key: "title",
+                get: function get() {
+                    return this._title;
+                },
+                set: function set(newTitle) {
+                    this._title = newTitle;
                 }
             }]);
 
@@ -260,19 +257,19 @@ describe("classes", function () {
             }
 
             _createClass(Person, [{
-                key: "name",
-                get: function () {
-                    return this._name.toUpperCase();
-                },
-                set: function (newName) {
-                    if (newName) {
-                        this._name = newName;
-                    }
-                }
-            }, {
                 key: "toString",
                 value: function toString() {
                     return this.name;
+                }
+            }, {
+                key: "name",
+                get: function get() {
+                    return this._name.toUpperCase();
+                },
+                set: function set(newName) {
+                    if (newName) {
+                        this._name = newName;
+                    }
                 }
             }]);
 
@@ -290,15 +287,15 @@ describe("classes", function () {
             _inherits(Employee, _Person3);
 
             _createClass(Employee, [{
-                key: "title",
-                get: function () {
-                    return this._title;
-                }
-            }, {
                 key: "toString",
                 value: function toString() {
                     // super is available from methods or constructor
                     return this.title + " " + _get(Object.getPrototypeOf(Employee.prototype), "name", this);
+                }
+            }, {
+                key: "title",
+                get: function get() {
+                    return this._title;
                 }
             }]);
 
@@ -347,9 +344,7 @@ describe("classes", function () {
             function C() {
                 _classCallCheck(this, C);
 
-                if (_A2 != null) {
-                    _A2.apply(this, arguments);
-                }
+                _get(Object.getPrototypeOf(C.prototype), "constructor", this).apply(this, arguments);
             }
 
             _inherits(C, _A2);
@@ -454,9 +449,7 @@ describe("classes", function () {
             function B() {
                 _classCallCheck(this, B);
 
-                if (_A3 != null) {
-                    _A3.apply(this, arguments);
-                }
+                _get(Object.getPrototypeOf(B.prototype), "constructor", this).apply(this, arguments);
             }
 
             _inherits(B, _A3);
@@ -579,7 +572,7 @@ describe("classes", function () {
 
             _createClass(Employee, [{
                 key: "name",
-                get: function () {
+                get: function get() {
                     return this._name;
                 }
             }], [{
@@ -615,7 +608,7 @@ describe("classes", function () {
 
             _createClass(A, [{
                 key: "name",
-                get: function () {
+                get: function get() {
                     return this[_name];
                 }
             }]);

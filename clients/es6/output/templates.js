@@ -7,7 +7,7 @@ describe("template literals", function () {
 	it("can easily combine literals and data", function () {
 
 		var showTheMath = function showTheMath(x, y) {
-			return "" + x + " + " + y + " is " + (x + y);
+			return x + " + " + y + " is " + (x + y);
 		};
 
 		var result = showTheMath(3, 4);
@@ -33,14 +33,14 @@ describe("template literals", function () {
 	it("breaking down tags", function () {
 
 		var test = function test(literals) {
-			for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-				values[_key - 1] = arguments[_key];
-			}
-
 			expect(literals.length).toBe(3);
 			expect(literals[0]).toBe("Hello, ");
 			expect(literals[1]).toBe(" ");
 			expect(literals[2]).toBe("!!");
+
+			for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				values[_key - 1] = arguments[_key];
+			}
 
 			expect(values.length).toBe(2);
 			expect(values[0]).toBe("Allen");
@@ -57,13 +57,14 @@ describe("template literals", function () {
 	it("can use tags", function () {
 
 		var upper = function upper(strings) {
-			for (var _len2 = arguments.length, values = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-				values[_key2 - 1] = arguments[_key2];
-			}
-
 			var result = "";
 			for (var i = 0; i < strings.length; i++) {
 				result += strings[i];
+
+				for (var _len2 = arguments.length, values = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+					values[_key2 - 1] = arguments[_key2];
+				}
+
 				if (i < values.length) {
 					result += values[i];
 				}

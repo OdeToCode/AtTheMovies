@@ -5,11 +5,12 @@ describe("rest parameters", function () {
 	it("is like varargs", function () {
 
 		var doWork = function doWork(name) {
+			var result = 0;
+
 			for (var _len = arguments.length, numbers = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
 				numbers[_key - 1] = arguments[_key];
 			}
 
-			var result = 0;
 			numbers.forEach(function (n) {
 				result += n;
 			});

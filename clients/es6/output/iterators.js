@@ -148,7 +148,7 @@ describe("iterators", function () {
 
             _createClass(Classroom, [{
                 key: Symbol.iterator,
-                value: function () {
+                value: function value() {
                     var _this = this;
 
                     var index = 0;
@@ -207,7 +207,7 @@ describe("iterators", function () {
 
             _createClass(Classroom, [{
                 key: Symbol.iterator,
-                value: function () {
+                value: function value() {
                     return new ArrayIterator(this.students);
                 }
             }]);
