@@ -2,6 +2,45 @@
 
 describe("promises", function () {
 
+    it("compares to callbacks", function (done) {
+
+        var executor = function executor(callback) {
+
+            setTimeout(function () {
+                callback("This is the result");
+            }, 0);
+        };
+
+        executor(function (result) {
+            expect(result).toBe("This is the result");
+            done();
+        });
+    });
+
+    it("producer consumer style", function (done) {
+
+        var calculate = function calculate() {
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve(96);
+                }, 0);
+            });
+        };
+
+        var success = function success(result) {
+            expect(result).toBe(96);
+            done();
+        };
+
+        var error = function error(reason) {
+            // ... error handling code for a rejected promise 
+        };
+
+        var promise = calculate();
+        promise.then(success, error);
+    });
+
     it("will provide function to reolve or reject", function (done) {
 
         var executor = function executor(resolve, reject) {

@@ -1,6 +1,6 @@
 "use strict";
 
-function _defineProperty(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 describe("a symbol", function () {
 
@@ -56,7 +56,7 @@ describe("a symbol", function () {
         expect(names[0]).toBe("lastName");
 
         expect(Object.getOwnPropertyNames(person)).toEqual(["lastName"]);
-        expect(JSON.stringify(person)).toBe("{\"lastName\":\"Allen\"}");
+        expect(JSON.stringify(person)).toBe('{"lastName":"Allen"}');
 
         expect(Object.getOwnPropertySymbols(person)).toEqual([firstName]);
 

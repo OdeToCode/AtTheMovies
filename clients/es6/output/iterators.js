@@ -367,7 +367,7 @@ describe("iterators", function () {
             var current = start;
             return {
                 next: function next() {
-                    var delta = arguments[0] === undefined ? 1 : arguments[0];
+                    var delta = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
 
                     var result = { value: undefined, done: true };
 

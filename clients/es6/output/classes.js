@@ -4,7 +4,7 @@ var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_ag
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -148,14 +148,14 @@ describe("classes", function () {
         })();
 
         var Employee = (function (_Person) {
+            _inherits(Employee, _Person);
+
             function Employee(name, title) {
                 _classCallCheck(this, Employee);
 
                 _get(Object.getPrototypeOf(Employee.prototype), "constructor", this).call(this, name);
                 this._title = title;
             }
-
-            _inherits(Employee, _Person);
 
             _createClass(Employee, [{
                 key: "title",
@@ -207,13 +207,13 @@ describe("classes", function () {
         expect(p1.doWork()).toBe("Scott works for free");
 
         var Employee = (function (_Person2) {
+            _inherits(Employee, _Person2);
+
             function Employee() {
                 _classCallCheck(this, Employee);
 
                 _get(Object.getPrototypeOf(Employee.prototype), "constructor", this).apply(this, arguments);
             }
-
-            _inherits(Employee, _Person2);
 
             _createClass(Employee, [{
                 key: "doWork",
@@ -277,14 +277,14 @@ describe("classes", function () {
         })();
 
         var Employee = (function (_Person3) {
+            _inherits(Employee, _Person3);
+
             function Employee(name, title) {
                 _classCallCheck(this, Employee);
 
                 _get(Object.getPrototypeOf(Employee.prototype), "constructor", this).call(this, name);
                 this._title = title;
             }
-
-            _inherits(Employee, _Person3);
 
             _createClass(Employee, [{
                 key: "toString",
@@ -327,6 +327,8 @@ describe("classes", function () {
         })();
 
         var B = (function (_A) {
+            _inherits(B, _A);
+
             function B() {
                 _classCallCheck(this, B);
 
@@ -335,19 +337,17 @@ describe("classes", function () {
                 this._test = result;
             }
 
-            _inherits(B, _A);
-
             return B;
         })(A);
 
         var C = (function (_A2) {
+            _inherits(C, _A2);
+
             function C() {
                 _classCallCheck(this, C);
 
                 _get(Object.getPrototypeOf(C.prototype), "constructor", this).apply(this, arguments);
             }
-
-            _inherits(C, _A2);
 
             return C;
         })(A);
@@ -446,13 +446,13 @@ describe("classes", function () {
         })();
 
         var B = (function (_A3) {
+            _inherits(B, _A3);
+
             function B() {
                 _classCallCheck(this, B);
 
                 _get(Object.getPrototypeOf(B.prototype), "constructor", this).apply(this, arguments);
             }
-
-            _inherits(B, _A3);
 
             _createClass(B, [{
                 key: "doWork",
@@ -471,14 +471,14 @@ describe("classes", function () {
         })(A);
 
         var C = (function (_B) {
+            _inherits(C, _B);
+
             function C() {
                 _classCallCheck(this, C);
 
                 _get(Object.getPrototypeOf(C.prototype), "constructor", this).call(this);
                 this.work = this.doWork();
             }
-
-            _inherits(C, _B);
 
             return C;
         })(B);
@@ -499,6 +499,8 @@ describe("classes", function () {
         };
 
         var B = (function (_A4) {
+            _inherits(B, _A4);
+
             function B() {
                 _classCallCheck(this, B);
 
@@ -507,8 +509,6 @@ describe("classes", function () {
                 this.bisb = this instanceof B;
                 this.biso = this instanceof Object;
             }
-
-            _inherits(B, _A4);
 
             return B;
         })(A);
@@ -545,14 +545,14 @@ describe("classes", function () {
         })();
 
         var B = (function (_A5) {
+            _inherits(B, _A5);
+
             function B(name) {
                 _classCallCheck(this, B);
 
                 _get(Object.getPrototypeOf(B.prototype), "constructor", this).call(this, name);
                 this.superName = this.upper(name);
             }
-
-            _inherits(B, _A5);
 
             return B;
         })(A);

@@ -1,5 +1,8 @@
 "use strict";
 
+var _templateObject = _taggedTemplateLiteral(["Hello, ", " ", "!!"], ["Hello, ", " ", "!!"]),
+    _templateObject2 = _taggedTemplateLiteral(["", " + ", " is ", ""], ["", " + ", " is ", ""]);
+
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 describe("template literals", function () {
@@ -50,7 +53,7 @@ describe("template literals", function () {
 
 		var firstName = "Scott";
 		var lastName = "Allen";
-		var result = test(_taggedTemplateLiteral(["Hello, ", " ", "!!"], ["Hello, ", " ", "!!"]), lastName, firstName);
+		var result = test(_templateObject, lastName, firstName);
 		expect(result).toBe("test");
 	});
 
@@ -58,13 +61,13 @@ describe("template literals", function () {
 
 		var upper = function upper(strings) {
 			var result = "";
+
+			for (var _len2 = arguments.length, values = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+				values[_key2 - 1] = arguments[_key2];
+			}
+
 			for (var i = 0; i < strings.length; i++) {
 				result += strings[i];
-
-				for (var _len2 = arguments.length, values = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-					values[_key2 - 1] = arguments[_key2];
-				}
-
 				if (i < values.length) {
 					result += values[i];
 				}
@@ -75,7 +78,7 @@ describe("template literals", function () {
 
 		var x = 1;
 		var y = 3;
-		var result = upper(_taggedTemplateLiteral(["", " + ", " is ", ""], ["", " + ", " is ", ""]), x, y, x + y);
+		var result = upper(_templateObject2, x, y, x + y);
 
 		expect(result).toBe("1 + 3 IS 4");
 	});

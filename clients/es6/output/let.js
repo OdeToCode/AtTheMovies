@@ -5,7 +5,9 @@ describe("how let works", function () {
 	it("will not have block scope with var", function () {
 
 		var doWork = function doWork() {
-			for (var x = 0; x < 3; x++) {}
+			for (var x = 0; x < 3; x++) {
+				// ...
+			}
 			return x; // ReferenceError: x is not defined
 		};
 
@@ -41,5 +43,3 @@ describe("how let works", function () {
 		expect(result).toBe(0);
 	});
 });
-
-// ...
