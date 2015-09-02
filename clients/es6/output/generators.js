@@ -63,21 +63,36 @@ describe("generators", function () {
     it("you can build an iterable object", function () {
         var Classroom = (function () {
             function Classroom() {
+<<<<<<< Updated upstream
                 _classCallCheck(this, Classroom);
 
+=======
+>>>>>>> Stashed changes
                 for (var _len = arguments.length, students = Array(_len), _key = 0; _key < _len; _key++) {
                     students[_key] = arguments[_key];
                 }
 
+<<<<<<< Updated upstream
+=======
+                _classCallCheck(this, Classroom);
+
+>>>>>>> Stashed changes
                 this.students = students;
             }
 
             _createClass(Classroom, [{
                 key: Symbol.iterator,
+<<<<<<< Updated upstream
                 value: regeneratorRuntime.mark(function value() {
                     var _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, s;
 
                     return regeneratorRuntime.wrap(function value$(context$4$0) {
+=======
+                value: regeneratorRuntime.mark(function callee$3$0() {
+                    var _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, s;
+
+                    return regeneratorRuntime.wrap(function callee$3$0$(context$4$0) {
+>>>>>>> Stashed changes
                         while (1) switch (context$4$0.prev = context$4$0.next) {
                             case 0:
                                 _iteratorNormalCompletion2 = true;
@@ -107,9 +122,15 @@ describe("generators", function () {
 
                             case 14:
                                 context$4$0.prev = 14;
+<<<<<<< Updated upstream
                                 context$4$0.t0 = context$4$0["catch"](3);
                                 _didIteratorError2 = true;
                                 _iteratorError2 = context$4$0.t0;
+=======
+                                context$4$0.t20 = context$4$0["catch"](3);
+                                _didIteratorError2 = true;
+                                _iteratorError2 = context$4$0.t20;
+>>>>>>> Stashed changes
 
                             case 18:
                                 context$4$0.prev = 18;
@@ -139,7 +160,11 @@ describe("generators", function () {
                             case "end":
                                 return context$4$0.stop();
                         }
+<<<<<<< Updated upstream
                     }, value, this, [[3, 14, 18, 26], [19,, 21, 25]]);
+=======
+                    }, callee$3$0, this, [[3, 14, 18, 26], [19,, 21, 25]]);
+>>>>>>> Stashed changes
                 })
             }]);
 
@@ -243,9 +268,15 @@ describe("generators", function () {
 
                     case 16:
                         context$3$0.prev = 16;
+<<<<<<< Updated upstream
                         context$3$0.t0 = context$3$0["catch"](3);
                         _didIteratorError4 = true;
                         _iteratorError4 = context$3$0.t0;
+=======
+                        context$3$0.t21 = context$3$0["catch"](3);
+                        _didIteratorError4 = true;
+                        _iteratorError4 = context$3$0.t21;
+>>>>>>> Stashed changes
 
                     case 20:
                         context$3$0.prev = 20;
@@ -333,9 +364,15 @@ describe("generators", function () {
 
                     case 21:
                         context$3$0.prev = 21;
+<<<<<<< Updated upstream
                         context$3$0.t0 = context$3$0["catch"](6);
                         _didIteratorError5 = true;
                         _iteratorError5 = context$3$0.t0;
+=======
+                        context$3$0.t22 = context$3$0["catch"](6);
+                        _didIteratorError5 = true;
+                        _iteratorError5 = context$3$0.t22;
+>>>>>>> Stashed changes
 
                     case 25:
                         context$3$0.prev = 25;
@@ -390,6 +427,13 @@ describe("generators", function () {
                         return "Hello";
 
                     case 2:
+<<<<<<< Updated upstream
+=======
+                        context$3$0.next = 4;
+                        return ", ";
+
+                    case 4:
+>>>>>>> Stashed changes
                     case "end":
                         return context$3$0.stop();
                 }
@@ -400,7 +444,11 @@ describe("generators", function () {
             return regeneratorRuntime.wrap(function outer$(context$3$0) {
                 while (1) switch (context$3$0.prev = context$3$0.next) {
                     case 0:
+<<<<<<< Updated upstream
                         return context$3$0.delegateYield(inner(), "t0", 1);
+=======
+                        return context$3$0.delegateYield(inner(), "t23", 1);
+>>>>>>> Stashed changes
 
                     case 1:
                         context$3$0.next = 3;
@@ -414,7 +462,56 @@ describe("generators", function () {
         });
 
         var result = Array.from(outer());
+<<<<<<< Updated upstream
         expect(result).toEqual(["Hello", "World"]);
+=======
+        expect(result[0]).toBe("Hello");
+        expect(result[1]).toBe(", ");
+        expect(result[2]).toBe("World");
+    });
+
+    it("not-delegated", function () {
+
+        var inner = regeneratorRuntime.mark(function inner() {
+            return regeneratorRuntime.wrap(function inner$(context$3$0) {
+                while (1) switch (context$3$0.prev = context$3$0.next) {
+                    case 0:
+                        context$3$0.next = 2;
+                        return "Hello";
+
+                    case 2:
+                        context$3$0.next = 4;
+                        return ", ";
+
+                    case 4:
+                    case "end":
+                        return context$3$0.stop();
+                }
+            }, inner, this);
+        });
+
+        var outer = regeneratorRuntime.mark(function outer() {
+            return regeneratorRuntime.wrap(function outer$(context$3$0) {
+                while (1) switch (context$3$0.prev = context$3$0.next) {
+                    case 0:
+                        context$3$0.next = 2;
+                        return inner();
+
+                    case 2:
+                        context$3$0.next = 4;
+                        return "World";
+
+                    case 4:
+                    case "end":
+                        return context$3$0.stop();
+                }
+            }, outer, this);
+        });
+
+        var result = Array.from(outer());
+        expect(result[0].next).toBeDefined();
+        expect(result[1]).toBe("World");
+>>>>>>> Stashed changes
     });
 
     it("can call into next", function () {
@@ -457,7 +554,14 @@ describe("generators", function () {
         expect(results).toEqual([0, 2, undefined]);
     });
 
+<<<<<<< Updated upstream
     it("generator iterators can throw", function () {
         // todo
     });
 });
+=======
+    it("generator iterators can throw", function () {});
+});
+
+// todo
+>>>>>>> Stashed changes

@@ -81,6 +81,7 @@
 
          let inner = function*() {
              yield "Hello";
+             yield ", ";
          }
 
          let outer = function*() {
@@ -89,9 +90,29 @@
          }
 
          var result = Array.from(outer());
-         expect(result).toEqual(["Hello", "World"]);
+         expect(result[0]).toBe("Hello");
+         expect(result[1]).toBe(", ");
+         expect(result[2]).toBe("World");
+     });
+
+    it("not-delegated", function(){
+
+         let inner = function*() {
+             yield "Hello";
+             yield ", ";
+         }
+
+         let outer = function*() {
+             yield inner();
+             yield "World";
+         }
+
+         var result = Array.from(outer());
+         expect(result[0].next).toBeDefined();
+         expect(result[1]).toBe("World");
 
      });
+
 
      it("can call into next", function(){
          let range = function*(start, end){
