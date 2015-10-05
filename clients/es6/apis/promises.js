@@ -24,16 +24,16 @@ describe("promises", function () {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(96);
-                }, 0);    
+                }, 0);
             });
         };
 
-        let success = function(result) {
+        let success = function (result) {
             expect(result).toBe(96);
-            done();  
+            done();
         };
-        
-        let error = function(reason) {
+
+        let error = function (reason) {
             // ... error handling code for a rejected promise  
         };
 
@@ -41,7 +41,6 @@ describe("promises", function () {
         promise.then(success, error);
 
     });
-
 
     it("will provide function to reolve or reject", function (done) {
 
@@ -58,6 +57,57 @@ describe("promises", function () {
             expect(result).toBe(96);
             done();
         });
+
+    });
+
+
+    it("chains output to an input", function (done) {
+
+        let calculate = function (value) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(value + 1);
+                }, 0);
+            });
+        };
+
+        let verify = function (result) {
+            expect(result).toBe(5);
+            done();
+        };
+
+        calculate(1)
+            .then(calculate)
+            .then(result => result + 1)
+            .then(calculate)
+            .then(verify);
+    });
+
+    it("syntactic test", function (done) {
+
+        let calculate = function (value) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(value + 1);
+                }, 0);
+            });
+        };
+
+        let verify1 = function (result) {
+            expect(result).toBeUndefined();
+        }
+
+        let verify2 = function (result) {
+            expect(result).toBeUndefined();
+            done();
+        }
+
+        let doNothing = function (value) {
+
+        };
+
+        //calculate(1).then(calculate).then(doNothing).then(verify1);
+        calculate(1).then(r => { }).then(verify2);
 
     });
 
@@ -132,7 +182,7 @@ describe("promises", function () {
             return Promise.reject("error!");
         };
 
-        doAsyncWork().then(() => { }, message => {
+        doAsyncWork().then(null, message => {
             expect(message).toBe("error!");
             done();
         });
@@ -151,6 +201,46 @@ describe("promises", function () {
 
     });
 
+    it("unhandled error", function() {
+        
+        Promise.reject("error!");
+        expect(true).toBe(true);
+        
+    });
 
+    it("errors tunnel through", function (done) {
+
+        var log = "";
+        function doWork() {
+            log += "W";
+            return Promise.resolve();
+        }
+
+        function doError() {
+            log += "E";
+            throw new Error("oops!");
+        }
+
+        function catchHandler() {
+            log += "T";
+        }
+
+        function errorHandler(error) {
+            log += "H";
+        }
+        
+        doWork()
+            .then(doWork)
+            .then(doError)
+            .then(doWork) // this will be skipped
+            .then(doWork, errorHandler)
+            .then(verify);
+            
+          function verify() {
+            expect(log).toBe("WWEH");
+            done();
+        }
+
+    });
 
 });

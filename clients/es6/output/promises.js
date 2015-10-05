@@ -57,6 +57,51 @@ describe("promises", function () {
         });
     });
 
+    it("chains output to an input", function (done) {
+
+        var calculate = function calculate(value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve(value + 1);
+                }, 0);
+            });
+        };
+
+        var verify = function verify(result) {
+            expect(result).toBe(5);
+            done();
+        };
+
+        calculate(1).then(calculate).then(function (result) {
+            return result + 1;
+        }).then(calculate).then(verify);
+    });
+
+    it("syntactic test", function (done) {
+
+        var calculate = function calculate(value) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve(value + 1);
+                }, 0);
+            });
+        };
+
+        var verify1 = function verify1(result) {
+            expect(result).toBeUndefined();
+        };
+
+        var verify2 = function verify2(result) {
+            expect(result).toBeUndefined();
+            done();
+        };
+
+        var doNothing = function doNothing(value) {};
+
+        //calculate(1).then(calculate).then(doNothing).then(verify1);
+        calculate(1).then(function (r) {}).then(verify2);
+    });
+
     it("can combine promises with all", function (done) {
 
         var slowExecutor = function slowExecutor(resolve, reject) {
@@ -125,7 +170,7 @@ describe("promises", function () {
             return Promise.reject("error!");
         };
 
-        doAsyncWork().then(function () {}, function (message) {
+        doAsyncWork().then(null, function (message) {
             expect(message).toBe("error!");
             done();
         });
@@ -140,5 +185,41 @@ describe("promises", function () {
             expect(message).toBe("error!");
             done();
         });
+    });
+
+    it("unhandled error", function () {
+
+        Promise.reject("error!");
+        expect(true).toBe(true);
+    });
+
+    it("errors tunnel through", function (done) {
+
+        var log = "";
+        function doWork() {
+            log += "W";
+            return Promise.resolve();
+        }
+
+        function doError() {
+            log += "E";
+            throw new Error("oops!");
+        }
+
+        function catchHandler() {
+            log += "T";
+        }
+
+        function errorHandler(error) {
+            log += "H";
+        }
+
+        doWork().then(doWork).then(doError).then(doWork) // this will be skipped
+        .then(doWork, errorHandler).then(verify);
+
+        function verify() {
+            expect(log).toBe("WWEH");
+            done();
+        }
     });
 });

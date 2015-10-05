@@ -112,8 +112,4 @@
 
      });
 
-     it("generator iterators can throw", function() {
-             // todo
-     });
-
  });

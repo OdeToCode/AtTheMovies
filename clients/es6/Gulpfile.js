@@ -4,6 +4,8 @@ var traceur = require('gulp-traceur');
 var plumber = require('gulp-plumber');
 var open = require('gulp-open');
 var babel = require('gulp-babel');
+var webpack = require("gulp-webpack");
+var named = require("vinyl-named");
 
 var WEB_PORT = 9000;
 var output = ['output/*.*']
@@ -32,20 +34,30 @@ gulp.task('babel', function () {
         .pipe(gulp.dest("output"));
 });
 
+gulp.task("webpack", function() {
+    return gulp.src("modules/modules.js")
+         .pipe(named())
+         .pipe(webpack({
+             module: {
+                 loaders: [
+                     { test: /\.js?$/, loader: 'babel' }
+                 ]
+             }
+         })).pipe(gulp.dest("output/"));
+});
 
-gulp.task('open', function() {
+gulp.task('open', ["webpack", "babel"], function() {
     var options = { url: 'http://localhost:9000/default.html'};
     return gulp.src("output/default.html").pipe(open("", options));
 });
 
-gulp.task('reload', function(){
+gulp.task('reload', ["babel", "webpack"], function(){
     return gulp.src(output)
         .pipe(connect.reload());
 })
 
 gulp.task('watch', function(){
-    gulp.watch(sources, ['babel']);
-    gulp.watch(output, ['reload']);
+    return gulp.watch(sources.concat("modules/**/*.js"), ['reload']);
 });
 
-gulp.task('default', ['connect', 'babel', 'open', 'watch']);
+gulp.task('default', ['connect', "open", "watch"]);

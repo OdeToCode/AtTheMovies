@@ -456,8 +456,4 @@ describe("generators", function () {
 
         expect(results).toEqual([0, 2, undefined]);
     });
-
-    it("generator iterators can throw", function () {
-        // todo
-    });
 });
