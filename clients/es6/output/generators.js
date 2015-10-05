@@ -183,19 +183,18 @@ describe("generators", function () {
                 while (1) switch (context$3$0.prev = context$3$0.next) {
                     case 0:
                         if (!true) {
-                            context$3$0.next = 6;
+                            context$3$0.next = 5;
                             break;
                         }
 
-                        console.log("make random");
-                        context$3$0.next = 4;
+                        context$3$0.next = 3;
                         return Math.random();
 
-                    case 4:
+                    case 3:
                         context$3$0.next = 0;
                         break;
 
-                    case 6:
+                    case 5:
                     case "end":
                         return context$3$0.stop();
                 }
@@ -216,66 +215,64 @@ describe("generators", function () {
 
                     case 5:
                         if (_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done) {
-                            context$3$0.next = 14;
+                            context$3$0.next = 13;
                             break;
                         }
 
                         item = _step4.value;
 
-                        console.log("filter", item);
-
                         if (!predicate(item)) {
-                            context$3$0.next = 11;
+                            context$3$0.next = 10;
                             break;
                         }
 
-                        context$3$0.next = 11;
+                        context$3$0.next = 10;
                         return item;
 
-                    case 11:
+                    case 10:
                         _iteratorNormalCompletion4 = true;
                         context$3$0.next = 5;
                         break;
 
-                    case 14:
-                        context$3$0.next = 20;
+                    case 13:
+                        context$3$0.next = 19;
                         break;
 
-                    case 16:
-                        context$3$0.prev = 16;
+                    case 15:
+                        context$3$0.prev = 15;
                         context$3$0.t0 = context$3$0["catch"](3);
                         _didIteratorError4 = true;
                         _iteratorError4 = context$3$0.t0;
 
-                    case 20:
+                    case 19:
+                        context$3$0.prev = 19;
                         context$3$0.prev = 20;
-                        context$3$0.prev = 21;
 
                         if (!_iteratorNormalCompletion4 && _iterator4["return"]) {
                             _iterator4["return"]();
                         }
 
-                    case 23:
-                        context$3$0.prev = 23;
+                    case 22:
+                        context$3$0.prev = 22;
 
                         if (!_didIteratorError4) {
-                            context$3$0.next = 26;
+                            context$3$0.next = 25;
                             break;
                         }
 
                         throw _iteratorError4;
 
+                    case 25:
+                        return context$3$0.finish(22);
+
                     case 26:
-                        return context$3$0.finish(23);
+                        return context$3$0.finish(19);
 
                     case 27:
-                        return context$3$0.finish(20);
-
-                    case 28:
                     case "end":
                         return context$3$0.stop();
                 }
-            }, filter, this, [[3, 16, 20, 28], [21,, 23, 27]]);
+            }, filter, this, [[3, 15, 19, 27], [20,, 22, 26]]);
         });
 
         var take = regeneratorRuntime.mark(function take(items, number) {
@@ -302,70 +299,68 @@ describe("generators", function () {
 
                     case 8:
                         if (_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done) {
-                            context$3$0.next = 19;
+                            context$3$0.next = 18;
                             break;
                         }
 
                         item = _step5.value;
-
-                        console.log("take", item);
-                        context$3$0.next = 13;
+                        context$3$0.next = 12;
                         return item;
 
-                    case 13:
+                    case 12:
                         count += 1;
 
                         if (!(count >= number)) {
-                            context$3$0.next = 16;
+                            context$3$0.next = 15;
                             break;
                         }
 
                         return context$3$0.abrupt("return");
 
-                    case 16:
+                    case 15:
                         _iteratorNormalCompletion5 = true;
                         context$3$0.next = 8;
                         break;
 
-                    case 19:
-                        context$3$0.next = 25;
+                    case 18:
+                        context$3$0.next = 24;
                         break;
 
-                    case 21:
-                        context$3$0.prev = 21;
+                    case 20:
+                        context$3$0.prev = 20;
                         context$3$0.t0 = context$3$0["catch"](6);
                         _didIteratorError5 = true;
                         _iteratorError5 = context$3$0.t0;
 
-                    case 25:
+                    case 24:
+                        context$3$0.prev = 24;
                         context$3$0.prev = 25;
-                        context$3$0.prev = 26;
 
                         if (!_iteratorNormalCompletion5 && _iterator5["return"]) {
                             _iterator5["return"]();
                         }
 
-                    case 28:
-                        context$3$0.prev = 28;
+                    case 27:
+                        context$3$0.prev = 27;
 
                         if (!_didIteratorError5) {
-                            context$3$0.next = 31;
+                            context$3$0.next = 30;
                             break;
                         }
 
                         throw _iteratorError5;
 
+                    case 30:
+                        return context$3$0.finish(27);
+
                     case 31:
-                        return context$3$0.finish(28);
+                        return context$3$0.finish(24);
 
                     case 32:
-                        return context$3$0.finish(25);
-
-                    case 33:
                     case "end":
                         return context$3$0.stop();
                 }
-            }, take, this, [[6, 21, 25, 33], [26,, 28, 32]]);
+            }, take, this, [[6, 20, 24, 32], [25,, 27, 31]]);
         });
 
         var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -390,6 +385,10 @@ describe("generators", function () {
                         return "Hello";
 
                     case 2:
+                        context$3$0.next = 4;
+                        return ", ";
+
+                    case 4:
                     case "end":
                         return context$3$0.stop();
                 }
@@ -414,7 +413,52 @@ describe("generators", function () {
         });
 
         var result = Array.from(outer());
-        expect(result).toEqual(["Hello", "World"]);
+        expect(result[0]).toBe("Hello");
+        expect(result[1]).toBe(", ");
+        expect(result[2]).toBe("World");
+    });
+
+    it("not-delegated", function () {
+
+        var inner = regeneratorRuntime.mark(function inner() {
+            return regeneratorRuntime.wrap(function inner$(context$3$0) {
+                while (1) switch (context$3$0.prev = context$3$0.next) {
+                    case 0:
+                        context$3$0.next = 2;
+                        return "Hello";
+
+                    case 2:
+                        context$3$0.next = 4;
+                        return ", ";
+
+                    case 4:
+                    case "end":
+                        return context$3$0.stop();
+                }
+            }, inner, this);
+        });
+
+        var outer = regeneratorRuntime.mark(function outer() {
+            return regeneratorRuntime.wrap(function outer$(context$3$0) {
+                while (1) switch (context$3$0.prev = context$3$0.next) {
+                    case 0:
+                        context$3$0.next = 2;
+                        return inner();
+
+                    case 2:
+                        context$3$0.next = 4;
+                        return "World";
+
+                    case 4:
+                    case "end":
+                        return context$3$0.stop();
+                }
+            }, outer, this);
+        });
+
+        var result = Array.from(outer());
+        expect(result[0].next).toBeDefined();
+        expect(result[1]).toBe("World");
     });
 
     it("can call into next", function () {

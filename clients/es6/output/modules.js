@@ -53,7 +53,11 @@
 
 	"use strict";
 
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj["default"] = obj; return newObj; } }
+
 	var _libPerson = __webpack_require__(2);
+
+	var People = _interopRequireWildcard(_libPerson);
 
 	describe("modules", function () {
 
@@ -61,8 +65,15 @@
 
 			var p1 = new _libPerson.Person("Scott");
 			expect(p1.name).toBe("Scott");
+		});
+	});
 
-			expect(true).toBe(false);
+	describe("modules", function () {
+
+		it("should have a person", function () {
+
+			var p1 = new People.Person("Scott");
+			expect(p1.name).toBe("Scott");
 		});
 	});
 

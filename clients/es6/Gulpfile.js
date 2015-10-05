@@ -4,7 +4,7 @@ var traceur = require('gulp-traceur');
 var plumber = require('gulp-plumber');
 var open = require('gulp-open');
 var babel = require('gulp-babel');
-var webpack = require("gulp-webpack");
+var webpack = require("webpack-stream");
 var named = require("vinyl-named");
 
 var WEB_PORT = 9000;

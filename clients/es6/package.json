@@ -13,8 +13,7 @@
     "gulp-open": "^0.3.2",
     "gulp-plumber": "^1.0.1",
     "gulp-traceur": "^0.17.1",
-    "gulp-webpack": "^1.5.0",
     "vinyl-named": "^1.1.0",
-    "webpack": "^1.12.2"
+    "webpack-stream": "^2.1.1"
   }
 }
