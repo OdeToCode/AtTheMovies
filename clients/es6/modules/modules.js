@@ -1,23 +1,13 @@
-import {Person} from "./lib/Person"
+import {Person, Animal} from "./lib"
 
-describe("modules", function() {
+describe("The combined modules", function() {
 	
-	it("should have a person", function() {
-		
-		var p1 = new Person("Scott");
-		expect(p1.name).toBe("Scott");		
+	it("should have a person class", function() {
+		var person = new Person("Scott");
+		expect(person.doWork()).toBe("Scott is working");
 	});
-		
-});
-
-import * as People from "./lib/Person"
-
-describe("modules", function() {
 	
-	it("should have a person", function() {
-		
-		var p1 = new People.Person("Scott");
-		expect(p1.name).toBe("Scott");		
+	it("should have an Animal class", function() {
+		expect(new Animal("Beaker").name).toBe("Beaker");
 	});
-		
 });
