@@ -243,4 +243,11 @@ describe("promises", function () {
 
     });
 
+(function() {
+    
+    // variables scope to the function
+    
+}());
+
+
 });

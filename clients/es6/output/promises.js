@@ -222,4 +222,10 @@ describe("promises", function () {
             done();
         }
     });
+
+    (function () {
+
+        // variables scope to the function
+
+    })();
 });
