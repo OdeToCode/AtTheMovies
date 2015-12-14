@@ -52,11 +52,11 @@ describe("object apis", function () {
 
 						var a = { a: 1 };
 						var b = { b: 2 };
-						var a2 = { a: 2 };
+						var a2 = { a: 2, foo: "baz" };
 
 						var result = Object.assign({ foo: "bar" }, a, b, a2);
 						expect(result.a).toBe(2);
 						expect(result.b).toBe(2);
-						expect(result.foo).toBe("bar");
+						expect(result.foo).toBe("baz");
 			});
 });

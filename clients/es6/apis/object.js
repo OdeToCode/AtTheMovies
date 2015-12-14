@@ -51,12 +51,12 @@ describe("object apis", function() {
 				
 		let a = { a: 1};
 		let b = { b: 2};
-		let a2 = { a: 2};
+		let a2 = { a: 2, foo:"baz"};
 		
 		let result = Object.assign({foo:"bar"}, a, b, a2);
 		expect(result.a).toBe(2);
 		expect(result.b).toBe(2);
-		expect(result.foo).toBe("bar");
+		expect(result.foo).toBe("baz");
 				
 	});
 	
