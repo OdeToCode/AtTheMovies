@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"module": "system",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true	
+	},
+	
+	"filesGlob": [
+		"./node_modules/**/*.d.ts"
+	]
+}

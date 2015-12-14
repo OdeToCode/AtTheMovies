@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>ng2</title>
+	</head>
+	<body>
+		<app>loading...</app>
+	</body>
+	<script src="/node_modules/systemjs/dist/system.src.js"></script>
+	<script src="/node_modules/typescript/lib/typescript.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script>
+		
+		System.config({ 
+			transpiler: "typescript",
+			typescriptOptions: { emitDecoratorMetadata: true}
+		});
+		
+		System.import("./app/main.ts");
+		
+	</script>
+</html>
+
