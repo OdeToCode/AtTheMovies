@@ -2,22 +2,10 @@
   "name": "ng2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {},
   "dependencies": {
-    "angular2": "^2.0.0-alpha.52",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.13",
-    "reflect-metadata": "^0.1.2",
-    "rxjs": "^5.0.0-alpha.14",
+    "angular2": "^2.0.0-alpha.53",
     "systemjs": "^0.19.6",
-    "ts-loader": "^0.7.2",
-    "typescript": "^1.7.3",
-    "zone.js": "^0.5.8"
+    "typescript": "^1.7.5"
   }
 }
