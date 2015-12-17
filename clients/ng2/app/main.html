@@ -1,0 +1,49 @@
+<div>
+
+	<h1>{{title}}</h1>
+	
+	<div *ngIf="firstName">Hello, {{firstName}}</div>
+
+
+	<div>Count: {{movies.length}}</div>
+	<div>2 + 2 = {{ 2 + 2 }}</div>			
+	
+	
+	<div *ngIf="showDiv">Show div</div>
+	<div [hidden]="!showDiv">Show div</div>
+	<div [style.display]="showDiv? '' : 'none'">Show div</div>
+	<button (click)="showDiv = !showDiv">Toggle</button>
+	
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Rating</th>
+		</tr>
+		<tr *ngFor="#movie of movies" [ngClass]="{ good:movie.isGood, bad:movie.isBad }">
+			<td>{{movie.title}}</td>
+			<td>{{movie.rating}}</td>
+			<td>
+				<button (click)="movie.increaseRating()">+</button>
+				<button (click)="movie.decreaseRating()">-</button>
+			</td>
+		</tr>
+	</table>
+
+	<div *ngFor="#movie of movies">
+		
+		
+		<form (ngSubmit)="saveEdits()">
+			
+			...
+			
+			<button type="submit">Save</button>
+		</form>
+		
+		<input type="text" [(ngModel)]="movie.title">
+		<button (click)="saveMovie(movie)">Save</button>
+	</div>
+
+	<button (click)="setColor('blue')">Change Color</button>
+
+</div>
+

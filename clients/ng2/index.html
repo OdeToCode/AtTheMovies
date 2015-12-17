@@ -1,12 +1,14 @@
 <html>
 	<head>
 		<title>ng2</title>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<app>loading...</app>
 	</body>
 	<script src="/node_modules/systemjs/dist/system.src.js"></script>
 	<script src="/node_modules/reflect-metadata/reflect.js"></script>
+	<script src="/node_modules/zone.js/dist/zone.js"></script>
 	<script src="/node_modules/typescript/lib/typescript.js"></script>
 	<script src="/node_modules/rxjs/bundles/rx.js"></script>
 	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>	
@@ -14,10 +16,15 @@
 		
 		System.config({ 
 			transpiler: "typescript",
-			typescriptOptions: { emitDecoratorMetadata: true}
+			typescriptOptions: { emitDecoratorMetadata: true },
+			packages: {
+				"app" :{
+					defaultExtension: "ts"
+				}
+			}
 		});
 		
-		System.import("./app/main.ts");
+		System.import("./app/main");
 		 
 	</script>
 </html>

@@ -1,9 +1,12 @@
 module.exports = {
   entry: {
-    "app": "./app/main.ts"
+    "app": "./app/main"
   },
   output: {
     filename: "./bundles/[name].js"
+  },
+  resolve: {
+    extensions: ["", ".js", ".ts"]
   },
   module: {
     loaders: [
