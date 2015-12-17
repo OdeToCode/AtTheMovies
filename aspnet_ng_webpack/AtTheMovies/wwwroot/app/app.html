@@ -1,0 +1,15 @@
+<h3>Movies</h3>
+<div>
+	<table *ngIf="movies">
+		<tr>
+			<th>Title</th>
+			<th>Length</th>
+			<th>Rating</th>
+		</tr>
+		<tr *ngFor="#movie of movies">
+			<td>{{movie.title}}</td>
+			<td>{{movie.length}}m</td>
+			<td>{{movie.rating}}</td>
+		</tr>
+	</table>
+</div>
