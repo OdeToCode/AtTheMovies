@@ -1,17 +1,19 @@
 <html>
 	<head>
 		<title>ng2</title>
+		 <base href="/index.html">
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<app>loading...</app>
+		<app>Loading...</app>
 	</body>
 	<script src="/node_modules/systemjs/dist/system.src.js"></script>
 	<script src="/node_modules/reflect-metadata/reflect.js"></script>
 	<script src="/node_modules/zone.js/dist/zone.js"></script>
 	<script src="/node_modules/typescript/lib/typescript.js"></script>
 	<script src="/node_modules/rxjs/bundles/rx.js"></script>
-	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>	
+	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script src="/node_modules/angular2/bundles/router.js"></script>		
 	<script>
 		
 		System.config({ 
@@ -24,7 +26,7 @@
 			}
 		});
 		
-		System.import("./app/main");
+		System.import("./app/boot");
 		 
 	</script>
 </html>
