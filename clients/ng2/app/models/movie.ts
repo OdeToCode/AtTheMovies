@@ -23,7 +23,7 @@ export class Movie {
 	}
 	
 	decreaseRating() {
-		if(this.rating > 1){
+		if(this.rating > 1) {
 			this.rating -=1;
 		} else {		
 			this.rating = 5;
