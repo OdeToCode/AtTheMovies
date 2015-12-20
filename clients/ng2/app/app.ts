@@ -1,17 +1,29 @@
-import {Component} from "angular2/core";
-import {RouteConfig, ROUTER_DIRECTIVES} from "angular2/router"
-import {List} from "./list/list";
-import {About} from "./about/about";
+	
+	import {Component} from "angular2/core";
+	import {RouteConfig, ROUTER_DIRECTIVES} from "angular2/router"
+	import {MovieList} from "./list/movie-list";
+	import {About} from "./about/about";
+	import {MovieDetail} from "./detail/movie-detail";
+	
+	@Component({
+		selector: "app",
+		templateUrl: "/app/app.html",
+		directives: [ROUTER_DIRECTIVES]
+	})
+	@RouteConfig([
+		
+		{
+			path: "/about/...",
+			name: "About",
+			component: About
+		}
+		
+		{ path: "/list", name: "List", component:MovieList, useAsDefault:true  },
+		{ path: "/about/*foo", name: "About", component:About },
+		{ path: "/details/:id", name:"Details", component:MovieDetail }
+	])
+	export class App {
+		title = "At The Movies";
+	}
 
-@Component({
-	selector: "app",
-	templateUrl: "/app/app.html",
-	directives: [ROUTER_DIRECTIVES]
-})
-@RouteConfig([
-	{ path: "/list", name: "List", component:List, useAsDefault:true  },
-	{ path: "/about" name: "About", component:About }
-])
-export class App {
-	title = "At The Movies";
-}
+

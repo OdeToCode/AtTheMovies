@@ -1,0 +1,34 @@
+<div>
+
+	<h1>{{title}}</h1>
+		
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Rating</th>
+		</tr>
+		<tr *ngFor="#movie of movies" [ngClass]="{ good:movie.isGood, bad:movie.isBad }">
+			<td>{{movie.title}}</td>
+			<td>{{movie.rating}}</td>
+			<td>
+				<button (click)="movie.increaseRating()">+</button>
+				<button (click)="movie.decreaseRating()">-</button>
+				<a [routerLink]="['Details', {id:movie.id}]">Details</a>
+				
+				<button (click)="goToDetails(movie.id)">Details</button>
+				
+				{{movie.id}}
+			</td>
+		</tr>
+	</table>	
+
+</div>
+
+
+	<tr *ngFor="#movie of movies">
+		<td>{{movie.title}}</td>
+		<td>
+			<a [routerLink]="['Details', {id:movie.id}]">Details</a>
+		</td>
+	</tr>
+

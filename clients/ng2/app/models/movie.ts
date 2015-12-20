@@ -1,5 +1,9 @@
+let instanceCount = 0;
+let generateId = () => instanceCount += 1;
+
 export class Movie {
 	constructor(title: string, length: number, year: number, rating: number) {
+		this.id = generateId();
 		this.title = title;
 		this.length = length;
 		this.year = year;
@@ -30,6 +34,7 @@ export class Movie {
 		}
 	}
 
+	id: number;
 	title: string;
 	length: number;
 	year: number;
