@@ -11,13 +11,6 @@
 		directives: [ROUTER_DIRECTIVES]
 	})
 	@RouteConfig([
-		
-		{
-			path: "/about/...",
-			name: "About",
-			component: About
-		}
-		
 		{ path: "/list", name: "List", component:MovieList, useAsDefault:true  },
 		{ path: "/about/*foo", name: "About", component:About },
 		{ path: "/details/:id", name:"Details", component:MovieDetail }
