@@ -1,27 +1,32 @@
-import {Component} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {Router, ROUTER_DIRECTIVES} from "angular2/router"
 import {Movie} from "../models/movie"
+import {MovieService} from "../services/MovieService"
 
 @Component({
 	selector: "movie-list",	
 	templateUrl: "/app/list/movie-list.html",
 	directives: [ROUTER_DIRECTIVES]
 })
-export class MovieList {
-		
+export class MovieList implements OnInit { 
+	
 	title: string
-	movies: Array<Movie>
-		
-	constructor(private _router: Router) {
-		this.title = "ng2";
-		this.movies = [
-			new Movie("Star Wars", 120, 1979, 5),
-			new Movie("Jurrasic Park", 130, 1992, 4),
-			new Movie("SP", 300, 2014, 1)	
-		];
+	movies: Array<Movie> = [];
+
+	constructor(
+		private movieData: MovieService,
+		private router: Router) {
+							
+		this.title = "ng2";		
 	}	
 	
+	ngOnInit() {
+		this.movieData.getAll()
+			.subscribe(movies => this.movies = movies,
+					   error => console.log(error));			
+	}
+	
 	goToDetails(id: string) {
-		this._router.navigate(["Details", { id: id}]);
+		this.router.navigate(["Details", { id: id}]);
 	}
 }

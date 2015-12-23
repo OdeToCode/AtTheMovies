@@ -14,21 +14,9 @@
 				<button (click)="movie.increaseRating()">+</button>
 				<button (click)="movie.decreaseRating()">-</button>
 				<a [routerLink]="['Details', {id:movie.id}]">Details</a>
-				
-				<button (click)="goToDetails(movie.id)">Details</button>
-				
-				{{movie.id}}
+								
 			</td>
 		</tr>
 	</table>	
 
 </div>
-
-
-	<tr *ngFor="#movie of movies">
-		<td>{{movie.title}}</td>
-		<td>
-			<a [routerLink]="['Details', {id:movie.id}]">Details</a>
-		</td>
-	</tr>
-
