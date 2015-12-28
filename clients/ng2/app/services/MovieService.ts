@@ -8,7 +8,7 @@ import "rxjs/add/operator/map";
 export class MovieService {
 	
 	constructor(private http: Http) {
-		console.log(http);
+
 	}
 	
 	getAll() : Observable<any> {

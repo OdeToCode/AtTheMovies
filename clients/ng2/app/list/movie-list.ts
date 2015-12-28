@@ -10,16 +10,17 @@ import {MovieService} from "../services/MovieService"
 })
 export class MovieList implements OnInit { 
 	
-	title: string
-	movies: Array<Movie> = [];
-
+	title: string,
+	movies: Array<Movie> = null;
+	today: Date = new Date();
+	
 	constructor(
 		private movieData: MovieService,
 		private router: Router) {
 							
 		this.title = "ng2";		
 	}	
-	
+				
 	ngOnInit() {
 		this.movieData.getAll()
 			.subscribe(movies => this.movies = movies,

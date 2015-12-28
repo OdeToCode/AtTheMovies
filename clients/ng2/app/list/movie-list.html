@@ -1,22 +1,30 @@
 <div>
 
 	<h1>{{title}}</h1>
-		
+	
+	<div>
+		Current date is {{ today | date | uppercase }}
+		Current time is {{ today | date:'shortTime'}}
+	</div>
 	<table>
 		<tr>
 			<th>Title</th>
 			<th>Rating</th>
 		</tr>
-		<tr *ngFor="#movie of movies" [ngClass]="{ good:movie.isGood, bad:movie.isBad }">
-			<td>{{movie.title}}</td>
-			<td>{{movie.rating}}</td>
-			<td>
-				<button (click)="movie.increaseRating()">+</button>
-				<button (click)="movie.decreaseRating()">-</button>
-				<a [routerLink]="['Details', {id:movie.id}]">Details</a>
-								
+		<tr *ngFor="#movie of movies">
+			
+			<td>{{movie.title}}	</td>	
+					
+			<td [class.good] = "movie.isGood"
+			    [class.bad] = "movie.isBad">
+				{{movie.rating}}							
+			</td>
+			
+			<td>				
+				<button (click)="movie.increaseRating($event)">+</button>								
+				<button (click)="movie.decreaseRating($event) && false">-</button>									
+				<a [routerLink]="['Details', {id:movie.id}]">Details</a>								
 			</td>
 		</tr>
 	</table>	
-
 </div>
