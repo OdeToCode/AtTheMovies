@@ -17,14 +17,16 @@
 					
 			<td [class.good] = "movie.isGood"
 			    [class.bad] = "movie.isBad">
-				{{movie.rating}}							
+				{{movie.rating | stars}}							
 			</td>
 			
 			<td>				
 				<button (click)="movie.increaseRating($event)">+</button>								
 				<button (click)="movie.decreaseRating($event) && false">-</button>									
-				<a [routerLink]="['Details', {id:movie.id}]">Details</a>								
+				<a [routerLink]="['Details', {id:movie.id}]">Details</a>	
+				<a [routerLink]="['Edit', {id:movie.id}]">Edit</a>
 			</td>
 		</tr>
 	</table>	
+	<a [routerLink]="['New']">New Movie</a>
 </div>
