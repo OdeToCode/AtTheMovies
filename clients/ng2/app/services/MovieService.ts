@@ -11,7 +11,7 @@ export class MovieService {
 
 	}
 	
-	getAll() : Observable<any> {
+	getAll() : Observable<Movie[]> {
 		return this.http.get("http://otc-movies.azurewebsites.net/movies")
 				   .map(r => r.json())
 				   .map(movies => movies.map(m => new Movie(m.id, m.title, m.length, m.rating)))			

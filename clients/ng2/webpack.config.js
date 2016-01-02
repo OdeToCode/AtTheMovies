@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    "app": "./app/main"
+    "app": "./app/boot",
+    "test": "./tests"
   },
   output: {
     filename: "./bundles/[name].js"

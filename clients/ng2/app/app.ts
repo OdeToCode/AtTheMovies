@@ -17,8 +17,8 @@ import {MovieNew} from "./edit/movie-new";
 @RouteConfig([
 	{ path: "/list", name: "List", component:MovieList, useAsDefault:true  },
 	{ path: "/about/*foo", name: "About", component:About },
-	{ path: "/details/:id", name:"Details", component:MovieDetail }
-	{ path: "/edit/:id", name:"Edit", component:MovieEdit }
+	{ path: "/details/:id", name:"Details", component:MovieDetail },
+	{ path: "/edit/:id", name:"Edit", component:MovieEdit },
 	{ path: "/new/", name:"New", component:MovieNew }
 ])
 export class App {

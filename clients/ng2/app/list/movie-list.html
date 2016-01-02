@@ -1,12 +1,19 @@
 <div>
 
-	<h1>{{title}}</h1>
+	<h1 high-light="red">{{title}}</h1>
 	
-	<div>
-		Current date is {{ today | date | uppercase }}
-		Current time is {{ today | date:'shortTime'}}
-	</div>
-	<table>
+		
+	<movie-display *ngFor="#movie of movies" 
+					[movie]="movie" 
+					(ratingChange)="onRatingChange(movie, $event)">
+	</movie-display>
+	
+	
+	<movie-display *ngFor="#movie of movies" 
+					[movie]="movie">
+	</movie-display>
+	
+	<!--<table>
 		<tr>
 			<th>Title</th>
 			<th>Rating</th>
@@ -27,6 +34,6 @@
 				<a [routerLink]="['Edit', {id:movie.id}]">Edit</a>
 			</td>
 		</tr>
-	</table>	
+	</table>	-->
 	<a [routerLink]="['New']">New Movie</a>
 </div>
