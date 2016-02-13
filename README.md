@@ -1,3 +1,3 @@
 AtTheMovies
 ===========
-Just foolin around with some JS frameworks
+Experiments with frameworks, languages, and tools
