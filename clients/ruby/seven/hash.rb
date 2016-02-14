@@ -26,15 +26,57 @@ end
 
 def print_four
     array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    var group = 0
+    group = []
     
     array.each { |v| 
-        
+        group.push v
+        if group.length > 3
+            group.each { |n|
+                puts n
+            }
+            puts '**'
+            group = []
+        end
     }
-    
-    
 end
+
+class Tree
+
+    attr_accessor :name, :children
+
+    def initialize (entry) 
+       @children = []       
+       @name = entry.keys[0]
+                   
+        entry[@name].each_pair do |k,v|
+            @children.push Tree.new Hash[k, v]
+        end                   
+                                            
+    end
+
+    def visit_all(&block)       
+        visit &block
+        children.each { |n| n.visit_all &block }        
+    end
+    
+    def visit(&block)
+        block.call self
+    end
+
+end
+
+tree = Tree.new({'grandpa' => { 
+                    'dad' => 
+                       {'child 1' => {}, 'child 2' => {} }, 
+                    'uncle' => 
+                       {'child 3' => {}, 'child 4' => {} } } })
+
+tree.visit_all {
+    |node|
+    puts node.name
+}
 
 #hash_to_array
 #array_to_hash
-print_four
+#print_four
+tree
