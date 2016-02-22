@@ -76,7 +76,17 @@ tree.visit_all {
     puts node.name
 }
 
+def grep(filename, pattern)
+    file = File.open(filename, 'r')
+    file.lines.each_with_index do |line, index|
+        if /#{pattern}/ =~ line
+            puts "#{index} : #{line}"
+        end
+    end
+end
+
 #hash_to_array
 #array_to_hash
 #print_four
-tree
+#tree
+grep("hash.rb", "tree")
