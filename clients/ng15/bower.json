@@ -1,0 +1,21 @@
+{
+  "name": "ng15",
+  "description": "",
+  "authors": [
+    "K. Scott Allen <scott@OdeToCode.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.5.1",
+    "bootstrap": "~3.3.6",
+    "angular-component-router": "~0.2.0"
+  }
+}
