@@ -1,5 +1,8 @@
 {
   "name": "ng15",
   "version": "1.0.0",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    
+  }
 }
