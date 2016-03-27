@@ -1,29 +1,31 @@
 <html ng-app="atTheMovies">
 
 <head>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body ng-cloak>
 
-
     <nav class="navbar navbar-default navbar-inverse" role="navigation" class="container-fluid">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">At The Movies (NG)</a>
+                <a class="navbar-brand" href="#">At The Movies</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
         
-        <movies-app></movies-app>
+        <ng-view></ng-view>
         
     </div>
 
-    <script src="/bower_components/angular/angular.js"></script>    
-    <script src="app.js"></script>
+    <script src="bower_components/angular/angular.js"></script> 
+    <script src="bower_components/angular-route/angular-route.js"></script>   
+    <script src="movies-app/module.js"></script>
+    <script src="movies-app/movies-app.component.js"></script>
+    <script src="movies-app/rating.component.js"></script>
 </body>
 
 </html>

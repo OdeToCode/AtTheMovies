@@ -2,7 +2,11 @@
   "name": "ng15",
   "version": "1.0.0",
   "description": "",
-  "dependencies": {
-    
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
   }
 }
