@@ -1,8 +1,8 @@
 module.exports = function(config) {
   config.set({
 
-    basePath: '',
-    frameworks: ['jasmine'],
+    basePath: "",
+    frameworks: ["jasmine"],
     files: [
         "bower_components/angular/angular.js",
         "bower_components/angular-route/angular-route.js",
@@ -14,13 +14,13 @@ module.exports = function(config) {
     ],
     preprocessors: {
     },
-    reporters: ['progress'],
+    reporters: ["progress"],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ["Chrome"],
     singleRun: false,
     concurrency: Infinity
-  })
-}
+  });
+};
