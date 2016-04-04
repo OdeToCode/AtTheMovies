@@ -4,11 +4,10 @@ module.exports = function(config) {
     basePath: "",
     frameworks: ["jasmine"],
     files: [
-        "bower_components/angular/angular.js",
-        "bower_components/angular-route/angular-route.js",
+        "bower_components/angular/angular.js",       
         "bower_components/angular-mocks/angular-mocks.js",
-        "movies-app/module.js",
-        "movies-app/**/*.js"
+        "ps-movies/module.js",
+        "ps-movies/**/*.js"
     ],
     exclude: [        
     ],

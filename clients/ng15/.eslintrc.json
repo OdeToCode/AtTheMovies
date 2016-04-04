@@ -5,11 +5,16 @@
     "extends": "eslint:recommended",
     "globals": {
         "angular": false,
-        "module": true 
+        "describe": false,
+        "beforeEach": false,
+        "it": false,
+        "expect": false,
+        "module": false,
+        "inject": false            
     },
     "rules": {        
         "linebreak-style": [
-            "error",
+            "off",
             "windows"
         ],
         "quotes": [
