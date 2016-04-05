@@ -32,9 +32,16 @@
                 movie.rating -= 1;
             }
         };
+        
+        model.goTo = function(id) {
+            model.$router.navigate(["Details", {id:id}, "Overview"]);  
+        };
     }
 
     module.component("movieList", {
+        bindings: {
+            "$router": "<"
+        },
         templateUrl: "/ps-movies/movie-list.component.html",
         controllerAs: "model",
         controller: ["$http", controller]
