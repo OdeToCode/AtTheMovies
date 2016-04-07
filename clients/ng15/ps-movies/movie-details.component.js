@@ -6,7 +6,6 @@
         var model = this;          
         
         model.$routerOnActivate = function(next, previous) {
-            console.log(next);
             model.id = next.params.id;
         };
     };

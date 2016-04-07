@@ -33,6 +33,10 @@
             }
         };
         
+        model.setRating = function(movie, rating) { 
+            movie.rating = rating;
+        };
+        
         model.goTo = function(id) {
             model.$router.navigate(["Details", {id:id}, "Overview"]);  
         };
