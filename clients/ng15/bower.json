@@ -14,6 +14,8 @@
     "angular-route": "^1.5.3",
     "angular-component-router": "^0.2.1",
     "bootstrap": "^3.3.6",
-    "angular-mocks": "^1.5.3"
+    "angular-mocks": "^1.5.3",
+    "angular-animate": "^1.5.3",
+    "animate.css": "^3.5.1"
   }
 }

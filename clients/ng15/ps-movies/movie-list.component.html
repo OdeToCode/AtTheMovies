@@ -10,8 +10,8 @@
             <td>{{movie.title}}</td>
             <td>{{movie.length}}</td>
             <td>
-                <movie-rating value="movie.rating">
-                    <span class="glyphicon glyphicon-star"></span>
+                <movie-rating value="movie.rating" max="5"
+                              set-rating="model.setRating(movie, value)">                    
                 </movie-rating>
             </td>
             <td>
@@ -27,4 +27,15 @@
             </td>
         </tr>
     </table>
+    
+    <accordion>
+        <accordion-panel heading="Panel 1">
+            This is panel 1    
+        </accordion-panel>        
+        <accordion-panel heading="Panel 2">
+            This is panel 2    
+        </accordion-panel>
+    </accordion>
+    
+    
 </div>

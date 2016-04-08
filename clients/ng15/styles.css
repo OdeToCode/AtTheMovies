@@ -3,6 +3,14 @@ body{
 	background-color: #ccccbb;
 }
 
+accordion .ng-enter {
+    animation: fadeIn 0.5s
+}
+
+accordion .ng-leave {
+    animation: fadeOut 0.5s
+}
+
 .ng-cloak {
     display: none;
 }

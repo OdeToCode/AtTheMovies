@@ -22,7 +22,11 @@
         };
         
         model.goTo = function(id) {
-            model.$router.navigate(["Details", {id:id}]);
+            model.$router.navigate(["Details", {id:id}, "Overview"]);
+        };
+        
+        model.setRating = function(movie, newRating) {
+            movie.rating = newRating;  
         };
         
         model.upRating = function(movie) {
@@ -30,7 +34,7 @@
                 movie.rating += 1;
             }
         };
-        
+                        
         model.downRating = function(movie) {
             if(movie.rating > 1) {
                 movie.rating -= 1;
