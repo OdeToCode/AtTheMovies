@@ -1,18 +1,21 @@
-import { EventEmitter, Component, Directive, Input, Output, OnInit, OnDestroy, OnChanges} from "angular2/core";
+import {Component, Input, Output, OnInit, EventEmitter} from "angular2/core";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 import {StarPipe} from "../pipes/StarPipe"
 import {Movie} from "../models/Movie";
 
 @Component({
 	selector:"movie-display",
 	template: `
-		<div>
-			<h3> {{ movie.title }} </h3>
-			<div (click)="changeRating()">
-				Rating: {{movie.rating | stars }}
+		<div class='panel panel-default'>
+			<div class='panel-heading'> {{ movie.title }} </div>
+			<div class='panel-body' >
+				<div (click)="changeRating()">Rating: {{movie.rating | stars }}</div>
+				<div><a [routerLink]="['Edit', { id: movie.id}]" class='btn btn-default'>Edit</a></div>
 			</div>
 		</div>
 	`,
-	pipes: [StarPipe]
+	pipes: [StarPipe],
+	directives: [ROUTER_DIRECTIVES]
 })
 export class MovieDisplay  {
 	
@@ -26,12 +29,3 @@ export class MovieDisplay  {
 		
 }
 
-	// ngOnChanges(changes) {
-	// 	console.dir(changes);		
-	// }
-
-
-@Directive({
-	
-})
-export class Foo {}

@@ -4,4 +4,13 @@
 
 .bad {
 	background-color: red;
-}
+} 
+
+ body {
+	 background-color: #aaaaaa;
+ }
+ 
+ .ng-invalid {
+	 background: red;
+	 border: red 10px solid;
+ }

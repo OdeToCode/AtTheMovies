@@ -24,7 +24,6 @@ export class MovieList implements OnInit {
 			
 	onRatingChange(movie, rating) {
 		movie.rating = rating;
-		console.dir(arguments);
 	}
 				
 	ngOnInit() {

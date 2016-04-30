@@ -6,6 +6,7 @@ import {MovieList} from "./list/movie-list";
 import {About} from "./about/about";
 import {MovieDetail} from "./detail/movie-detail";
 import {MovieEdit} from "./edit/movie-edit";
+import {MovieEdit2} from "./edit/movie-edit2";
 import {MovieNew} from "./edit/movie-new";
 
 
@@ -18,7 +19,7 @@ import {MovieNew} from "./edit/movie-new";
 	{ path: "/list", name: "List", component:MovieList, useAsDefault:true  },
 	{ path: "/about/*foo", name: "About", component:About },
 	{ path: "/details/:id", name:"Details", component:MovieDetail },
-	{ path: "/edit/:id", name:"Edit", component:MovieEdit },
+	{ path: "/edit/:id", name:"Edit", component:MovieEdit2 },
 	{ path: "/new/", name:"New", component:MovieNew }
 ])
 export class App {

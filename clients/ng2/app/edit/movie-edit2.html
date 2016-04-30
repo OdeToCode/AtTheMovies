@@ -1,0 +1,26 @@
+<div>
+	<h2>Edit 2</h2>
+		
+	<form #form="ngForm" (ngSubmit)="save(form, title)" novalidate>
+		
+		<input type="hidden" [(ngModel)]="movie.id">
+		
+		<label>Title</label>
+		<input type="text" [(ngModel)]="movie.title" 
+						   ngControl="title"
+						   #title="ngForm"
+						   required>		
+		<span *ngIf="form.controls.title?.hasError('required')">The title is required</span>
+		<span *ngIf="title.errors.required">Title is requires</span>
+		
+		<label>Rating</label>
+		<input type="number" [(ngModel)]="movie.rating">
+		
+		<label>Length</label>
+		<input type="number" [(ngModel)]="movie.length">
+		
+		<input type="submit" value="Save">
+		
+	</form>
+	
+</div>

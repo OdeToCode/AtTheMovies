@@ -1,39 +1,9 @@
 <div>
 
-	<h1 high-light="red">{{title}}</h1>
-	
-		
 	<movie-display *ngFor="#movie of movies" 
 					[movie]="movie" 
 					(ratingChange)="onRatingChange(movie, $event)">
 	</movie-display>
 	
-	
-	<movie-display *ngFor="#movie of movies" 
-					[movie]="movie">
-	</movie-display>
-	
-	<!--<table>
-		<tr>
-			<th>Title</th>
-			<th>Rating</th>
-		</tr>
-		<tr *ngFor="#movie of movies">
-			
-			<td>{{movie.title}}	</td>	
-					
-			<td [class.good] = "movie.isGood"
-			    [class.bad] = "movie.isBad">
-				{{movie.rating | stars}}							
-			</td>
-			
-			<td>				
-				<button (click)="movie.increaseRating($event)">+</button>								
-				<button (click)="movie.decreaseRating($event) && false">-</button>									
-				<a [routerLink]="['Details', {id:movie.id}]">Details</a>	
-				<a [routerLink]="['Edit', {id:movie.id}]">Edit</a>
-			</td>
-		</tr>
-	</table>	-->
-	<a [routerLink]="['New']">New Movie</a>
+	<a [routerLink]="['New']">Create A New Movie</a>
 </div>

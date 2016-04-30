@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>ng2</title>
-		 <base href="/index.html">
-		<link rel="stylesheet" href="styles.css">
-	</head>
-	<body>
-		<app>Loading...</app>
-		<script src="/node_modules/systemjs/dist/system.src.js"></script> 
-		<script src="/node_modules/reflect-metadata/reflect.js"></script>
-		<script src="/node_modules/zone.js/dist/zone.js"></script>
-		<script src="/bundles/app.js"></script>
-		
-		
-		<!--<script src="/node_modules/typescript/lib/typescript.js"></script>
-		<script src="/node_modules/rxjs/bundles/rx.js"></script>
-		<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-		<script src="/node_modules/angular2/bundles/router.js"></script>
-		<script src="/node_modules/angular2/bundles/http.js"></script>		
-		<script>
-			
-			System.config({ 
+
+<head>
+	<title>ng2</title>
+	<base href="/index.html">
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<app>Loading...</app>
+	<script src="/node_modules/es6-shim/es6-shim.js"></script>
+	<script src="/node_modules/systemjs/dist/system.src.js"></script>
+	<script src="/node_modules/reflect-metadata/reflect.js"></script>
+	<script src="/node_modules/typescript/lib/typescript.js"></script>
+	<script src="/node_modules/rxjs/bundles/rx.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+
+	<script src="/node_modules/angular2/bundles/router.js"></script>
+	<script src="/node_modules/angular2/bundles/http.js"></script>
+	<script>
+		System.config({ 
 				transpiler: "typescript",
 				typescriptOptions: { emitDecoratorMetadata: true },
 				packages: {
@@ -31,8 +32,7 @@
 			});
 			
 			System.import("./app/boot");
-			
-		</script>-->
-	</body>
-</html>
+	</script>
+</body>
 
+</html>
