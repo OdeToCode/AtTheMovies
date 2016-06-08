@@ -11,7 +11,7 @@ var plumber = require('gulp-plumber');
 
 var output = ['output/*.*']
 var sources = ['classes/*.js', 'functional/*.js',
-               'variablesparameters/*.js', 'apis/*.js'];
+               'variablesparameters/*.js', 'apis/*.js', 'dragons/*.js'];
 
 var WEB_PORT = 9000;
 

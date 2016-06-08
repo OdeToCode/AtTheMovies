@@ -14,48 +14,48 @@ describe("destructuring", function () {
 		expect(x).toBe(22);
 		expect(y).toBe(44);
 
-		var doWork = function doWork(_ref) {
-			var firstName = _ref.firstName;
-			var lastName = _ref.lastName;
-			var _ref$role = _ref.role;
-			var role = _ref$role === undefined ? "developer" : _ref$role;
+		// let doWork = function(
+		//     {firstName, lastName, role="developer"}) {
+		//     return role + " " + firstName + " " + lastName;
+		// };
 
-			return role + " " + firstName + " " + lastName;
+		// doWork({firstName:"Scott"})
+
+		// let person = {firstName: "Scott", lastName: "Allen"};
+		// let result = doWork(person);
+
+		// expect(result).toBe("developer Scott Allen");
+
+		// let odds = [1,3,5,7,9];
+		// let [first, second, ...rest] = odds;
+
+		// expect(first).toBe(1);
+		// expect(second).toBe(3);
+		// expect(rest).toEqual([5,7,9]);
+
+		var employee = {
+			firstName: "Scott",
+			address: {
+				state: "Maryland",
+				country: "USA"
+			},
+			favoriteNumbers: [45, 55, 32, 13]
 		};
 
-		doWork({ firstName: "Scott" });
+		var firstName = employee.firstName;
+		var state = employee.address.state;
 
-		var person = { firstName: "Scott", lastName: "Allen" };
-		var result = doWork(person);
+		var _employee$favoriteNumbers = _slicedToArray(employee.favoriteNumbers, 2);
 
-		expect(result).toBe("developer Scott Allen");
+		var second = _employee$favoriteNumbers[1];
 
-		var odds = [1, 3, 5, 7, 9];
-		var first = odds[0];
-		var second = odds[1];
-		var rest = odds.slice(2);
-
-		expect(first).toBe(1);
-		expect(second).toBe(3);
-		expect(rest).toEqual([5, 7, 9]);
-
-		// var employee = {
-		//   firstName: "Scott",
-		//   address: {
-		//     state: "Maryland",
-		//     country: "USA"
-		//   },
-		//   favoriteNumbers: [45,55,32,13]
-		// };
-		//
-		// var { firstName, address: {state}, favoriteNumbers: [,second]} = employee;
-		//
-		// expect(firstName).toBe("Scott");
-		// expect(state).toBe("Maryland");
-		// expect(second).toBe(55);
+		expect(firstName).toBe("Scott");
+		expect(state).toBe("Maryland");
+		expect(second).toBe(55);
 	});
 
 	it("can have defaults", function () {
+
 		var address = { state: "Maryland" };
 		var _address$state = address.state;
 		var state = _address$state === undefined ? "New York" : _address$state;
@@ -108,10 +108,10 @@ describe("destructuring", function () {
 
 	it("works with parameters", function () {
 
-		var doWork = function doWork(url, _ref2) {
-			var data = _ref2.data;
-			var cache = _ref2.cache;
-			var headers = _ref2.headers;
+		var doWork = function doWork(url, _ref) {
+			var data = _ref.data;
+			var cache = _ref.cache;
+			var headers = _ref.headers;
 
 			return data;
 		};

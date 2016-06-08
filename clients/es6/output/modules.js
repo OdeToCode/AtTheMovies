@@ -55,6 +55,16 @@
 
 	var _lib = __webpack_require__(2);
 
+	var _libCreatures = __webpack_require__(3);
+
+	console.log(undefined); // undefined
+
+	_libCreatures.creature.name = "Winnie";
+	console.log(_libCreatures.creature); // {name: "Winnie"}
+	console.log((0, _libCreatures.inspect)()); // "Winnie"
+	(0, _libCreatures.reset)();
+	console.log(_libCreatures.creature); // {name: "Oscar"}
+
 	describe("The combined modules", function () {
 
 		it("should have a person class", function () {
@@ -98,6 +108,9 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.increment = increment;
+	exports.inspect = inspect;
+	exports.reset = reset;
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -108,6 +121,30 @@
 	};
 
 	exports.Animal = Animal;
+	var counter = 0;
+
+	exports.counter = counter;
+
+	function increment() {
+		exports.counter = counter += 1;
+		return counter;
+	}
+
+	var creature = {
+		name: "Oscar"
+	};
+
+	exports.creature = creature;
+
+	function inspect() {
+		return creature.name;
+	}
+
+	function reset() {
+		exports.creature = creature = {
+			name: "Oscar"
+		};
+	}
 
 /***/ },
 /* 4 */
