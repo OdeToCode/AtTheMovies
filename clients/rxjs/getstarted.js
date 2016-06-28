@@ -1,5 +1,9 @@
+
+
 (function() {
     
+    var circle = document.getElementsByClassName("greeting")[0];
+   
     var source = Rx.Observable.fromEvent(document, "mousemove")
                               .filter(function(e) {
                                 return e.clientY < 100;
@@ -9,12 +13,14 @@
                                    x: e.clientX,
                                    y: e.clientY  
                                  };
-                              });
+                              })
+                              .delay(300);
     
     source.subscribe(onNext, onError, onCompleted);
     
     function onNext(value) {
-        console.log(value);
+        circle.style.left = value.x;
+        circle.style.top = value.y;
     }
     
     function onError() {
