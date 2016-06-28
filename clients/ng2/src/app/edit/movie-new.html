@@ -1,0 +1,22 @@
+<div>
+	<h2>Create A Movie</h2>
+
+
+
+	<form [ngFormModel]="form" (ngSubmit)="submit()" novalidate>
+			
+		<div>			
+			<label for="title">Title</label>
+			<input #f type="text" [ngFormControl]="title" required>	
+
+			<span [hidden]="!title.hasError('required')">Required field</span>
+						
+		</div>
+		<div>
+			<label for="rating">Rating</label>
+			<input type="number" [ngFormControl]="rating">
+		</div>
+		<input type="submit" value="Save">
+	</form>
+	
+</div>
