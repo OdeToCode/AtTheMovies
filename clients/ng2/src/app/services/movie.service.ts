@@ -1,19 +1,25 @@
-import {Movie} from "../models/movie";
+import {Http} from "@angular/http";
+import {Injectable} from "@angular/core";
 
-const movies = [
-    new Movie(1, "Star Wars", 4, 120),
-    new Movie(2, "Terminator", 3, 93),
-    new Movie(3, "Star Trek", 5, 118)
-];
+const baseUrl = "http://otc-movies.azurewebsites.net/movies/";
 
+const processResponse = r => r.json();
+
+@Injectable()
 export class MovieData {
 
+    constructor(private http: Http) {
+
+    }
+
     getAll() {
-        return movies;
+        return this.http.get(baseUrl)
+                        .map(processResponse);
     }
 
     getById(id: number) {
-        return movies.filter(m => m.id === id)[0];
+        return this.http.get(`${baseUrl}${id}`)
+                        .map(processResponse);
     }
 
 }

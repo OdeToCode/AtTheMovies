@@ -13,6 +13,8 @@ export class MovieListComponent {
     movies: Movie[] = [];
 
     constructor(movieData: MovieData) {
-        this.movies = movieData.getAll();
+        movieData.getAll().subscribe(
+            movies => this.movies = movies,
+            error => console.log(error));
     }
 }
