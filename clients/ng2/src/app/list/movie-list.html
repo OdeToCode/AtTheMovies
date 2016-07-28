@@ -1,9 +1,0 @@
-<div>
-
-	<movie-display *ngFor="let movie of movies" 
-					[movie]="movie" 
-					(ratingChange)="onRatingChange(movie, $event)">
-	</movie-display>
-	
-	<a [routerLink]="['New']">Create A New Movie</a>
-</div>

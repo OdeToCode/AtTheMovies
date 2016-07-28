@@ -31,9 +31,9 @@ module.exports = function makeWebpackConfig() {
    * Type of sourcemap to use per build type
    */
   if (isProd) {
-    config.devtool = 'inline-source-map';
+    config.devtool = 'source-map';
   } else {
-    config.devtool = 'inline-source-map';
+    config.devtool = 'eval-source-map';
   }
 
   // add debug messages
@@ -87,16 +87,7 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loader: 'ts',
-        query: {
-          'ignoreDiagnostics': [
-            2403, // 2403 -> Subsequent variable declarations
-            2300, // 2300 -> Duplicate identifier
-            2374, // 2374 -> Duplicate number index signature
-            2375, // 2375 -> Duplicate string index signature
-            2502  // 2502 -> Referenced directly or indirectly
-          ]
-        },
+        loaders: ['ts', 'angular2-template-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
@@ -207,11 +198,7 @@ module.exports = function makeWebpackConfig() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin({
-        // Angular 2 is broken again, disabling mangle until beta 6 that should fix the thing
-        // Todo: remove this with beta 6
-        mangle: false
-      }),
+      new webpack.optimize.UglifyJsPlugin(),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin

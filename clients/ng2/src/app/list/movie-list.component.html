@@ -1,0 +1,21 @@
+<div>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Length</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let movie of movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.rating}}</td>
+            <td>{{movie.length}}</td>
+            <td>
+                <a [routerLink]="['detail', movie.id]"
+                    class="btn btn-default">
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
