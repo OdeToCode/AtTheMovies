@@ -1,0 +1,33 @@
+<div class="row">
+
+    <div class="col-md-8">
+        <form [formGroup]="form" (ngSubmit)="save()" novalidate>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title"
+                       required 
+                       [formControl]="title"                        
+                       class="form-control">
+                <div [hidden]="title.valid" 
+                    class="alert alert-danger">
+                    Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="length">Length</label>
+                <input type="number" name="length"
+                        [formControl]="length"
+                        class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" name="rating"
+                        [formControl]="rating" 
+                        class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary"
+                   [disabled]="!form.valid"
+                   value="Save">
+        </form>
+    </div>
+</div>

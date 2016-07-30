@@ -15,7 +15,12 @@
                     class="btn btn-default">
                     <i class="glyphicon glyphicon-zoom-in"></i>
                 </a>
+                <a [routerLink]="['edit', movie.id]"
+                   class="btn btn-default">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
             </td>
         </tr>
     </table>
 </div>
+<a class="btn btn-default" [routerLink]="['new']">New Movie</a>
