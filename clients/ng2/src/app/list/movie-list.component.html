@@ -1,4 +1,10 @@
 <div>
+
+    <div *ngFor="let movie of movies">
+        <movie-panel [movie]="movie"></movie-panel>
+    </div>
+
+
     <table class="table">
         <tr>
             <th>Title</th>
