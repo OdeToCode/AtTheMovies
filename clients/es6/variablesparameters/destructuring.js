@@ -4,6 +4,20 @@
 describe("destructuring", function() {
 	"use strict";
 
+	it("behaves this way", () => {
+	
+		this.specialVar
+	
+	
+		const values = [22, 55];
+
+		const [,x,y,z] = values;
+		// 
+		// x = 55
+		// y = undefined
+		// 
+	});
+
     it("has simple examples", function(){
 
         const values = [22, 44];

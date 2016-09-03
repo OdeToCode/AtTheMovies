@@ -2,8 +2,7 @@ import {Http, RequestOptions, Headers} from "@angular/http";
 import {Movie} from "../models/movie";
 import {Injectable} from "@angular/core";
 
-// const baseUrl = "http://otc-movies.azurewebsites.net/movies/";
-const baseUrl = "http://localhost:15120/api/movies/";
+const baseUrl = "http://otc-movies.azurewebsites.net/api/movies/";
 const processResponse = r => r.json();
 const jsonOptions = new RequestOptions({
     headers: new Headers({"Content-Type" : "application/json"})

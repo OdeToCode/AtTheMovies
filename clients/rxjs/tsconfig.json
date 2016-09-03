@@ -3,5 +3,8 @@
     "target": "es5",
     "module": "commonjs",
     "sourceMap": true
-  } 
+  } ,
+  "files": [
+      "node_modules/typescript/lib/lib.es6.d.ts"
+  ]
 }

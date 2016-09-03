@@ -1,10 +1,10 @@
-import {Observable} from "rxjs";
-// import {Observable} from "rxjs/Observable"
-// import "rxjs/add/observable/from";
-// import "rxjs/add/observable/fromEvent";
-// import "rxjs/add/operator/map";
-// import "rxjs/add/operator/filter";
-// import "rxjs/add/operator/delay";
+//import {Observable} from "rxjs";
+ import {Observable} from "rxjs/Observable"
+ import "rxjs/add/observable/from";
+ import "rxjs/add/observable/fromEvent";
+ import "rxjs/add/operator/map";
+ import "rxjs/add/operator/filter";
+ import "rxjs/add/operator/delay";
 
 const observale = Observable.from([1, 2, 3])
                             .map(n => n * 2)

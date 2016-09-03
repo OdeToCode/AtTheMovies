@@ -21,9 +21,8 @@ describe("arrow functions", () => {
     it("works well with arrays", () => {
 
         const numbers = [1, 2, 3];
-
         const result = numbers.map(n => n * 2);
-        // [2,4,6]
+        // produces [2,4,6]
 
         expect(result).toEqual([2, 4, 6]);
 
@@ -32,9 +31,8 @@ describe("arrow functions", () => {
     it("doesn't return object literal w/o parens", () => {
 
         const numbers = [1, 2, 3];
-
         const result = numbers.map(n => { value: n });
-        // [undefined], [undefined], [undefined]
+        // produces [undefined], [undefined], [undefined]
 
         expect(result.length).toBe(3);
         for (const entry of result) {
@@ -91,7 +89,7 @@ describe("arrow functions", () => {
         adder.add = add.bind(adder);
 
         adder.add([1, 2, 3]);
-        // adder.sum == 0
+        // adder.sum === 0
 
         expect(adder.sum).toBe(0);
     });
@@ -122,6 +120,7 @@ describe("arrow functions", () => {
         };
 
         adder.add([1, 2, 3]);
+        // adder.sum === 0
 
         expect(adder.sum).toBe(0);
 
@@ -160,6 +159,12 @@ describe("destructuring", function () {
 
         expect(length).toBe(4);
 
+
+    });
+
+    it("this is not what you might expect", () => {
+
+        // .. this?
 
     });
 
