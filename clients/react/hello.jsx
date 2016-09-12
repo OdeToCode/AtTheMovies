@@ -1,6 +1,16 @@
 import React, {Component, PropTypes} from "react";
 import ReactDOM from "react-dom";
 
+class Counter extends Component {
+    render() {
+        return <h3>{this.props.count}</h3>
+    }
+}
+
+Counter.propTypes = {
+    count: PropTypes.number
+}
+
 class TextAreaCounter extends Component {
     
     constructor(props) {
@@ -13,7 +23,7 @@ class TextAreaCounter extends Component {
     render() {
         return  <div>
                     <textarea value={this.state.text} onChange={e => this._textChange(e)}></textarea>
-                    <h3>{this.state.text.length}</h3>
+                    <Counter count={this.state.text.length}></Counter>
                 </div>
     }
 
