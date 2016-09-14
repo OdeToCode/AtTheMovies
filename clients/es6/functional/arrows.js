@@ -2,8 +2,6 @@ describe("arrow functions", function(){
 
     it("provide a short syntax for defining functions", function(){
 
-
-
         let add = (x,y) => x + y;
         let square = x => x * x;
         let log = () => console.log("hello!");

@@ -1,7 +1,4 @@
-// M1
-
 // step 1 - numbers
-
 
 import {Observable} from "rxjs/Observable"; 
 

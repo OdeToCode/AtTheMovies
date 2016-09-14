@@ -47,7 +47,6 @@ namespace OtcMovies.Data
                 }
                 return found;
             }
-            return null;
         }
 
         public Movie Get(int id)
