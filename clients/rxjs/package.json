@@ -2,14 +2,20 @@
   "name": "rxjsgetstarted",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "typings install",
+    "start": "webpack-dev-server --watch --inline"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rxjs": "^5.0.0-beta.10"
+    "rxjs": "^5.0.0-beta.12"
   },
   "devDependencies": {
     "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "typings": "^1.3.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
   }
 }
