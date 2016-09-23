@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "sourceMap": true
-  } ,
-  "files": [
-      "node_modules/typescript/lib/lib.es6.d.ts"
-  ]
+  }   
 }
