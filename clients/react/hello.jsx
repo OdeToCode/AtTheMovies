@@ -17,7 +17,7 @@ class TextAreaCounter extends Component {
         super(props);
         this.state = {
             text: this.props.text
-        };
+        };  
     }
 
     render() {
